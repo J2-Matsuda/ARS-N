@@ -1,0 +1,15 @@
+task: generate_data
+run_name: logistic_dense_001
+seed: 0
+
+problem:
+  type: logistic
+  n: 500
+  d: 100
+  reg_lambda: 1.0e-3
+  feature_scale: 1.0
+  intercept: 0
+  sparse_beta: false
+
+save:
+  path: data/generated/logistic_dense_001.npz

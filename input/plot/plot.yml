@@ -1,0 +1,20 @@
+task: plot
+plot_name: rs-cn-log-n1000
+
+inputs:
+  - path: output/results/rs_cn_logistic_dense_001.csv
+    label: RS-CN
+
+plot:
+  x: cumulative_time
+  # x: iter
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Logistic: grad_norm vs cumulative_time"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/rs_cn_logistic_dense_001.png

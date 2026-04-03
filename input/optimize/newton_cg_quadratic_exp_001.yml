@@ -1,0 +1,31 @@
+task: optimize
+run_name: newton_cg_quadratic_exp_001
+seed: 0
+
+problem:
+  type: quadratic
+  source: data/generated/quadratic_exp_001.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: newton_cg
+  max_iter: 20
+  tol: 1.0e-6
+  cg_max_iter: 128
+  cg_tol: 1.0e-10
+  line_search:
+    enabled: true
+    c1: 1.0e-4
+    beta: 0.5
+    max_iter: 25
+
+log:
+  enabled: true
+  csv_path: output/results/newton_cg_quadratic_exp_001.csv
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/newton_cg_quadratic_exp_001.json
+  resolved_config_path: output/meta/newton_cg_quadratic_exp_001.resolved.yml

@@ -1,0 +1,14 @@
+task: generate_data
+run_name: quadratic_exp_001
+seed: 0
+
+problem:
+  type: quadratic
+  dim: 64
+  spectrum: exponential
+  lambda_max: 1.0
+  lambda_min: 1.0e-6
+  b_norm: 1.0
+
+save:
+  path: data/generated/quadratic_exp_001.npz

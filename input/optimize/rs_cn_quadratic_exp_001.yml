@@ -1,0 +1,44 @@
+task: optimize
+run_name: rs_cn_quadratic_exp_001
+seed: 0
+
+problem:
+  type: quadratic
+  source: data/generated/quadratic_exp_001.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: rs_cn
+  max_iter: 50
+  tol: 1.0e-6
+  seed: 0
+  subspace_dim: 16
+  solver: exact
+  sigma0: 1.0
+  sigma_min: 1.0e-6
+  sigma_max: 1.0e6
+  eta1: 0.1
+  eta2: 0.75
+  gamma1: 2.0
+  gamma2: 2.0
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-10
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: true
+  verbose: false
+  print_every: 10
+  sketch:
+    mode: operator
+    block_size: 256
+    dtype: float64
+
+log:
+  enabled: true
+  csv_path: output/results/rs_cn_quadratic_exp_001.csv
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/rs_cn_quadratic_exp_001.json
+  resolved_config_path: output/meta/rs_cn_quadratic_exp_001.resolved.yml
