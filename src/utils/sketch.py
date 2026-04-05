@@ -51,11 +51,36 @@ class GaussianSketchOperator:
         rows, cols = self.shape
         if vector.shape != (cols,):
             raise ValueError(f"matvec expects v shape ({cols},), got {vector.shape}")
-        return np.asarray(self.dense_matrix() @ vector, dtype=float).reshape(-1)
+        if self._mat is not None:
+            return np.asarray(self._mat @ vector, dtype=float).reshape(-1)
+
+        result = np.empty(rows, dtype=float)
+        rng = np.random.default_rng(self.seed)
+        row = 0
+        while row < rows:
+            block_rows = min(self.block_size, rows - row)
+            block = rng.standard_normal(size=(block_rows, cols)).astype(self.dtype, copy=False)
+            scaled_block = (self.scale * block).astype(float, copy=False)
+            result[row : row + block_rows] = scaled_block @ vector
+            row += block_rows
+        return np.asarray(result, dtype=float).reshape(-1)
 
     def rmatvec(self, vector: np.ndarray) -> np.ndarray:
         vector = np.asarray(vector, dtype=float).reshape(-1)
         rows, cols = self.shape
         if vector.shape != (rows,):
             raise ValueError(f"rmatvec expects u shape ({rows},), got {vector.shape}")
-        return np.asarray(self.dense_matrix().T @ vector, dtype=float).reshape(-1)
+        if self._mat is not None:
+            return np.asarray(self._mat.T @ vector, dtype=float).reshape(-1)
+
+        result = np.zeros(cols, dtype=float)
+        rng = np.random.default_rng(self.seed)
+        row = 0
+        while row < rows:
+            block_rows = min(self.block_size, rows - row)
+            block = rng.standard_normal(size=(block_rows, cols)).astype(self.dtype, copy=False)
+            scaled_block = (self.scale * block).astype(float, copy=False)
+            block_vector = vector[row : row + block_rows]
+            result += scaled_block.T @ block_vector
+            row += block_rows
+        return np.asarray(result, dtype=float).reshape(-1)

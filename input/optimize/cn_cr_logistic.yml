@@ -1,0 +1,31 @@
+task: optimize
+run_name: cn_cr_logistic_n2000
+seed: 0
+
+problem:
+  type: logistic
+  source: data/generated/logistic_n2000.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: cn
+  variant: cr
+  solver: exact
+  max_iter: 100
+  tol: 1.0e-8
+  sigma: 1.0
+  exact_tol: 1.0e-10
+  verbose: true
+  print_every: 10
+
+log:
+  enabled: true
+  csv_path: output/results/cn_cr_logistic_n2000.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/cn_cr_logistic_n2000.json
+  resolved_config_path: output/meta/cn_cr_logistic_n2000.resolved.yml

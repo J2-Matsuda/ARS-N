@@ -38,6 +38,8 @@ EXTRA_LOG_FIELDS = (
     "subprob_hvp_calls_cum",
     "rk_residual_norm_init",
     "rk_residual_norm_final",
+    "rk_inner_minres_total_iters",
+    "rk_minres_fail",
     "alpha_ws",
     "subproblem_solve_mode",
 )
@@ -402,6 +404,8 @@ def _run_ars_rn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
             "subprob_hvp_calls_cum": 0,
             "rk_residual_norm_init": float("nan"),
             "rk_residual_norm_final": float("nan"),
+            "rk_inner_minres_total_iters": 0,
+            "rk_minres_fail": 0,
             "alpha_ws": float("nan"),
             "subproblem_solve_mode": "",
         },
@@ -454,12 +458,15 @@ def _run_ars_rn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
                 g_prev=g_prev,
                 y_prev=y_prev,
             )
-        except Exception:
+        except Exception as exc:
+            print(f"[ARS-RN][RK] failed: {type(exc).__name__}: {exc}", flush=True)
             rk_info = {
                 "alpha_ws": float("nan"),
                 "rk_residual_norm_init": float("nan"),
                 "rk_residual_norm_final": float("nan"),
                 "hvp_calls": counted_problem.hvp_calls - hvp_before_rk,
+                "inner_minres_total_iters": 0,
+                "minres_fail": 1,
             }
             y_candidate = np.zeros_like(g_current)
 
@@ -573,6 +580,8 @@ def _run_ars_rn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
                 "subprob_hvp_calls_cum": subprob_hvp_calls_cum,
                 "rk_residual_norm_init": float(rk_info.get("rk_residual_norm_init", float("nan"))),
                 "rk_residual_norm_final": float(rk_info.get("rk_residual_norm_final", float("nan"))),
+                "rk_inner_minres_total_iters": int(rk_info.get("inner_minres_total_iters", 0)),
+                "rk_minres_fail": int(rk_info.get("minres_fail", 0)),
                 "alpha_ws": float(rk_info.get("alpha_ws", float("nan"))),
                 "subproblem_solve_mode": diag_info.solve_mode,
             },

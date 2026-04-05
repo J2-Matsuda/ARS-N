@@ -1,17 +1,17 @@
 task: optimize
-run_name: ars_rn_logistic_dense_001
+run_name: ars_rn_logistic_n2000
 seed: 0
 
 problem:
   type: logistic
-  source: data/generated/logistic_dense_001.npz
+  source: data/generated/logistic_n2000.npz
 
 initialization:
   type: zeros
 
 optimizer:
   type: ars_rn
-  max_iter: 100
+  max_iter: 1000
   tol: 1.0e-8
   seed: 0
   subspace_dim: 50
@@ -20,7 +20,7 @@ optimizer:
   diag_shift:
     lambda_factor: 2.0
     grad_factor: 1.0
-    grad_exponent: 1.0
+    grad_exponent: 0.5
     min_eta: 1.0e-8
   line_search:
     enabled: true
@@ -39,9 +39,10 @@ optimizer:
 
 log:
   enabled: true
-  csv_path: output/results/ars_rn_logistic_dense_001.csv
+  csv_path: output/results/ars_rn_logistic_n2000.csv
+  save_everytime: true
 
 save_meta:
   enabled: true
-  meta_path: output/meta/ars_rn_logistic_dense_001.json
-  resolved_config_path: output/meta/ars_rn_logistic_dense_001.resolved.yml
+  meta_path: output/meta/ars_rn_logistic_n2000.json
+  resolved_config_path: output/meta/ars_rn_logistic_n2000.resolved.yml

@@ -39,6 +39,7 @@ In particular, the framework is intended to support:
 ├── input/
 │   ├── generate_data/
 │   ├── optimize/
+│   ├── pipeline/
 │   └── plot/
 ├── output/
 │   ├── meta/
@@ -68,6 +69,9 @@ Contains YAML files for optimization experiments. Each file specifies the proble
 
 `input/plot/`  
 Contains YAML files for plotting CSV histories.
+
+`input/pipeline/`  
+Contains YAML files that chain multiple `generate`, `optimize`, and `plot` runs into one sequential workflow.
 
 `output/results/`  
 Stores CSV log files produced by optimization runs.
@@ -237,6 +241,13 @@ Examples:
 Example:
 
 - `input/plot/plot.yml`
+- `input/plot/quadratic_smoke.yml`
+
+### Pipeline configs
+
+Example:
+
+- `input/pipeline/quadratic_smoke.yml`
 
 ## Command Examples
 
@@ -288,9 +299,35 @@ Create a plot from CSV logs:
 python -m src.cli plot --config input/plot/plot.yml
 ```
 
+### 4. Run a pipeline
+
+Run multiple steps sequentially from one YAML:
+
+```bash
+python -m src.cli pipeline --config input/pipeline/quadratic_smoke.yml
+```
+
+Pipeline YAML example:
+
+```yaml
+task: pipeline
+pipeline_name: quadratic_smoke
+steps:
+  - command: generate
+    config: input/generate_data/quadratic_exp_001.yml
+  - command: optimize
+    config: input/optimize/newton_cg_quadratic_exp_001.yml
+  - command: optimize
+    config: input/optimize/full_newton_quadratic_exp_001.yml
+  - command: plot
+    config: input/plot/quadratic_smoke.yml
+```
+
 ## Logging
 
 When `log.enabled: true`, each optimization run writes a CSV file to `output/results/`.
+Set `log.save_everytime: true` to append each iteration to the CSV as the run progresses.
+Set `log.save_everytime: false` to keep the history in memory and write it once at the end.
 
 Every log row contains the required base columns:
 
@@ -373,17 +410,20 @@ The metadata JSON includes:
 
 ### Logger flushing
 
-`RunLogger` writes CSV files incrementally and flushes to disk periodically.
-The flush frequency can be controlled with:
+`RunLogger` can either stream rows during the run or save them all at once when the run finishes.
+The logging behavior can be controlled with:
 
 ```yaml
 log:
   enabled: true
   csv_path: output/results/example.csv
-  flush_every: 50
+  save_everytime: true
+  flush_every: 1
 ```
 
-If `flush_every` is omitted, the default is `50`.
+If `save_everytime` is omitted, the default is `true`.
+If `save_everytime: true` and `flush_every` is omitted, the default is `1`, so the CSV is flushed every iteration.
+If `save_everytime: false`, `flush_every` is ignored and the CSV is written once at the end.
 
 ## Plotting
 
@@ -400,6 +440,8 @@ The plotting config specifies:
 
 - input CSV files
 - labels
+- optional colors
+- optional line styles (`solid` or `dashed`)
 - x column
 - y column
 - scales

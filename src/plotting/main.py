@@ -49,6 +49,27 @@ def _load_xy_series(path: str | Path, x_key: str, y_key: str) -> tuple[list[floa
     return x_values, y_values
 
 
+def _resolve_linestyle(value: Any) -> str:
+    linestyle = str(value).strip().lower()
+    linestyle_map = {
+        "solid": "-",
+        "-": "-",
+        "dashed": "--",
+        "--": "--",
+        "dotted": ":",
+        ":": ":",
+        "dashdot": "-.",
+        "-.": "-.",
+    }
+    try:
+        return linestyle_map[linestyle]
+    except KeyError as exc:
+        raise ValueError(
+            "Unsupported linestyle "
+            f"{value!r}. Available: solid, dashed, dotted, dashdot, -, --, :, -."
+        ) from exc
+
+
 def plot_from_config(config: Mapping[str, Any]) -> Path:
     plot_config = dict(config["plot"])
     save_path = resolve_project_path(config["save"]["path"])
@@ -62,7 +83,12 @@ def plot_from_config(config: Mapping[str, Any]) -> Path:
         csv_path = resolve_project_path(item["path"])
         label = str(item.get("label", csv_path.stem))
         x_values, y_values = _load_xy_series(csv_path, x_key=x_key, y_key=y_key)
-        ax.plot(x_values, y_values, label=label, linewidth=2.0)
+        plot_kwargs: dict[str, Any] = {"label": label, "linewidth": 2.0}
+        if "color" in item:
+            plot_kwargs["color"] = str(item["color"])
+        if "linestyle" in item:
+            plot_kwargs["linestyle"] = _resolve_linestyle(item["linestyle"])
+        ax.plot(x_values, y_values, **plot_kwargs)
 
     ax.set_xscale(str(plot_config.get("xscale", "linear")))
     ax.set_yscale(str(plot_config.get("yscale", "linear")))

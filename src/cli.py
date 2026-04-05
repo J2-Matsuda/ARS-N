@@ -10,6 +10,7 @@ import numpy as np
 from src.config import (
     load_generate_config,
     load_optimize_config,
+    load_pipeline_config,
     load_plot_config,
     save_resolved_config,
 )
@@ -25,7 +26,7 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Numerical optimization experiment CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    for command in ("generate", "optimize", "plot"):
+    for command in ("generate", "optimize", "plot", "pipeline"):
         subparser = subparsers.add_parser(command)
         subparser.add_argument("--config", required=True, help="Path to YAML config")
 
@@ -85,10 +86,12 @@ def _run_optimize(config_path: str) -> dict[str, Any]:
     log_config = config["log"]
     logger: RunLogger | NullRunLogger
     if bool(log_config.get("enabled", False)):
+        save_everytime = bool(log_config.get("save_everytime", True))
         logger = RunLogger(
             path=resolve_project_path(log_config["csv_path"]),
             extra_fields=optimizer.extra_log_fields,
-            flush_every=int(log_config.get("flush_every", 50)),
+            flush_every=int(log_config.get("flush_every", 1 if save_everytime else 50)),
+            save_everytime=save_everytime,
         )
     else:
         logger = NullRunLogger()
@@ -145,6 +148,37 @@ def _run_plot(config_path: str) -> Path:
     return output_path
 
 
+def _run_pipeline(config_path: str) -> list[dict[str, Any]]:
+    config = load_pipeline_config(config_path)
+    ensure_standard_directories()
+
+    step_runners = {
+        "generate": _run_generate,
+        "optimize": _run_optimize,
+        "plot": _run_plot,
+    }
+    results: list[dict[str, Any]] = []
+
+    for index, step in enumerate(config["steps"], start=1):
+        command = str(step["command"])
+        step_config_path = str(step["config"])
+        print(
+            f"[Pipeline:{config['pipeline_name']}] step={index}/{len(config['steps'])} "
+            f"command={command} config={step_config_path}"
+        )
+        result = step_runners[command](step_config_path)
+        results.append(
+            {
+                "step": index,
+                "command": command,
+                "config": step_config_path,
+                "result": str(result),
+            }
+        )
+
+    return results
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = _build_parser()
     args = parser.parse_args(argv)
@@ -157,6 +191,9 @@ def main(argv: list[str] | None = None) -> None:
         return
     if args.command == "plot":
         _run_plot(args.config)
+        return
+    if args.command == "pipeline":
+        _run_pipeline(args.config)
         return
 
     raise ValueError(f"Unknown command {args.command!r}")

@@ -2,8 +2,22 @@ task: plot
 plot_name: rs-cn-log-n1000
 
 inputs:
-  - path: output/results/rs_cn_logistic_dense_001.csv
+  - path: output/results/ars_cn_logistic_n1000.csv
+    label: ARS-CN
+    color: "#0b7285"
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_n1000.csv
     label: RS-CN
+    color: "#d9480f"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n1000.csv
+    label: ARS-RN
+    color: "#2b8a3e"
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_n1000.csv
+    label: RS-RN
+    color: "#5f3dc4"
+    linestyle: dashed
 
 plot:
   x: cumulative_time
@@ -17,4 +31,4 @@ plot:
   grid: true
 
 save:
-  path: output/plots/rs_cn_logistic_dense_001.png
+  path: output/plots/logistic_n1000.png

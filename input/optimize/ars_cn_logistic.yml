@@ -1,17 +1,16 @@
 task: optimize
-run_name: ars_cn_logistic_n1000
+run_name: ars_cn_logistic_n2000
 seed: 0
 
 problem:
   type: logistic
-  # source: data/generated/logistic_dense_001.npz
-  source: data/generated/logistic_synth.npz
+  source: data/generated/logistic_n2000.npz
 
 initialization:
   type: zeros
 
 optimizer:
-  type: ars_cn
+  type: ars_cn    
   max_iter: 1000
   tol: 1.0e-8
   seed: 0
@@ -40,10 +39,11 @@ optimizer:
     seed_offset: 0
 
 log:
-  enabled: false
-  csv_path: output/results/ars_cn_logistic_n1000.csv
+  enabled: true
+  csv_path: output/results/ars_cn_logistic_n2000.csv 
+  save_everytime: true
 
 save_meta:
   enabled: true
-  meta_path: output/meta/ars_cn_logistic_n1000.json
-  resolved_config_path: output/meta/ars_cn_logistic_n1000.resolved.yml
+  meta_path: output/meta/ars_cn_logistic_n2000.json
+  resolved_config_path: output/meta/ars_cn_logistic_n2000.resolved.yml

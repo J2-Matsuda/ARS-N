@@ -10,6 +10,7 @@ OUTPUT_DIR = PROJECT_ROOT / "output"
 STANDARD_DIRECTORIES = (
     INPUT_DIR / "generate_data",
     INPUT_DIR / "optimize",
+    INPUT_DIR / "pipeline",
     INPUT_DIR / "plot",
     DATA_DIR / "generated",
     OUTPUT_DIR / "results",
