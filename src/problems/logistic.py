@@ -9,6 +9,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any, Mapping, Sequence, TextIO
 from urllib.request import urlopen
+import ssl
 
 import numpy as np
 
@@ -111,8 +112,13 @@ def _download_file(url: str, destination: Path) -> None:
     """Download a raw dataset file without adding a new dependency."""
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary_path = destination.with_suffix(destination.suffix + ".part")
+    context = ssl.create_default_context()
+    context.verify_flags &= ~ssl.VERIFY_X509_STRICT
     try:
-        with urlopen(url, timeout=120) as response, temporary_path.open("wb") as handle:
+        with (
+            urlopen(url, context=context, timeout=120) as response,
+            temporary_path.open("wb") as handle,
+        ):
             shutil.copyfileobj(response, handle)
         temporary_path.replace(destination)
     finally:
@@ -188,7 +194,9 @@ def _normalize_interaction_pairs(
         i = int(i_raw)
         j = int(j_raw)
         if i == j:
-            raise ValueError(f"interaction_pairs[{index}] must use two distinct indices")
+            raise ValueError(
+                f"interaction_pairs[{index}] must use two distinct indices"
+            )
         if i < 0 or i >= d or j < 0 or j >= d:
             raise ValueError(
                 f"interaction_pairs[{index}] indices must be in [0, {d - 1}]"
@@ -275,7 +283,9 @@ def _normalize_generation_options(
     covariance_type = str(covariance_type).lower()
     if covariance_type not in _ALLOWED_COVARIANCE_TYPES:
         allowed = ", ".join(sorted(_ALLOWED_COVARIANCE_TYPES))
-        raise ValueError(f"covariance_type must be one of: {allowed}; got {covariance_type!r}")
+        raise ValueError(
+            f"covariance_type must be one of: {allowed}; got {covariance_type!r}"
+        )
     cov_rho = _validate_float(cov_rho, "cov_rho")
     if abs(cov_rho) >= 1.0:
         raise ValueError("cov_rho must satisfy |cov_rho| < 1")
@@ -287,17 +297,23 @@ def _normalize_generation_options(
     class_balance = str(class_balance).lower()
     if class_balance not in _ALLOWED_CLASS_BALANCE:
         allowed = ", ".join(sorted(_ALLOWED_CLASS_BALANCE))
-        raise ValueError(f"class_balance must be one of: {allowed}; got {class_balance!r}")
+        raise ValueError(
+            f"class_balance must be one of: {allowed}; got {class_balance!r}"
+        )
     if class_balance == "target_positive_rate":
         if target_positive_rate is None:
             raise ValueError(
                 "target_positive_rate must be provided when class_balance == 'target_positive_rate'"
             )
-        target_positive_rate = _validate_float(target_positive_rate, "target_positive_rate")
+        target_positive_rate = _validate_float(
+            target_positive_rate, "target_positive_rate"
+        )
         if not (0.0 < target_positive_rate < 1.0):
             raise ValueError("target_positive_rate must lie strictly between 0 and 1")
     elif target_positive_rate is not None:
-        target_positive_rate = _validate_float(target_positive_rate, "target_positive_rate")
+        target_positive_rate = _validate_float(
+            target_positive_rate, "target_positive_rate"
+        )
     label_flip_prob = _validate_float(label_flip_prob, "label_flip_prob")
     if not (0.0 <= label_flip_prob <= 1.0):
         raise ValueError("label_flip_prob must satisfy 0 <= label_flip_prob <= 1")
@@ -417,7 +433,9 @@ def _generate_sparse_continuous_features(
         t_df=options.t_df,
     )
     values = np.asarray(values * options.feature_scale, dtype=float)
-    return csr_matrix((values, (row_indices, col_indices)), shape=(options.n, options.d))
+    return csr_matrix(
+        (values, (row_indices, col_indices)), shape=(options.n, options.d)
+    )
 
 
 def _apply_outliers_dense(
@@ -462,7 +480,9 @@ def _generate_continuous_beta(
     beta_scale: float,
 ) -> np.ndarray:
     if sparse_beta:
-        nnz = int(num_nonzero if num_nonzero is not None else max(1, min(d, d // 5 or 1)))
+        nnz = int(
+            num_nonzero if num_nonzero is not None else max(1, min(d, d // 5 or 1))
+        )
         if nnz <= 0 or nnz > d:
             raise ValueError("num_nonzero must satisfy 1 <= num_nonzero <= d")
         beta = np.zeros(d, dtype=float)
@@ -481,7 +501,11 @@ def _generate_categorical_feature_block(
 ) -> MatrixLike:
     total_width = int(sum(cardinalities))
     if total_width == 0:
-        return csr_matrix((n, 0), dtype=float) if sparse_X and csr_matrix is not None else np.zeros((n, 0), dtype=float)
+        return (
+            csr_matrix((n, 0), dtype=float)
+            if sparse_X and csr_matrix is not None
+            else np.zeros((n, 0), dtype=float)
+        )
 
     if sparse_X:
         _require_scipy_sparse("categorical sparse feature generation")
@@ -517,14 +541,18 @@ def _append_feature_blocks(
     if sparse_X:
         _require_scipy_sparse("sparse feature concatenation")
         return sparse_hstack([X_continuous, X_categorical], format="csr")
-    return np.hstack([
-        np.asarray(X_continuous, dtype=float),
-        np.asarray(X_categorical, dtype=float),
-    ])
+    return np.hstack(
+        [
+            np.asarray(X_continuous, dtype=float),
+            np.asarray(X_categorical, dtype=float),
+        ]
+    )
 
 
 def _matvec_matrix(X: MatrixLike, beta: np.ndarray) -> np.ndarray:
-    return np.asarray(X @ np.asarray(beta, dtype=float).reshape(-1), dtype=float).reshape(-1)
+    return np.asarray(
+        X @ np.asarray(beta, dtype=float).reshape(-1), dtype=float
+    ).reshape(-1)
 
 
 def _interaction_contribution(
@@ -721,7 +749,10 @@ def load_libsvm_logistic_dataset(
     as one-based by default, matching standard LIBSVM files; set
     ``index_base: 0`` or ``index_base: auto`` in YAML when needed.
     """
-    from src.problems.real_classification import _maybe_add_bias_column, load_libsvm_classification_dataset
+    from src.problems.real_classification import (
+        _maybe_add_bias_column,
+        load_libsvm_classification_dataset,
+    )
 
     dataset = load_libsvm_classification_dataset(
         path,
@@ -739,7 +770,9 @@ def load_libsvm_logistic_dataset(
         {
             "n": int(matrix.shape[0]),
             "d": int(matrix.shape[1]),
-            "nnz": int(matrix.nnz) if _is_csr_matrix(matrix) else int(np.count_nonzero(matrix)),
+            "nnz": int(matrix.nnz)
+            if _is_csr_matrix(matrix)
+            else int(np.count_nonzero(matrix)),
             "add_bias": bool(add_bias),
             "n_features_with_bias": int(matrix.shape[1]),
         }
@@ -879,7 +912,9 @@ def generate_logistic_synthetic_data(
     y = _apply_label_noise(y, options.label_flip_prob, rng)
 
     positive_rate = float(np.mean(y))
-    generation_config = _generation_config_dict(options, beta_true_supplied=beta_true is not None)
+    generation_config = _generation_config_dict(
+        options, beta_true_supplied=beta_true is not None
+    )
 
     return {
         "A": A,
@@ -905,9 +940,15 @@ def save_logistic_dataset(
     """
     A = data["A"]
     y = np.asarray(data["y"]).reshape(-1)
-    metadata_config = generation_config if generation_config is not None else data.get("generation_config")
+    metadata_config = (
+        generation_config
+        if generation_config is not None
+        else data.get("generation_config")
+    )
     positive_rate = float(data.get("positive_rate", float(np.mean(y))))
-    generation_config_json = json.dumps(_json_ready(metadata_config or {}), sort_keys=True)
+    generation_config_json = json.dumps(
+        _json_ready(metadata_config or {}), sort_keys=True
+    )
 
     arrays: dict[str, Any] = {
         "y": y,
@@ -964,7 +1005,9 @@ def _load_npz_matrix(npz_data: Mapping[str, Any]) -> MatrixLike:
             shape=shape,
         )
 
-    raise KeyError("Dataset .npz must contain either dense key 'A' or CSR keys 'A_data/A_indices/A_indptr/A_shape'")
+    raise KeyError(
+        "Dataset .npz must contain either dense key 'A' or CSR keys 'A_data/A_indices/A_indptr/A_shape'"
+    )
 
 
 @dataclass(init=False)
@@ -1092,7 +1135,11 @@ class LogisticRegressionProblem:
         _, probs, _ = self._point_cache(x)
         weighted = self.y_pm1 * probs
         gradient = -(self._rmatvec(weighted) / self.m)
-        reg_vector = x if self.regularize_bias else np.concatenate([x[:-1], np.zeros(1, dtype=float)])
+        reg_vector = (
+            x
+            if self.regularize_bias
+            else np.concatenate([x[:-1], np.zeros(1, dtype=float)])
+        )
         gradient += self.reg_lambda * reg_vector
         return np.asarray(gradient, dtype=float).reshape(-1)
 
@@ -1103,7 +1150,11 @@ class LogisticRegressionProblem:
         _, _, d = self._point_cache(x)
         Av = self._matvec(v)
         hv = self._rmatvec(d * Av) / self.m
-        reg_vector = v if self.regularize_bias else np.concatenate([v[:-1], np.zeros(1, dtype=float)])
+        reg_vector = (
+            v
+            if self.regularize_bias
+            else np.concatenate([v[:-1], np.zeros(1, dtype=float)])
+        )
         hv += self.reg_lambda * reg_vector
         return np.asarray(hv, dtype=float).reshape(-1)
 
@@ -1120,13 +1171,19 @@ class LogisticRegressionProblem:
         if "y" not in arrays:
             raise KeyError("Dataset .npz must contain label key 'y'")
         y = np.asarray(arrays["y"]).reshape(-1)
-        loaded_reg_lambda = float(arrays["reg_lambda"]) if "reg_lambda" in arrays else 0.0
-        loaded_regularize_bias = bool(np.asarray(arrays.get("regularize_bias", np.array(True))).item())
+        loaded_reg_lambda = (
+            float(arrays["reg_lambda"]) if "reg_lambda" in arrays else 0.0
+        )
+        loaded_regularize_bias = bool(
+            np.asarray(arrays.get("regularize_bias", np.array(True))).item()
+        )
         return cls(
             A=A,
             y=y,
             reg_lambda=loaded_reg_lambda if reg_lambda is None else reg_lambda,
-            regularize_bias=loaded_regularize_bias if regularize_bias is None else bool(regularize_bias),
+            regularize_bias=loaded_regularize_bias
+            if regularize_bias is None
+            else bool(regularize_bias),
         )
 
 
@@ -1146,7 +1203,9 @@ def generate_logistic_data(
         intercept=float(noise),
     )
     data["reg_lambda"] = np.array(float(reg_lambda), dtype=float)
-    data["X"] = np.asarray(data["A"].toarray() if _is_csr_matrix(data["A"]) else data["A"], dtype=float)
+    data["X"] = np.asarray(
+        data["A"].toarray() if _is_csr_matrix(data["A"]) else data["A"], dtype=float
+    )
     return data
 
 
@@ -1181,22 +1240,34 @@ def _logistic_generation_kwargs_from_config(
         "beta_true": None if beta_true is None else np.asarray(beta_true, dtype=float),
         "sparse_beta": bool(problem_config.get("sparse_beta", False)),
         "num_nonzero": (
-            None if problem_config.get("num_nonzero") is None else int(problem_config["num_nonzero"])
+            None
+            if problem_config.get("num_nonzero") is None
+            else int(problem_config["num_nonzero"])
         ),
         "feature_scale": float(problem_config.get("feature_scale", 1.0)),
-        "intercept": float(problem_config.get("intercept", problem_config.get("noise", 0.0))),
+        "intercept": float(
+            problem_config.get("intercept", problem_config.get("noise", 0.0))
+        ),
         "beta_scale": float(problem_config.get("beta_scale", 1.0)),
-        "feature_distribution": str(problem_config.get("feature_distribution", "gaussian")),
+        "feature_distribution": str(
+            problem_config.get("feature_distribution", "gaussian")
+        ),
         "t_df": float(problem_config.get("t_df", 3.0)),
         "covariance_type": str(problem_config.get("covariance_type", "identity")),
         "cov_rho": float(problem_config.get("cov_rho", 0.0)),
-        "interaction_pairs": None if interaction_pairs is None else list(interaction_pairs),
+        "interaction_pairs": None
+        if interaction_pairs is None
+        else list(interaction_pairs),
         "interaction_scale": float(problem_config.get("interaction_scale", 0.0)),
         "num_categorical": int(problem_config.get("num_categorical", 0)),
         "categorical_cardinalities": (
-            None if categorical_cardinalities is None else list(categorical_cardinalities)
+            None
+            if categorical_cardinalities is None
+            else list(categorical_cardinalities)
         ),
-        "categorical_effect_scale": float(problem_config.get("categorical_effect_scale", 1.0)),
+        "categorical_effect_scale": float(
+            problem_config.get("categorical_effect_scale", 1.0)
+        ),
         "class_balance": str(problem_config.get("class_balance", "auto")),
         "target_positive_rate": problem_config.get("target_positive_rate"),
         "label_flip_prob": float(problem_config.get("label_flip_prob", 0.0)),
@@ -1207,7 +1278,9 @@ def _logistic_generation_kwargs_from_config(
     }
 
 
-def build_logistic_problem(problem_config: Mapping[str, Any]) -> LogisticRegressionProblem:
+def build_logistic_problem(
+    problem_config: Mapping[str, Any],
+) -> LogisticRegressionProblem:
     """Build a LogisticRegressionProblem from config or a saved dataset."""
     if "source" in problem_config:
         override = problem_config.get("reg_lambda")
@@ -1232,18 +1305,26 @@ def build_logistic_problem(problem_config: Mapping[str, Any]) -> LogisticRegress
     )
 
 
-def generate_logistic_from_config(problem_config: Mapping[str, Any], save_path: str, seed: int) -> None:
+def generate_logistic_from_config(
+    problem_config: Mapping[str, Any], save_path: str, seed: int
+) -> None:
     """Generate and save a synthetic logistic regression dataset from config."""
     source_format = str(problem_config.get("source_format", "")).lower()
     if "raw_source" in problem_config or source_format in _ALLOWED_RAW_SOURCE_FORMATS:
         if source_format and source_format not in _ALLOWED_RAW_SOURCE_FORMATS:
             allowed = ", ".join(sorted(_ALLOWED_RAW_SOURCE_FORMATS))
-            raise ValueError(f"source_format must be one of: {allowed}; got {source_format!r}")
+            raise ValueError(
+                f"source_format must be one of: {allowed}; got {source_format!r}"
+            )
         if "raw_source" not in problem_config:
-            raise ValueError("problem.raw_source is required for LIBSVM/SVMLight generation")
+            raise ValueError(
+                "problem.raw_source is required for LIBSVM/SVMLight generation"
+            )
         raw_source_path = resolve_project_path(problem_config["raw_source"])
         download_url = problem_config.get("download_url")
-        download_if_missing = bool(problem_config.get("download_if_missing", bool(download_url)))
+        download_if_missing = bool(
+            problem_config.get("download_if_missing", bool(download_url))
+        )
         if not raw_source_path.exists() and download_if_missing:
             if not download_url:
                 raise ValueError(
@@ -1262,9 +1343,15 @@ def generate_logistic_from_config(problem_config: Mapping[str, Any], save_path: 
                 max_rows=problem_config.get("max_rows"),
                 add_bias=bool(problem_config.get("add_bias", True)),
             )
-        except (EOFError, OSError) as exc:
-            download_if_corrupt = bool(problem_config.get("download_if_corrupt", bool(download_url)))
-            if not (download_url and download_if_corrupt and _is_compressed_path(raw_source_path)):
+        except (EOFError, OSError):
+            download_if_corrupt = bool(
+                problem_config.get("download_if_corrupt", bool(download_url))
+            )
+            if not (
+                download_url
+                and download_if_corrupt
+                and _is_compressed_path(raw_source_path)
+            ):
                 raise
             print(
                 f"Raw compressed dataset appears incomplete or corrupted: {raw_source_path}. "
@@ -1297,7 +1384,9 @@ def generate_logistic_from_config(problem_config: Mapping[str, Any], save_path: 
         )
         return
 
-    generation_kwargs = _logistic_generation_kwargs_from_config(problem_config, seed=seed)
+    generation_kwargs = _logistic_generation_kwargs_from_config(
+        problem_config, seed=seed
+    )
     data = generate_logistic_synthetic_data(**generation_kwargs)
     save_logistic_dataset(
         resolve_project_path(save_path),
