@@ -1,0 +1,37 @@
+task: optimize
+run_name: agd_unknown_mnist_m10000_noreg_convex
+seed: 0
+
+problem:
+  type: softmax
+  source: data/generated/real_noreg_convex/mnist_m10000_noreg.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: agd_unknown
+  max_iter: 100000
+  tol: 1.0e-5
+  verbose: true
+  print_every: 1000
+  backtracking:
+    enabled: true
+    L0: 1.0
+    eta: 2.0
+    max_iter: 50
+    reuse_previous_L: true
+  restart:
+    enabled: true
+    objective_increase: true
+    misaligned_momentum: true
+
+log:
+  enabled: true
+  csv_path: output/results/agd_unknown_mnist_m10000_noreg_convex.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/agd_unknown_mnist_m10000_noreg_convex.json
+  resolved_config_path: output/meta/agd_unknown_mnist_m10000_noreg_convex.resolved.yml

@@ -6,7 +6,12 @@ from typing import Any, Callable, Mapping
 
 import numpy as np
 
-from src.algorithms.base import OptimizeResult, evaluate_problem
+from src.algorithms.base import (
+    GradNormStagnationTracker,
+    OptimizeResult,
+    evaluate_problem,
+    resolve_grad_norm_stagnation_config,
+)
 from src.problems.base import Problem
 from src.utils.sketch import GaussianSketchOperator
 from src.utils.timer import Stopwatch
@@ -515,6 +520,7 @@ def _run_rscn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logge
     verbose = bool(config.get("verbose", False))
     print_every = int(config.get("print_every", 10))
     sketch_config = dict(config.get("sketch", {}))
+    grad_norm_stagnation = GradNormStagnationTracker(resolve_grad_norm_stagnation_config(config))
 
     counted_problem = _CountingProblem(problem)
     stopwatch = Stopwatch()
@@ -525,6 +531,7 @@ def _run_rscn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logge
     child_seeds = np.random.SeedSequence(seed).spawn(max_iter)
 
     fx, grad, grad_norm = evaluate_problem(counted_problem, x)
+    grad_norm_stagnation.update(grad_norm)
     _log_row(
         history=history,
         logger=logger,
@@ -661,6 +668,9 @@ def _run_rscn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logge
         grad_norm = grad_norm_next
         if grad_norm <= tol:
             status = "converged"
+            break
+        if grad_norm_stagnation.update(grad_norm):
+            status = "grad_norm_stagnation"
             break
 
     return RSCNMResult(

@@ -1,0 +1,88 @@
+task: pipeline
+pipeline_name: logistic_n5000_compare_cn
+
+steps:
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/cn.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s10_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s10_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s10_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s10_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s10_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s50_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s50_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s50_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s50_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s100_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s100_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s100_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/rs_cn_s100_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s10_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s10_t100_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s10_t100_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s10_t100_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s10_t100_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t50_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t50_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t50_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t50_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t100_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t100_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t100_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t100_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t200_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t200_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t200_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s50_t200_seed4.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s100_t100_seed1.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s100_t100_seed2.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s100_t100_seed3.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n5000_compare/cn/ars_cn_s100_t100_seed4.yml
+  - command: plot
+    config: input/plot/logistic_n5000_compare_cn.yml

@@ -1,0 +1,18 @@
+task: pipeline
+pipeline_name: real_logistic_s50_t_sweep_epsilon_normalized
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/epsilon_normalized.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/rs_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/agd_unknown.yml

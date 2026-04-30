@@ -6,11 +6,13 @@ from typing import Any, Mapping
 import numpy as np
 
 from src.algorithms.base import (
+    GradNormStagnationTracker,
     OptimizeResult,
     armijo_backtracking,
     build_dense_hessian,
     evaluate_problem,
     log_iteration,
+    resolve_grad_norm_stagnation_config,
 )
 from src.problems.base import Problem
 from src.utils.timer import Stopwatch
@@ -33,10 +35,12 @@ def run(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logger: Any
     max_iter = int(config.get("max_iter", 100))
     tol = float(config.get("tol", 1.0e-8))
     line_search_config = dict(config.get("line_search", {}))
+    grad_norm_stagnation = GradNormStagnationTracker(resolve_grad_norm_stagnation_config(config))
 
     stopwatch = Stopwatch()
     x = np.asarray(x0, dtype=float).copy()
     fx, grad, grad_norm = evaluate_problem(problem, x)
+    grad_norm_stagnation.update(grad_norm)
     log_iteration(
         logger,
         iteration=0,
@@ -94,6 +98,9 @@ def run(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logger: Any
             break
         if grad_norm <= tol:
             status = "converged"
+            break
+        if grad_norm_stagnation.update(grad_norm):
+            status = "grad_norm_stagnation"
             break
 
     return OptimizeResult(

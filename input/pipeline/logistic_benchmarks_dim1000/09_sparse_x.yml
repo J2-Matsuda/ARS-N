@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_09_sparse_x
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/09_sparse_x.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/09_sparse_x/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/09_sparse_x/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/09_sparse_x/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/09_sparse_x/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/09_sparse_x/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/09_sparse_x/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/09_sparse_x.yml

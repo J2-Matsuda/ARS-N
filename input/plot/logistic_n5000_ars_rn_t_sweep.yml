@@ -1,0 +1,53 @@
+task: plot
+plot_name: logistic_n5000_ars_rn_t_sweep
+
+inputs:
+  - path: output/results/rs_rn_logistic_n5000.csv
+    label: RS-RN
+    color: red
+    linestyle: dashed
+  - path: output/results/rn_logistic_n5000.csv
+    label: RN
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_n5000_t10/ars_rn_logistic_n5000_t10.csv
+    label: "T=10"
+    color: "#d9480f"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_t50/ars_rn_logistic_n5000_t50.csv
+    label: "T=50"
+    color: "#e67700"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_t100/ars_rn_logistic_n5000_t100.csv
+    label: "T=100"
+    color: "#fab005"
+    linestyle: dotted
+  - path: output/results/ars_rn_logistic_n5000_t150/ars_rn_logistic_n5000_t150.csv
+    label: "T=150"
+    color: "#2b8a3e"
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_n5000_t200/ars_rn_logistic_n5000_t200.csv
+    label: "T=200"
+    color: "#1971c2"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_t250/ars_rn_logistic_n5000_t250.csv
+    label: "T=250"
+    color: "#5f3dc4"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_t500/ars_rn_logistic_n5000_t500.csv
+    label: "T=500"
+    color: "#c2255c"
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "ARS-RN on logistic n5000: T sweep"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_n5000_ars_rn_t_sweep.png

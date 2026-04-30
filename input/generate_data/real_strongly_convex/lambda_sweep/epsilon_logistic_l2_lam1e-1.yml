@@ -1,0 +1,30 @@
+task: generate_data
+run_name: epsilon_logistic_l2_m10000_lam1e-1
+seed: 0
+
+problem:
+  type: logistic
+  source_format: libsvm
+  raw_source: data/raw/libsvm/epsilon_normalized.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/epsilon_normalized.bz2
+  n_features: 2000
+  index_base: 1
+  add_bias: true
+  reg_lambda: 1.0e-1
+  regularize_bias: true
+  sample_size: 10000
+  sample_seed: 0
+
+save:
+  path: data/generated/real_strongly_convex/lambda_sweep/epsilon_logistic_l2_m10000_lam1e-1.npz
+
+expected:
+  dataset: epsilon
+  model: L2-logistic
+  raw_feature_dim: 2000
+  augmented_dim: 2001
+  sample_size: 10000
+  optimization_dim: 2001
+  reg_lambda: 1.0e-1

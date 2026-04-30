@@ -1,0 +1,18 @@
+task: pipeline
+pipeline_name: logistic_n10000
+
+steps:
+  - command: generate
+    config: input/generate_data/logistic.yml
+  - command: optimize
+    config: input/optimize/ars_cn_logistic.yml
+  - command: optimize
+    config: input/optimize/cn_arc_logistic.yml
+  - command: optimize
+    config: input/optimize/rs_cn_logistic.yml
+  # - command: optimize
+  #   config: input/optimize/ars_rn_logistic.yml
+  # - command: optimize
+  #   config: input/optimize/rs_rn_logistic.yml
+  - command: plot
+    config: input/plot/logistic_n10000.yml

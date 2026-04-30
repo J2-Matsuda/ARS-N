@@ -16,6 +16,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+lexglue = [
+  "datasets>=2.19",
+  "scikit-learn>=1.4",
+]
 mnist = ["torchvision>=0.17"]
 test = ["pytest>=8.0"]
 

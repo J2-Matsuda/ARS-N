@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_01_baseline_dense_quick
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/01_baseline_dense_quick.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/01_baseline_dense_quick/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/01_baseline_dense_quick/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/01_baseline_dense_quick/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/01_baseline_dense_quick/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/01_baseline_dense_quick/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/01_baseline_dense_quick/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/01_baseline_dense_quick.yml

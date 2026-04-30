@@ -1,0 +1,41 @@
+task: plot
+plot_name: 05_imbalanced_1pct
+
+inputs:
+  - path: output/results/ars_cn_logistic_imbalanced_1pct/ars_cn_logistic_imbalanced_1pct.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_imbalanced_1pct/rs_cn_logistic_imbalanced_1pct.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_imbalanced_1pct/cn_arc_logistic_imbalanced_1pct.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_imbalanced_1pct/ars_rn_logistic_imbalanced_1pct.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_imbalanced_1pct/rs_rn_logistic_imbalanced_1pct.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_imbalanced_1pct/rn_logistic_imbalanced_1pct.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Imbalanced 1pct"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/05_imbalanced_1pct.png

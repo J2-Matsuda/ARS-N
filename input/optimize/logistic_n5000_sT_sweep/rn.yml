@@ -1,0 +1,39 @@
+task: optimize
+run_name: rn_logistic_n5000
+seed: 0
+
+problem:
+  type: logistic
+  source: data/generated/logistic_n5000.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: rn
+  max_iter: 100
+  tol: 1.0e-8
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_rtol: 1.0e-12
+  verbose: true
+  print_every: 10
+  diag_shift:
+    c1: 2.0
+    c2: 1.0
+    delta: 0.5
+  line_search:
+    enabled: true
+    alpha0: 1.0
+    c1: 1.0e-4
+    beta: 0.5
+    max_iter: 25
+
+log:
+  enabled: true
+  csv_path: output/results/rn_logistic_n5000.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/rn_logistic_n5000.json
+  resolved_config_path: output/meta/rn_logistic_n5000.resolved.yml

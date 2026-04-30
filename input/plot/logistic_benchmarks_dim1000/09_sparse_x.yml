@@ -1,0 +1,41 @@
+task: plot
+plot_name: 09_sparse_x
+
+inputs:
+  - path: output/results/ars_cn_logistic_sparse_x/ars_cn_logistic_sparse_x.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_sparse_x/rs_cn_logistic_sparse_x.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_sparse_x/cn_arc_logistic_sparse_x.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_sparse_x/ars_rn_logistic_sparse_x.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_sparse_x/rs_rn_logistic_sparse_x.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_sparse_x/rn_logistic_sparse_x.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Sparse X"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/09_sparse_x.png

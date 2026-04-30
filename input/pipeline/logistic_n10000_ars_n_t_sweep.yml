@@ -1,0 +1,40 @@
+task: pipeline
+pipeline_name: logistic_n10000_ars_n_t_sweep
+
+steps:
+  - command: generate
+    config: input/generate_data/logistic_n10000.yml
+  # - command: optimize
+  #   config: input/optimize/logistic_n10000_t_sweep/rs_cn.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/cn_arc.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_cn_t10.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_cn_t200.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_cn_t300.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_cn_t500.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/rs_rn.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/rn.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_rn_t10.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_rn_t50.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_rn_t100.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_rn_t200.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_rn_t300.yml
+  - command: optimize
+    config: input/optimize/logistic_n10000_t_sweep/ars_rn_t500.yml
+  - command: plot
+    config: input/plot/logistic_n10000_ars_n_t_sweep.yml

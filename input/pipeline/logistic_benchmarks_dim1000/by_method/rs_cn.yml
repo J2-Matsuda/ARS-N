@@ -1,0 +1,6 @@
+task: pipeline
+pipeline_name: logistic_benchmarks_dim1000_by_method_rs_cn
+steps:
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/rs_cn.yml

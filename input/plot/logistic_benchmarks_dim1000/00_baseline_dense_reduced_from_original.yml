@@ -1,0 +1,41 @@
+task: plot
+plot_name: 00_baseline_dense_reduced_from_original
+
+inputs:
+  - path: output/results/ars_cn_logistic_baseline_dense_reduced_from_original/ars_cn_logistic_baseline_dense_reduced_from_original.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_baseline_dense_reduced_from_original/rs_cn_logistic_baseline_dense_reduced_from_original.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_baseline_dense_reduced_from_original/cn_arc_logistic_baseline_dense_reduced_from_original.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_baseline_dense_reduced_from_original/ars_rn_logistic_baseline_dense_reduced_from_original.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_baseline_dense_reduced_from_original/rs_rn_logistic_baseline_dense_reduced_from_original.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_baseline_dense_reduced_from_original/rn_logistic_baseline_dense_reduced_from_original.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Baseline Dense Reduced From Original"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/00_baseline_dense_reduced_from_original.png

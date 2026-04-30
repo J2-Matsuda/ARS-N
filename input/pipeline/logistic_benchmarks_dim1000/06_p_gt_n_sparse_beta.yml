@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_06_p_gt_n_sparse_beta
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta.yml

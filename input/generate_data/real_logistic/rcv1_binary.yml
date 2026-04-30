@@ -1,0 +1,18 @@
+task: generate_data
+run_name: rcv1_binary
+seed: 0
+
+problem:
+  type: logistic
+  source_format: libsvm
+  raw_source: data/raw/libsvm/rcv1_train.binary.bz2
+  download_if_missing: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/rcv1_train.binary.bz2
+  n_features: 47236
+  index_base: 1
+  reg_lambda: 1.0e-3
+  # For a quick loader smoke test, temporarily enable e.g. max_rows: 10000
+  # max_rows: 10000
+
+save:
+  path: data/generated/real_logistic/rcv1_binary.npz

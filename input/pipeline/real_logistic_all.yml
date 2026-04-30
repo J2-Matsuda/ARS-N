@@ -1,0 +1,44 @@
+task: pipeline
+pipeline_name: real_logistic_all
+
+steps:
+  # - command: generate
+  #   config: input/generate_data/real_logistic/epsilon_normalized.yml
+  # - command: generate
+  #   config: input/generate_data/real_logistic/real_sim.yml
+  # - command: generate
+  #   config: input/generate_data/real_logistic/rcv1_binary.yml
+  # - command: generate
+  #   config: input/generate_data/real_logistic/gisette.yml
+  - command: optimize
+    config: input/optimize/real_logistic/epsilon_normalized/ars_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/epsilon_normalized/ars_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/epsilon_normalized/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/epsilon_normalized/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/real_sim/ars_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/real_sim/ars_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/real_sim/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/real_sim/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/rcv1_binary/ars_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/rcv1_binary/ars_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/rcv1_binary/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/rcv1_binary/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/gisette/ars_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/gisette/ars_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/gisette/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/gisette/rs_rn.yml

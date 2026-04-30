@@ -1,0 +1,17 @@
+task: generate_data
+run_name: logistic_overlap_nonseparable
+seed: 0
+
+problem:
+  type: logistic
+  n: 5000
+  d: 1000
+  reg_lambda: 1.0e-3
+  feature_scale: 2.0
+  intercept: 0.0
+  sparse_beta: false
+  beta_scale: 0.15
+  label_flip_prob: 0.05
+
+save:
+  path: data/generated/logistic_benchmarks_dim1000/logistic_overlap_nonseparable.npz

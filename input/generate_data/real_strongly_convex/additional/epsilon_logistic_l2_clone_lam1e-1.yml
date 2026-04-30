@@ -1,0 +1,10 @@
+task: clone_data_with_reg_lambda
+run_name: epsilon_logistic_l2_m10000_lam1e-1_from_base
+
+source:
+  path: data/generated/real_strongly_convex/epsilon_logistic_l2_m10000.npz
+
+reg_lambda: 1.0e-1
+
+save:
+  path: data/generated/real_strongly_convex/lambda_sweep/epsilon_logistic_l2_m10000_lam1e-1.npz

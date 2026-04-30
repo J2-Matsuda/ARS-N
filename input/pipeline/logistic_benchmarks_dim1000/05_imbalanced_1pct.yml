@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_05_imbalanced_1pct
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/05_imbalanced_1pct.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/05_imbalanced_1pct/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/05_imbalanced_1pct/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/05_imbalanced_1pct/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/05_imbalanced_1pct/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/05_imbalanced_1pct/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/05_imbalanced_1pct/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/05_imbalanced_1pct.yml

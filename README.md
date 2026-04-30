@@ -392,8 +392,9 @@ ARS-CN logs may additionally contain fields such as:
 
 When `save_meta.enabled: true`, the framework also writes:
 
-- a JSON metadata file to `output/meta/`
-- a resolved YAML configuration to `output/meta/`
+- a JSON metadata file to `output/results/<run_name>/`
+- a resolved YAML configuration to `output/results/<run_name>/`
+- a copy of the original optimize input YAML to `output/results/<run_name>/`
 
 The metadata JSON includes:
 
@@ -407,6 +408,8 @@ The metadata JSON includes:
 - termination status
 - optional git commit hash
 - path to the CSV history
+- run directory
+- copied input config path
 
 ### Logger flushing
 
@@ -420,6 +423,11 @@ log:
   save_everytime: true
   flush_every: 1
 ```
+
+During `optimize`, the framework automatically gathers run artifacts under
+`output/results/<run_name>/`.
+The configured `log.csv_path`, `save_meta.meta_path`, and `save_meta.resolved_config_path`
+are used for their filenames, but the directory is normalized to the run directory.
 
 If `save_everytime` is omitted, the default is `true`.
 If `save_everytime: true` and `flush_every` is omitted, the default is `1`, so the CSV is flushed every iteration.
@@ -506,6 +514,14 @@ Typical dependencies:
 - `pytest`
 - `scipy` for sparse logistic datasets
 - `torchvision` only if the optional MNIST helper is used
+- `datasets` and `scikit-learn` for the optional LexGLUE / UNFAIR-ToS TF-IDF benchmark
+
+Optional extras:
+
+```bash
+pip install -e .[test]
+pip install -e .[lexglue]
+```
 
 ## Notes
 

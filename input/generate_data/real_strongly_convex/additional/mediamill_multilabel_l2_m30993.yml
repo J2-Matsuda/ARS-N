@@ -1,0 +1,34 @@
+task: generate_data
+run_name: mediamill_multilabel_l2_m30993
+seed: 0
+
+problem:
+  type: multilabel_logistic
+  source_format: multilabel_libsvm
+  raw_source: data/raw/multilabel/mediamill/train-exp1.svm.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multilabel/mediamill/train-exp1.svm.bz2
+  dataset_name: mediamill_exp1
+  n_features: 120
+  num_labels: 101
+  index_base: 1
+  label_index_base: 0
+  add_bias: true
+  reg_lambda: 1.0e-3
+  regularize_bias: true
+  sample_size: 30993
+  sample_seed: 0
+
+save:
+  path: data/generated/real_strongly_convex/additional/mediamill_multilabel_l2_m30993.npz
+
+expected:
+  dataset: mediamill_exp1
+  model: independent L2-logistic
+  raw_feature_dim: 120
+  augmented_dim: 121
+  num_labels: 101
+  sample_size: 30993
+  optimization_dim: 12221
+  reg_lambda: 1.0e-3

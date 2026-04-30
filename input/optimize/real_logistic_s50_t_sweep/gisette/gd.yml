@@ -1,0 +1,33 @@
+task: optimize
+run_name: gd_gisette
+seed: 0
+
+problem:
+  type: logistic
+  source: data/generated/real_logistic/gisette.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: gd
+  max_iter: 100000
+  tol: 1.0e-8
+  verbose: true
+  print_every: 1000
+  line_search:
+    enabled: true
+    c1: 1.0e-4
+    beta: 0.5
+    alpha0: 1.0
+    max_iter: 25
+
+log:
+  enabled: true
+  csv_path: output/results/gd_gisette.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/gd_gisette.json
+  resolved_config_path: output/meta/gd_gisette.resolved.yml

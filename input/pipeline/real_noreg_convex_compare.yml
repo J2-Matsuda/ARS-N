@@ -1,0 +1,524 @@
+task: pipeline
+pipeline_name: real_noreg_convex_compare
+
+steps:
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/usps.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_usps_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_usps_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/epsilon.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_epsilon_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_epsilon_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/blogcatalog.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/blogcatalog/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_blogcatalog_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_blogcatalog_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/mnist.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_mnist_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_mnist_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/ppi.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/ppi/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_ppi_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_ppi_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/epsilon_lam1e-1.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-1/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_epsilon_lam1e-1_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_epsilon_lam1e-1_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/epsilon_lam1e-5.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/epsilon_lam1e-5/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_epsilon_lam1e-5_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_epsilon_lam1e-5_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/usps_lam1e-1.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-1/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_usps_lam1e-1_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_usps_lam1e-1_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/usps_lam1e-5.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/usps_lam1e-5/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_usps_lam1e-5_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_usps_lam1e-5_function_value.yml
+  # - command: generate_data
+  #   config: input/generate_data/real_noreg_convex/mnist_m30000.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s200_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/rs_cn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m30000/rs_rn_s200_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_mnist_m30000_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/real_noreg_convex_compare_mnist_m30000_function_value.yml
+  - command: generate_data
+    config: input/generate_data/real_noreg_convex/mnist_m10000.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mnist_m10000/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s200_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mnist_m10000/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mnist_m10000/rs_cn_s200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mnist_m10000/rs_rn_s200_seed0.yml
+  - command: plot
+    config: input/plot/real_noreg_convex_compare_mnist_m10000_grad_norm.yml
+  - command: plot
+    config: input/plot/real_noreg_convex_compare_mnist_m10000_function_value.yml
+  - command: generate_data
+    config: input/generate_data/real_noreg_convex/mediamill.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s50_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s100_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s200_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s200_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/ars_cn_s200_t200_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mediamill/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mediamill/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/mediamill/gd.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/agd_unknown.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/rs_rn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_noreg_convex_compare/mediamill/rs_rn_s200_seed0.yml
+  - command: plot
+    config: input/plot/real_noreg_convex_compare_mediamill_grad_norm.yml
+  - command: plot
+    config: input/plot/real_noreg_convex_compare_mediamill_function_value.yml
+  - command: generate_data
+    config: input/generate_data/real_noreg_convex/ppi_additional.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s50_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s50_t200_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s100_t200_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s200_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s200_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/ars_cn_s200_t200_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/gd.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/agd_unknown.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/rs_rn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/rs_rn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/ppi_additional/rs_rn_s200_seed0.yml
+  - command: plot
+    config: input/plot/real_noreg_convex_compare_ppi_additional_grad_norm.yml
+  - command: plot
+    config: input/plot/real_noreg_convex_compare_ppi_additional_function_value.yml

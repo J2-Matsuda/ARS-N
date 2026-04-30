@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_02_overlap_nonseparable
+steps:
+  # -
+  #   command: generate
+  #   config: input/generate_data/logistic_benchmarks_dim1000/02_overlap_nonseparable.yml
+  # -
+  #   command: optimize
+  #   config: input/optimize/logistic_benchmarks_dim1000/02_overlap_nonseparable/ars_cn.yml
+  # -
+  #   command: optimize
+  #   config: input/optimize/logistic_benchmarks_dim1000/02_overlap_nonseparable/ars_rn.yml
+  # -
+  #   command: optimize
+  #   config: input/optimize/logistic_benchmarks_dim1000/02_overlap_nonseparable/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/02_overlap_nonseparable/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/02_overlap_nonseparable/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/02_overlap_nonseparable/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/02_overlap_nonseparable.yml

@@ -1,0 +1,41 @@
+task: plot
+plot_name: 08_heavy_tail_outlier
+
+inputs:
+  - path: output/results/ars_cn_logistic_heavy_tail_outlier/ars_cn_logistic_heavy_tail_outlier.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_heavy_tail_outlier/rs_cn_logistic_heavy_tail_outlier.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_heavy_tail_outlier/cn_arc_logistic_heavy_tail_outlier.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_heavy_tail_outlier/ars_rn_logistic_heavy_tail_outlier.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_heavy_tail_outlier/rs_rn_logistic_heavy_tail_outlier.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_heavy_tail_outlier/rn_logistic_heavy_tail_outlier.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Heavy Tail Outlier"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/08_heavy_tail_outlier.png

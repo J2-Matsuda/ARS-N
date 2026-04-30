@@ -12,13 +12,11 @@ def _safe_norm(vector: np.ndarray) -> float:
     return float(np.linalg.norm(np.asarray(vector, dtype=float)))
 
 
-def _load_minres_tools() -> tuple[Any, Callable[..., Any]]:
+def _load_minres_tools() -> tuple[Any | None, Callable[..., Any] | None]:
     try:
         from scipy.sparse.linalg import LinearOperator, minres
-    except ImportError as exc:
-        raise ImportError(
-            "rk_anchor requires scipy.sparse.linalg.minres. Install scipy>=1.11."
-        ) from exc
+    except ImportError:
+        return None, None
     return LinearOperator, minres
 
 
@@ -54,6 +52,47 @@ def _run_minres(
     return solution, int(info)
 
 
+def _run_cg_fallback(
+    matvec: Callable[[np.ndarray], np.ndarray],
+    rhs: np.ndarray,
+    tol: float,
+    max_iter: int,
+    callback: Callable[[np.ndarray], None],
+) -> tuple[np.ndarray, int]:
+    rhs = np.asarray(rhs, dtype=float).reshape(-1)
+    solution = np.zeros_like(rhs)
+    residual = rhs.copy()
+    direction = residual.copy()
+    residual_sq = float(np.dot(residual, residual))
+    rhs_norm = _safe_norm(rhs)
+    threshold = float(tol) * max(1.0, rhs_norm)
+    if np.sqrt(residual_sq) <= threshold:
+        return solution, 0
+
+    for _ in range(max_iter):
+        matvec_direction = np.asarray(matvec(direction), dtype=float).reshape(-1)
+        denom = float(np.dot(direction, matvec_direction))
+        if not np.isfinite(denom) or denom <= 0.0:
+            return solution, -1
+
+        alpha = residual_sq / denom
+        solution = solution + alpha * direction
+        residual = residual - alpha * matvec_direction
+        callback(solution)
+
+        next_residual_sq = float(np.dot(residual, residual))
+        if not np.isfinite(next_residual_sq):
+            return solution, -1
+        if np.sqrt(next_residual_sq) <= threshold:
+            return solution, 0
+
+        beta = next_residual_sq / residual_sq
+        direction = residual + beta * direction
+        residual_sq = next_residual_sq
+
+    return solution, max_iter
+
+
 def _make_rk_gaussian_sketch(
     n: int,
     r: int,
@@ -77,11 +116,15 @@ def _make_rk_gaussian_sketch(
     else:
         raise ValueError(f"Unsupported rk dtype {dtype_name!r}. Available: float32, float64")
 
+    sketch_mode = str(rk_config.get("sketch_mode", rk_config.get("mode", "operator")))
+    if sketch_mode in {"default", "T_auto"}:
+        sketch_mode = "operator"
+
     return GaussianSketchOperator(
         shape=(r, n),
         scale=1.0 / np.sqrt(float(r)),
         seed=int(seed),
-        mode=str(rk_config.get("mode", "operator")),
+        mode=sketch_mode,
         block_size=int(rk_config.get("block_size", 256)),
         dtype=dtype,
     )
@@ -107,6 +150,10 @@ def rk_anchor(
 
     num_inner_steps = int(rk_config.get("T", 0))
     inner_sketch_dim = int(rk_config.get("r", 1))
+    rk_mode = str(rk_config.get("mode", "default"))
+    if rk_mode in {"operator", "explicit"}:
+        rk_mode = "default"
+    rk_tol = float(rk_config.get("rk_tol", 0.5))
     seed_offset = int(rk_config.get("seed_offset", 0))
     store_debug_stats = bool(rk_config.get("store_debug_stats", False))
     minres_tol = float(rk_config.get("minres_tol", 1.0e-6))
@@ -116,6 +163,10 @@ def rk_anchor(
         raise ValueError("rk.T must be nonnegative")
     if inner_sketch_dim <= 0:
         raise ValueError("rk.r must be positive")
+    if rk_mode not in {"default", "T_auto"}:
+        raise ValueError("rk.mode must be one of: default, T_auto")
+    if rk_tol <= 0.0 or not np.isfinite(rk_tol):
+        raise ValueError("rk.rk_tol must be positive and finite")
     if minres_maxit <= 0:
         raise ValueError("rk.minres_maxit must be positive")
     if minres_tol <= 0.0 or not np.isfinite(minres_tol):
@@ -163,9 +214,12 @@ def rk_anchor(
     residual_history: list[float] = [residual_norm_init]
     inner_minres_total_iters = 0
     minres_fail = 0
+    rk_steps_taken = 0
+    rk_stop_reason = "max_steps" if rk_mode == "default" else "max_steps"
 
-    rng = np.random.default_rng(seed_offset + int(k))
-    for _ in range(num_inner_steps):
+    rk_seed_base = seed_offset + int(k)
+    rng = np.random.default_rng(rk_seed_base)
+    for inner_step in range(1, num_inner_steps + 1):
         sketch_seed = int(rng.integers(0, np.iinfo(np.uint32).max, dtype=np.uint32))
         R_t = _make_rk_gaussian_sketch(
             n=x_k.size,
@@ -190,11 +244,6 @@ def rk_anchor(
                     reduced = reduced + ridge * u
                 return np.asarray(reduced, dtype=float).reshape(-1)
 
-            operator = LinearOperator(
-                shape=(inner_sketch_dim, inner_sketch_dim),
-                matvec=_matvec,
-                dtype=float,
-            )
             callback_iters = 0
 
             def _callback(_: np.ndarray) -> None:
@@ -202,14 +251,28 @@ def rk_anchor(
                 callback_iters += 1
 
             try:
-                u_t, minres_info = _run_minres(
-                    minres=minres,
-                    operator=operator,
-                    rhs=rhs,
-                    minres_tol=minres_tol,
-                    minres_maxit=minres_maxit,
-                    callback=_callback,
-                )
+                if LinearOperator is not None and minres is not None:
+                    operator = LinearOperator(
+                        shape=(inner_sketch_dim, inner_sketch_dim),
+                        matvec=_matvec,
+                        dtype=float,
+                    )
+                    u_t, minres_info = _run_minres(
+                        minres=minres,
+                        operator=operator,
+                        rhs=rhs,
+                        minres_tol=minres_tol,
+                        minres_maxit=minres_maxit,
+                        callback=_callback,
+                    )
+                else:
+                    u_t, minres_info = _run_cg_fallback(
+                        matvec=_matvec,
+                        rhs=rhs,
+                        tol=minres_tol,
+                        max_iter=minres_maxit,
+                        callback=_callback,
+                    )
             except Exception:
                 u_t = np.zeros(inner_sketch_dim, dtype=float)
                 minres_info = -1
@@ -230,9 +293,22 @@ def rk_anchor(
         hvp_calls += 1
         e_t = h_t - grad_hat_k
         residual_history.append(_safe_norm(e_t))
+        rk_steps_taken = inner_step
+
+        if rk_mode == "T_auto":
+            residual_norm_current = residual_history[-1]
+            if residual_norm_init == 0.0:
+                rk_stop_reason = "rk_tol"
+                break
+            if residual_norm_current <= rk_tol * residual_norm_init:
+                rk_stop_reason = "rk_tol"
+                break
 
     info: dict[str, Any] = {
         "alpha_ws": float(alpha_ws),
+        "rk_seed_base": int(rk_seed_base),
+        "rk_steps_taken": int(rk_steps_taken),
+        "rk_stop_reason": rk_stop_reason,
         "rk_residual_norm_init": float(residual_norm_init),
         "rk_residual_norm_final": float(_safe_norm(e_t)),
         "hvp_calls": int(hvp_calls),

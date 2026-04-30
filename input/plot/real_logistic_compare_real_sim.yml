@@ -1,0 +1,82 @@
+task: plot
+plot_name: real_logistic_compare_real_sim
+
+inputs:
+  - path: output/results/gd_real_logistic_real_sim/gd_real_logistic_real_sim.csv
+    label: "GD"
+    color: "#111111"
+    linestyle: solid
+  - path: output/results/agd_unknown_real_logistic_real_sim/agd_unknown_real_logistic_real_sim.csv
+    label: "AGD-Unknown"
+    color: "#1c7ed6"
+    linestyle: dashdot
+  - path: output/results/rs_rn_real_logistic_real_sim_s10_seed0/rs_rn_real_logistic_real_sim_s10_seed0.csv
+    label: "RS-RN s=10"
+    color: "#f08c00"
+    linestyle: dashed
+  - path: output/results/rs_rn_real_logistic_real_sim_s50_seed0/rs_rn_real_logistic_real_sim_s50_seed0.csv
+    label: "RS-RN s=50"
+    color: "#e8590c"
+    linestyle: dashed
+  - path: output/results/rs_rn_real_logistic_real_sim_s100_seed0/rs_rn_real_logistic_real_sim_s100_seed0.csv
+    label: "RS-RN s=100"
+    color: "#d9480f"
+    linestyle: dashed
+  - path: output/results/rs_cn_real_logistic_real_sim_s10_seed0/rs_cn_real_logistic_real_sim_s10_seed0.csv
+    label: "RS-CN s=10"
+    color: "#868e96"
+    linestyle: dashdot
+  - path: output/results/rs_cn_real_logistic_real_sim_s50_seed0/rs_cn_real_logistic_real_sim_s50_seed0.csv
+    label: "RS-CN s=50"
+    color: "#495057"
+    linestyle: dashdot
+  - path: output/results/rs_cn_real_logistic_real_sim_s100_seed0/rs_cn_real_logistic_real_sim_s100_seed0.csv
+    label: "RS-CN s=100"
+    color: "#212529"
+    linestyle: dashdot
+  - path: output/results/ars_cn_real_logistic_real_sim_s10_t50_seed0/ars_cn_real_logistic_real_sim_s10_t50_seed0.csv
+    label: "ARS-CN s=r=10, T=50"
+    color: "#74b816"
+    linestyle: dotted
+  - path: output/results/ars_cn_real_logistic_real_sim_s10_t100_seed0/ars_cn_real_logistic_real_sim_s10_t100_seed0.csv
+    label: "ARS-CN s=r=10, T=100"
+    color: "#2b8a3e"
+    linestyle: solid
+  - path: output/results/ars_cn_real_logistic_real_sim_s50_t50_seed0/ars_cn_real_logistic_real_sim_s50_t50_seed0.csv
+    label: "ARS-CN s=r=50, T=50"
+    color: "#15aabf"
+    linestyle: dotted
+  - path: output/results/ars_cn_real_logistic_real_sim_s50_t100_seed0/ars_cn_real_logistic_real_sim_s50_t100_seed0.csv
+    label: "ARS-CN s=r=50, T=100"
+    color: "#1971c2"
+    linestyle: solid
+  - path: output/results/ars_cn_real_logistic_real_sim_s100_t50_seed0/ars_cn_real_logistic_real_sim_s100_t50_seed0.csv
+    label: "ARS-CN s=r=100, T=50"
+    color: "#9c36b5"
+    linestyle: dotted
+  - path: output/results/ars_cn_real_logistic_real_sim_s100_t100_seed0/ars_cn_real_logistic_real_sim_s100_t100_seed0.csv
+    label: "ARS-CN s=r=100, T=100"
+    color: "#c92a2a"
+    linestyle: solid
+  - path: output/results/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed0/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed0.csv
+    label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=0.1)"
+    color: "#5f3dc4"
+    linestyle: dashed
+  - path: output/results/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed0/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed0.csv
+    label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+    color: "#862e9c"
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "real logistic: real_sim"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/real_logistic_compare_real_sim.png
+  dpi: 180

@@ -1,0 +1,14 @@
+task: pipeline
+pipeline_name: real_logistic_rcv1_binary
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/rcv1_binary.yml
+  - command: optimize
+    config: input/optimize/real_logistic/rcv1_binary/ars_cn.yml
+  - command: optimize`
+  #   config: input/optimize/real_logistic/rcv1_binary/ars_rn.yml
+  # - command: optimize
+    config: input/optimize/real_logistic/rcv1_binary/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/rcv1_binary/rs_rn.yml

@@ -1,0 +1,41 @@
+task: plot
+plot_name: 03_interaction_misspecified
+
+inputs:
+  - path: output/results/ars_cn_logistic_interaction_misspecified/ars_cn_logistic_interaction_misspecified.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_interaction_misspecified/rs_cn_logistic_interaction_misspecified.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_interaction_misspecified/cn_arc_logistic_interaction_misspecified.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_interaction_misspecified/ars_rn_logistic_interaction_misspecified.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_interaction_misspecified/rs_rn_logistic_interaction_misspecified.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_interaction_misspecified/rn_logistic_interaction_misspecified.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Interaction Misspecified"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/03_interaction_misspecified.png

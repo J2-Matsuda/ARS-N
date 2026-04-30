@@ -1,0 +1,32 @@
+task: generate_data
+run_name: usps_softmax_l2_m7291_lam1e-5
+seed: 0
+
+problem:
+  type: softmax
+  source_format: libsvm
+  raw_source: data/raw/libsvm/usps.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/usps.bz2
+  n_features: 256
+  num_classes: 10
+  index_base: 1
+  add_bias: true
+  reg_lambda: 1.0e-5
+  regularize_bias: true
+  sample_size: 7291
+  sample_seed: 0
+
+save:
+  path: data/generated/real_strongly_convex/lambda_sweep/usps_softmax_l2_m7291_lam1e-5.npz
+
+expected:
+  dataset: usps
+  model: L2-softmax
+  raw_feature_dim: 256
+  augmented_dim: 257
+  num_classes: 10
+  sample_size: 7291
+  optimization_dim: 2570
+  reg_lambda: 1.0e-5

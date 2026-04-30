@@ -19,11 +19,68 @@ class OptimizeResult:
     history_path: str | None
 
 
+@dataclass(frozen=True)
+class GradNormStagnationConfig:
+    enabled: bool
+    patience: int
+    rtol: float
+    atol: float
+
+
+class GradNormStagnationTracker:
+    def __init__(self, config: GradNormStagnationConfig) -> None:
+        self._config = config
+        self._prev_grad_norm: float | None = None
+        self._stagnant_steps = 0
+
+    def update(self, grad_norm: float) -> bool:
+        current = float(grad_norm)
+        if not self._config.enabled:
+            self._prev_grad_norm = current
+            return False
+
+        if self._prev_grad_norm is None:
+            self._prev_grad_norm = current
+            return False
+
+        change = abs(current - self._prev_grad_norm)
+        scale = max(abs(self._prev_grad_norm), abs(current))
+        threshold = max(self._config.atol, self._config.rtol * scale)
+        if change <= threshold:
+            self._stagnant_steps += 1
+        else:
+            self._stagnant_steps = 0
+
+        self._prev_grad_norm = current
+        return self._stagnant_steps >= self._config.patience
+
+
 def evaluate_problem(problem: Problem, x: np.ndarray) -> tuple[float, np.ndarray, float]:
     fx = float(problem.f(x))
     grad = np.asarray(problem.grad(x), dtype=float)
     grad_norm = float(np.linalg.norm(grad))
     return fx, grad, grad_norm
+
+
+def resolve_grad_norm_stagnation_config(config: Mapping[str, Any]) -> GradNormStagnationConfig:
+    enabled = bool(config.get("stop_on_grad_norm_stagnation", False))
+    patience = int(config.get("grad_norm_stagnation_patience", 10))
+    rtol = float(config.get("grad_norm_stagnation_rtol", 1.0e-12))
+    atol = float(config.get("grad_norm_stagnation_atol", 1.0e-12))
+
+    if patience <= 0:
+        raise ValueError("optimizer.grad_norm_stagnation_patience must be positive")
+    if not np.isfinite(rtol) or rtol < 0.0:
+        raise ValueError("optimizer.grad_norm_stagnation_rtol must be a finite non-negative number")
+    if not np.isfinite(atol) or atol < 0.0:
+        raise ValueError("optimizer.grad_norm_stagnation_atol must be a finite non-negative number")
+
+    return GradNormStagnationConfig(
+        enabled=enabled,
+        patience=patience,
+        rtol=rtol,
+        atol=atol,
+    )
 
 
 def log_iteration(

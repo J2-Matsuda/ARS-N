@@ -1,0 +1,32 @@
+task: generate_data
+run_name: mnist_softmax_l2_m30000
+seed: 0
+
+problem:
+  type: softmax
+  source_format: libsvm
+  raw_source: data/raw/libsvm/mnist.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.bz2
+  n_features: 780
+  num_classes: 10
+  index_base: 1
+  add_bias: true
+  reg_lambda: 1.0e-3
+  regularize_bias: true
+  sample_size: 30000
+  sample_seed: 0
+
+save:
+  path: data/generated/real_strongly_convex/additional/mnist_softmax_l2_m30000.npz
+
+expected:
+  dataset: mnist
+  model: L2-softmax
+  raw_feature_dim: 780
+  augmented_dim: 781
+  num_classes: 10
+  sample_size: 30000
+  optimization_dim: 7810
+  reg_lambda: 1.0e-3

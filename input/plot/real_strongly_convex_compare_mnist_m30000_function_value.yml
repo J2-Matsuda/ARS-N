@@ -1,0 +1,88 @@
+task: plot
+plot_name: real_strongly_convex_compare_mnist_m30000_function_value
+
+inputs:
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s50_t50_seed0/ars_cn_mnist_m30000_strongly_convex_s50_t50_seed0.csv
+    label: "ARS-CN s=r=50, T=50"
+    color: "#2b8a3e"
+    linestyle: dotted
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s50_t100_seed0/ars_cn_mnist_m30000_strongly_convex_s50_t100_seed0.csv
+    label: "ARS-CN s=r=50, T=100"
+    color: "#2b8a3e"
+    linestyle: solid
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s50_t200_seed0/ars_cn_mnist_m30000_strongly_convex_s50_t200_seed0.csv
+    label: "ARS-CN s=r=50, T=200"
+    color: "#2b8a3e"
+    linestyle: dashed
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s100_t50_seed0/ars_cn_mnist_m30000_strongly_convex_s100_t50_seed0.csv
+    label: "ARS-CN s=r=100, T=50"
+    color: "#1c7ed6"
+    linestyle: dotted
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s100_t100_seed0/ars_cn_mnist_m30000_strongly_convex_s100_t100_seed0.csv
+    label: "ARS-CN s=r=100, T=100"
+    color: "#1c7ed6"
+    linestyle: solid
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s100_t200_seed0/ars_cn_mnist_m30000_strongly_convex_s100_t200_seed0.csv
+    label: "ARS-CN s=r=100, T=200"
+    color: "#1c7ed6"
+    linestyle: dashed
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s200_t50_seed0/ars_cn_mnist_m30000_strongly_convex_s200_t50_seed0.csv
+    label: "ARS-CN s=r=200, T=50"
+    color: "#9c36b5"
+    linestyle: dotted
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s200_t100_seed0/ars_cn_mnist_m30000_strongly_convex_s200_t100_seed0.csv
+    label: "ARS-CN s=r=200, T=100"
+    color: "#9c36b5"
+    linestyle: solid
+  - path: output/results/ars_cn_mnist_m30000_strongly_convex_s200_t200_seed0/ars_cn_mnist_m30000_strongly_convex_s200_t200_seed0.csv
+    label: "ARS-CN s=r=200, T=200"
+    color: "#9c36b5"
+    linestyle: dashed
+  - path: output/results/rs_cn_mnist_m30000_strongly_convex_s50_seed0/rs_cn_mnist_m30000_strongly_convex_s50_seed0.csv
+    label: "RS-CN s=50"
+    color: "#adb5bd"
+    linestyle: dashdot
+  - path: output/results/rs_cn_mnist_m30000_strongly_convex_s100_seed0/rs_cn_mnist_m30000_strongly_convex_s100_seed0.csv
+    label: "RS-CN s=100"
+    color: "#6c757d"
+    linestyle: dashdot
+  - path: output/results/rs_cn_mnist_m30000_strongly_convex_s200_seed0/rs_cn_mnist_m30000_strongly_convex_s200_seed0.csv
+    label: "RS-CN s=200"
+    color: "#212529"
+    linestyle: dashdot
+  - path: output/results/gd_mnist_m30000_strongly_convex/gd_mnist_m30000_strongly_convex.csv
+    label: "GD"
+    color: "#111111"
+    linestyle: solid
+  - path: output/results/agd_unknown_mnist_m30000_strongly_convex/agd_unknown_mnist_m30000_strongly_convex.csv
+    label: "AGD"
+    color: "#d9480f"
+    linestyle: dashdot
+  - path: output/results/rs_rn_mnist_m30000_strongly_convex_s50_seed0/rs_rn_mnist_m30000_strongly_convex_s50_seed0.csv
+    label: "RS-RN s=50"
+    color: "#ffa94d"
+    linestyle: dashed
+  - path: output/results/rs_rn_mnist_m30000_strongly_convex_s100_seed0/rs_rn_mnist_m30000_strongly_convex_s100_seed0.csv
+    label: "RS-RN s=100"
+    color: "#fd7e14"
+    linestyle: dashed
+  - path: output/results/rs_rn_mnist_m30000_strongly_convex_s200_seed0/rs_rn_mnist_m30000_strongly_convex_s200_seed0.csv
+    label: "RS-RN s=200"
+    color: "#e8590c"
+    linestyle: dashed
+
+
+plot:
+  x: cumulative_time
+  y: f
+  xscale: linear
+  yscale: linear
+  title: "real strongly convex: mnist (m=30000)"
+  xlabel: cumulative_time
+  ylabel: function_value
+  grid: true
+  skip_missing: true
+
+save:
+  path: output/plots/real_strongly_convex_compare_mnist_m30000_function_value.png
+  dpi: 180

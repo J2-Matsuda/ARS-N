@@ -1,0 +1,20 @@
+task: generate_data
+run_name: logistic_interaction_misspecified
+seed: 0
+
+problem:
+  type: logistic
+  n: 5000
+  d: 1000
+  reg_lambda: 1.0e-3
+  feature_scale: 1.0
+  intercept: 0.0
+  sparse_beta: false
+  interaction_pairs:
+    - [0, 1]
+    - [2, 3]
+    - [4, 5]
+  interaction_scale: 1.0
+
+save:
+  path: data/generated/logistic_benchmarks_dim1000/logistic_interaction_misspecified.npz

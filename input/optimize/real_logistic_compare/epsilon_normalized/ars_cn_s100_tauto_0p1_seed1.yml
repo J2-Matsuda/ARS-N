@@ -1,0 +1,55 @@
+task: optimize
+run_name: ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed1
+seed: 1
+
+problem:
+  type: logistic
+  source: data/generated/real_logistic/epsilon_normalized.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: ars_cn
+  max_iter: 1000
+  tol: 1.0e-5
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_patience: 50
+  grad_norm_stagnation_rtol: 1.0e-12
+  grad_norm_stagnation_atol: 1.0e-12
+  seed: 1
+  subspace_dim: 100
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+  sketch:
+    mode: operator
+    block_size: 512
+    dtype: float64
+  rk:
+    mode: T_auto
+    T: 500
+    r: 100
+    rk_tol: 0.1
+    seed_offset: 1000003
+
+log:
+  enabled: true
+  csv_path: output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed1.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed1.json
+  resolved_config_path: output/meta/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed1.resolved.yml

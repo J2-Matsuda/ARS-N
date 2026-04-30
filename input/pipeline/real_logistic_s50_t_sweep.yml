@@ -1,0 +1,60 @@
+task: pipeline
+pipeline_name: real_logistic_s50_t_sweep
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/epsilon_normalized.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/rs_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/epsilon_normalized/agd_unknown.yml
+  - command: generate
+    config: input/generate_data/real_logistic/real_sim.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/real_sim/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/real_sim/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/real_sim/rs_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/real_sim/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/real_sim/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/real_sim/agd_unknown.yml
+  - command: generate
+    config: input/generate_data/real_logistic/rcv1_binary.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/rcv1_binary/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/rcv1_binary/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/rcv1_binary/rs_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/rcv1_binary/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/rcv1_binary/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/rcv1_binary/agd_unknown.yml
+  - command: generate
+    config: input/generate_data/real_logistic/gisette.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/rs_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/agd_unknown.yml

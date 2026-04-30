@@ -1,0 +1,24 @@
+task: generate_data
+run_name: ppi_reg0_mfull
+seed: 0
+
+problem:
+  type: multilabel_logistic
+  source_format: multilabel_libsvm
+  raw_source: data/raw/multilabel/ppi_deepwalk.svm.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multilabel/ppi_deepwalk.svm.bz2
+  dataset_name: ppi
+  n_features: 128
+  num_labels: 121
+  index_base: 1
+  label_index_base: 1
+  add_bias: true
+  reg_lambda: 0.0
+  regularize_bias: true
+  sample_size: 54958
+  sample_seed: 0
+
+save:
+  path: data/generated/real_noreg_convex/ppi_noreg.npz

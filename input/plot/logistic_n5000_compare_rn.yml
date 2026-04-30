@@ -1,0 +1,127 @@
+task: plot
+plot_name: logistic_n5000_compare_rn
+
+inputs:
+  - path: output/results/rn_logistic_n5000_compare/rn_logistic_n5000_compare.csv
+    label: RN
+    color: "#111111"
+    linestyle: dashdot
+  # - paths:
+  #     - output/results/rs_rn_logistic_n5000_compare_s10_seed0/rs_rn_logistic_n5000_compare_s10_seed0.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s10_seed1/rs_rn_logistic_n5000_compare_s10_seed1.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s10_seed2/rs_rn_logistic_n5000_compare_s10_seed2.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s10_seed3/rs_rn_logistic_n5000_compare_s10_seed3.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s10_seed4/rs_rn_logistic_n5000_compare_s10_seed4.csv
+  #   label: "RS-RN s=10"
+  #   color: "#6c757d"
+  #   linestyle: dashed
+  #   aggregate:
+  #     center: mean
+  #     band: minmax
+  #     alpha: 0.16
+  - paths:
+      - output/results/rs_rn_logistic_n5000_compare_s50_seed0/rs_rn_logistic_n5000_compare_s50_seed0.csv
+      - output/results/rs_rn_logistic_n5000_compare_s50_seed1/rs_rn_logistic_n5000_compare_s50_seed1.csv
+      - output/results/rs_rn_logistic_n5000_compare_s50_seed2/rs_rn_logistic_n5000_compare_s50_seed2.csv
+      - output/results/rs_rn_logistic_n5000_compare_s50_seed3/rs_rn_logistic_n5000_compare_s50_seed3.csv
+      - output/results/rs_rn_logistic_n5000_compare_s50_seed4/rs_rn_logistic_n5000_compare_s50_seed4.csv
+    label: "RS-RN s=50"
+    color: "#495057"
+    linestyle: dashdot
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  # - paths:
+  #     - output/results/rs_rn_logistic_n5000_compare_s100_seed0/rs_rn_logistic_n5000_compare_s100_seed0.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s100_seed1/rs_rn_logistic_n5000_compare_s100_seed1.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s100_seed2/rs_rn_logistic_n5000_compare_s100_seed2.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s100_seed3/rs_rn_logistic_n5000_compare_s100_seed3.csv
+  #     - output/results/rs_rn_logistic_n5000_compare_s100_seed4/rs_rn_logistic_n5000_compare_s100_seed4.csv
+  #   label: "RS-RN s=100"
+  #   color: "#adb5bd"
+  #   linestyle: dotted
+  #   aggregate:
+  #     center: mean
+  #     band: minmax
+  #     alpha: 0.16
+  - paths:
+      - output/results/ars_rn_logistic_n5000_compare_s10_t100_seed0/ars_rn_logistic_n5000_compare_s10_t100_seed0.csv
+      - output/results/ars_rn_logistic_n5000_compare_s10_t100_seed1/ars_rn_logistic_n5000_compare_s10_t100_seed1.csv
+      - output/results/ars_rn_logistic_n5000_compare_s10_t100_seed2/ars_rn_logistic_n5000_compare_s10_t100_seed2.csv
+      - output/results/ars_rn_logistic_n5000_compare_s10_t100_seed3/ars_rn_logistic_n5000_compare_s10_t100_seed3.csv
+      - output/results/ars_rn_logistic_n5000_compare_s10_t100_seed4/ars_rn_logistic_n5000_compare_s10_t100_seed4.csv
+    label: "ARS-RN s=r=10, T=100"
+    color: "#d9480f"
+    linestyle: solid
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  - paths:
+      - output/results/ars_rn_logistic_n5000_compare_s50_t50_seed0/ars_rn_logistic_n5000_compare_s50_t50_seed0.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t50_seed1/ars_rn_logistic_n5000_compare_s50_t50_seed1.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t50_seed2/ars_rn_logistic_n5000_compare_s50_t50_seed2.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t50_seed3/ars_rn_logistic_n5000_compare_s50_t50_seed3.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t50_seed4/ars_rn_logistic_n5000_compare_s50_t50_seed4.csv
+    label: "ARS-RN s=r=50, T=50"
+    color: "#2b8a3e"
+    linestyle: dashed
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  - paths:
+      - output/results/ars_rn_logistic_n5000_compare_s50_t100_seed0/ars_rn_logistic_n5000_compare_s50_t100_seed0.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t100_seed1/ars_rn_logistic_n5000_compare_s50_t100_seed1.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t100_seed2/ars_rn_logistic_n5000_compare_s50_t100_seed2.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t100_seed3/ars_rn_logistic_n5000_compare_s50_t100_seed3.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t100_seed4/ars_rn_logistic_n5000_compare_s50_t100_seed4.csv
+    label: "ARS-RN s=r=50, T=100"
+    color: "#1971c2"
+    linestyle: solid
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  - paths:
+      - output/results/ars_rn_logistic_n5000_compare_s50_t200_seed0/ars_rn_logistic_n5000_compare_s50_t200_seed0.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t200_seed1/ars_rn_logistic_n5000_compare_s50_t200_seed1.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t200_seed2/ars_rn_logistic_n5000_compare_s50_t200_seed2.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t200_seed3/ars_rn_logistic_n5000_compare_s50_t200_seed3.csv
+      - output/results/ars_rn_logistic_n5000_compare_s50_t200_seed4/ars_rn_logistic_n5000_compare_s50_t200_seed4.csv
+    label: "ARS-RN s=r=50, T=200"
+    color: "#9c36b5"
+    linestyle: dotted
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  - paths:
+      - output/results/ars_rn_logistic_n5000_compare_s100_t100_seed0/ars_rn_logistic_n5000_compare_s100_t100_seed0.csv
+      - output/results/ars_rn_logistic_n5000_compare_s100_t100_seed1/ars_rn_logistic_n5000_compare_s100_t100_seed1.csv
+      - output/results/ars_rn_logistic_n5000_compare_s100_t100_seed2/ars_rn_logistic_n5000_compare_s100_t100_seed2.csv
+      - output/results/ars_rn_logistic_n5000_compare_s100_t100_seed3/ars_rn_logistic_n5000_compare_s100_t100_seed3.csv
+      - output/results/ars_rn_logistic_n5000_compare_s100_t100_seed4/ars_rn_logistic_n5000_compare_s100_t100_seed4.csv
+    label: "ARS-RN s=r=100, T=100"
+    color: "#c92a2a"
+    linestyle: dashdot
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+
+plot:
+  # x: iter
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "logistic n5000: RN comparison"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_n5000_compare_rn.png
+  dpi: 180

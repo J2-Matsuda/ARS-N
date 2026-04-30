@@ -6,7 +6,12 @@ from typing import Any, Mapping
 
 import numpy as np
 
-from src.algorithms.base import OptimizeResult, evaluate_problem
+from src.algorithms.base import (
+    GradNormStagnationTracker,
+    OptimizeResult,
+    evaluate_problem,
+    resolve_grad_norm_stagnation_config,
+)
 from src.problems.base import Problem
 from src.utils.sketch import GaussianSketchOperator
 from src.utils.timer import Stopwatch
@@ -303,6 +308,7 @@ def _run_rsrnm(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logg
     sketch_config = dict(config.get("sketch", {}))
     regularization_config = dict(config.get("diag_shift", config.get("regularization", {})))
     line_search_config = _resolve_line_search_config(config)
+    grad_norm_stagnation = GradNormStagnationTracker(resolve_grad_norm_stagnation_config(config))
 
     counted_problem = _CountingProblem(problem)
     stopwatch = Stopwatch()
@@ -311,6 +317,7 @@ def _run_rsrnm(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logg
     child_seeds = np.random.SeedSequence(seed).spawn(max_iter)
 
     fx, grad, grad_norm = evaluate_problem(counted_problem, x)
+    grad_norm_stagnation.update(grad_norm)
     _log_row(
         history=history,
         logger=logger,
@@ -417,6 +424,9 @@ def _run_rsrnm(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logg
             break
         if grad_norm <= tol:
             status = "converged"
+            break
+        if grad_norm_stagnation.update(grad_norm):
+            status = "grad_norm_stagnation"
             break
 
     return RSRNMResult(

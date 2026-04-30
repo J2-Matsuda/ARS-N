@@ -1,0 +1,59 @@
+task: plot
+plot_name: real_strongly_convex_compare_epsilon_lam1e-5
+
+inputs:
+  - path: output/results/ars_cn_epsilon_lam1e-5_strongly_convex_s50_t100_seed0/ars_cn_epsilon_lam1e-5_strongly_convex_s50_t100_seed0.csv
+    label: "ARS-CN s=r=50, T=100"
+    color: "#2b8a3e"
+    linestyle: solid
+  - path: output/results/ars_cn_epsilon_lam1e-5_strongly_convex_s50_tauto_seed0/ars_cn_epsilon_lam1e-5_strongly_convex_s50_tauto_seed0.csv
+    label: "ARS-CN s=r=50, T_auto"
+    color: "#2b8a3e"
+    linestyle: dashed
+  - path: output/results/ars_cn_epsilon_lam1e-5_strongly_convex_s100_t100_seed0/ars_cn_epsilon_lam1e-5_strongly_convex_s100_t100_seed0.csv
+    label: "ARS-CN s=r=100, T=100"
+    color: "#c92a2a"
+    linestyle: solid
+  - path: output/results/ars_cn_epsilon_lam1e-5_strongly_convex_s100_tauto_seed0/ars_cn_epsilon_lam1e-5_strongly_convex_s100_tauto_seed0.csv
+    label: "ARS-CN s=r=100, T_auto"
+    color: "#c92a2a"
+    linestyle: dashed
+  - path: output/results/rs_cn_epsilon_lam1e-5_strongly_convex_s50_seed0/rs_cn_epsilon_lam1e-5_strongly_convex_s50_seed0.csv
+    label: "RS-CN s=50"
+    color: "#495057"
+    linestyle: dashdot
+  - path: output/results/rs_cn_epsilon_lam1e-5_strongly_convex_s100_seed0/rs_cn_epsilon_lam1e-5_strongly_convex_s100_seed0.csv
+    label: "RS-CN s=100"
+    color: "#212529"
+    linestyle: dashdot
+  - path: output/results/gd_epsilon_lam1e-5_strongly_convex/gd_epsilon_lam1e-5_strongly_convex.csv
+    label: "GD"
+    color: "#111111"
+    linestyle: solid
+  - path: output/results/agd_unknown_epsilon_lam1e-5_strongly_convex/agd_unknown_epsilon_lam1e-5_strongly_convex.csv
+    label: "AGD-Unknown"
+    color: "#1c7ed6"
+    linestyle: dashdot
+  - path: output/results/rs_rn_epsilon_lam1e-5_strongly_convex_s50_seed0/rs_rn_epsilon_lam1e-5_strongly_convex_s50_seed0.csv
+    label: "RS-RN s=50"
+    color: "#e8590c"
+    linestyle: dashed
+  - path: output/results/rs_rn_epsilon_lam1e-5_strongly_convex_s100_seed0/rs_rn_epsilon_lam1e-5_strongly_convex_s100_seed0.csv
+    label: "RS-RN s=100"
+    color: "#d9480f"
+    linestyle: dashed
+
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "real strongly convex: epsilon (lambda=1e-5)"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/real_strongly_convex_compare_epsilon_lam1e-5.png
+  dpi: 180

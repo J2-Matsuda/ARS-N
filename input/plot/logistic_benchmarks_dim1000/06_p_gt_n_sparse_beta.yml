@@ -1,0 +1,41 @@
+task: plot
+plot_name: 06_p_gt_n_sparse_beta
+
+inputs:
+  - path: output/results/ars_cn_logistic_p_gt_n_sparse_beta/ars_cn_logistic_p_gt_n_sparse_beta.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_p_gt_n_sparse_beta/rs_cn_logistic_p_gt_n_sparse_beta.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_p_gt_n_sparse_beta/cn_arc_logistic_p_gt_n_sparse_beta.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_p_gt_n_sparse_beta/ars_rn_logistic_p_gt_n_sparse_beta.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_p_gt_n_sparse_beta/rs_rn_logistic_p_gt_n_sparse_beta.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_p_gt_n_sparse_beta/rn_logistic_p_gt_n_sparse_beta.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "p Greater Than n Sparse Beta"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/06_p_gt_n_sparse_beta.png

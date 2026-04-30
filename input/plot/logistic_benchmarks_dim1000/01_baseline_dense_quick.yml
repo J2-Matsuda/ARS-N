@@ -1,0 +1,41 @@
+task: plot
+plot_name: 01_baseline_dense_quick
+
+inputs:
+  - path: output/results/ars_cn_logistic_baseline_dense_quick/ars_cn_logistic_baseline_dense_quick.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_baseline_dense_quick/rs_cn_logistic_baseline_dense_quick.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_baseline_dense_quick/cn_arc_logistic_baseline_dense_quick.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_baseline_dense_quick/ars_rn_logistic_baseline_dense_quick.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_baseline_dense_quick/rs_rn_logistic_baseline_dense_quick.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_baseline_dense_quick/rn_logistic_baseline_dense_quick.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Baseline Dense Quick"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/01_baseline_dense_quick.png

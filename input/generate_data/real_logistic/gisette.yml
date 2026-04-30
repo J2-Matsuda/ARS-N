@@ -1,0 +1,18 @@
+task: generate_data
+run_name: gisette
+seed: 0
+
+problem:
+  type: logistic
+  source_format: libsvm
+  raw_source: data/raw/libsvm/gisette_scale.bz2
+  download_if_missing: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/gisette_scale.bz2
+  n_features: 5000
+  index_base: 1
+  reg_lambda: 1.0e-3
+  # For a quick loader smoke test, temporarily enable e.g. max_rows: 1000
+  # max_rows: 1000
+
+save:
+  path: data/generated/real_logistic/gisette.npz

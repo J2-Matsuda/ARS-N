@@ -1,0 +1,39 @@
+task: optimize
+run_name: cn_arc_logistic_n5000
+seed: 0
+
+problem:
+  type: logistic
+  source: data/generated/logistic_n5000.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: cn
+  variant: arc
+  solver: exact
+  max_iter: 100000
+  tol: 1.0e-8
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_rtol: 1.0e-12
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  exact_tol: 1.0e-10
+  verbose: true
+  print_every: 10
+
+log:
+  enabled: true
+  csv_path: output/results/cn_arc_logistic_n5000.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/cn_arc_logistic_n5000.json
+  resolved_config_path: output/meta/cn_arc_logistic_n5000.resolved.yml

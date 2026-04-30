@@ -1,0 +1,19 @@
+task: generate_data
+run_name: epsilon_lam1e-1_noreg
+seed: 0
+problem:
+  type: logistic
+  source_format: libsvm
+  raw_source: data/raw/libsvm/epsilon_normalized.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/epsilon_normalized.bz2
+  n_features: 2000
+  index_base: 1
+  add_bias: true
+  reg_lambda: 0.0
+  regularize_bias: true
+  sample_size: 10000
+  sample_seed: 0
+save:
+  path: data/generated/real_noreg_convex/epsilon_lam1e-1_noreg.npz

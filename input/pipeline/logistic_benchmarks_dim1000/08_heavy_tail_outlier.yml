@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_08_heavy_tail_outlier
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/08_heavy_tail_outlier.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/08_heavy_tail_outlier/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/08_heavy_tail_outlier/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/08_heavy_tail_outlier/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/08_heavy_tail_outlier/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/08_heavy_tail_outlier/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/08_heavy_tail_outlier/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/08_heavy_tail_outlier.yml

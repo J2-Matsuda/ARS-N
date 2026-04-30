@@ -1,0 +1,54 @@
+task: optimize
+run_name: ars_cn_ppi_reg0_mfull_s200_tauto_10m0p5_seed3
+seed: 3
+
+problem:
+  type: multilabel_logistic
+  source: data/generated/real_noreg_convex/ppi_noreg.npz
+
+initialization:
+  type: zeros
+optimizer:
+  type: ars_cn
+  max_iter: 1000
+  tol: 1.0e-5
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_patience: 50
+  grad_norm_stagnation_rtol: 1.0e-12
+  grad_norm_stagnation_atol: 1.0e-12
+  seed: 3
+  subspace_dim: 200
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+  sketch:
+    mode: operator
+    block_size: 512
+    dtype: float64
+  rk:
+    mode: T_auto
+    T: 500
+    r: 200
+    rk_tol: 0.31622776601683794
+    seed_offset: 3000009
+
+log:
+  enabled: true
+  csv_path: output/results/ars_cn_ppi_reg0_mfull_s200_tauto_10m0p5_seed3/ars_cn_ppi_reg0_mfull_s200_tauto_10m0p5_seed3.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/ars_cn_ppi_reg0_mfull_s200_tauto_10m0p5_seed3.json
+  resolved_config_path: output/meta/ars_cn_ppi_reg0_mfull_s200_tauto_10m0p5_seed3.resolved.yml

@@ -1,0 +1,45 @@
+task: optimize
+run_name: ars_rn_real_sim
+seed: 0
+problem:
+  type: logistic
+  source: data/generated/real_logistic/real_sim.npz
+initialization:
+  type: zeros
+optimizer:
+  type: ars_rn
+  max_iter: 10000
+  tol: 1.0e-08
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_rtol: 1.0e-12
+  seed: 0
+  subspace_dim: 100
+  verbose: true
+  print_every: 10
+  diag_shift:
+    lambda_factor: 2.0
+    grad_factor: 1.0
+    grad_exponent: 0.5
+    min_eta: 1.0e-08
+  line_search:
+    enabled: true
+    alpha0: 1.0
+    c1: 1.0e-04
+    beta: 0.5
+    max_iter: 25
+  sketch:
+    mode: operator
+    block_size: 512
+    dtype: float64
+  rk:
+    T: 100
+    r: 100
+    seed_offset: 0
+log:
+  enabled: true
+  csv_path: output/results/ars_rn_real_sim.csv
+  save_everytime: true
+save_meta:
+  enabled: true
+  meta_path: output/meta/ars_rn_real_sim.json
+  resolved_config_path: output/meta/ars_rn_real_sim.resolved.yml

@@ -1,0 +1,19 @@
+task: generate_data
+run_name: logistic_heavy_tail_outlier
+seed: 0
+
+problem:
+  type: logistic
+  n: 5000
+  d: 1000
+  reg_lambda: 1.0e-3
+  feature_scale: 1.0
+  intercept: 0.0
+  sparse_beta: false
+  feature_distribution: student_t
+  t_df: 3.0
+  outlier_fraction: 0.01
+  outlier_scale: 20.0
+
+save:
+  path: data/generated/logistic_benchmarks_dim1000/logistic_heavy_tail_outlier.npz

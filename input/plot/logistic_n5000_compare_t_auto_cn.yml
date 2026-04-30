@@ -1,0 +1,100 @@
+task: plot
+plot_name: logistic_n5000_compare_t_auto_cn
+
+inputs:
+  - path: output/results/cn_logistic_n5000_compare/cn_logistic_n5000_compare.csv
+    label: CN
+    color: "#111111"
+    linestyle: dashdot
+  - paths:
+      - output/results/rs_cn_logistic_n5000_compare_s10_seed0/rs_cn_logistic_n5000_compare_s10_seed0.csv
+      - output/results/rs_cn_logistic_n5000_compare_s10_seed1/rs_cn_logistic_n5000_compare_s10_seed1.csv
+      - output/results/rs_cn_logistic_n5000_compare_s10_seed2/rs_cn_logistic_n5000_compare_s10_seed2.csv
+      - output/results/rs_cn_logistic_n5000_compare_s10_seed3/rs_cn_logistic_n5000_compare_s10_seed3.csv
+      - output/results/rs_cn_logistic_n5000_compare_s10_seed4/rs_cn_logistic_n5000_compare_s10_seed4.csv
+    label: "RS-CN s=10"
+    color: "#6c757d"
+    linestyle: dashed
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  - paths:
+      - output/results/rs_cn_logistic_n5000_compare_s50_seed0/rs_cn_logistic_n5000_compare_s50_seed0.csv
+      - output/results/rs_cn_logistic_n5000_compare_s50_seed1/rs_cn_logistic_n5000_compare_s50_seed1.csv
+      - output/results/rs_cn_logistic_n5000_compare_s50_seed2/rs_cn_logistic_n5000_compare_s50_seed2.csv
+      - output/results/rs_cn_logistic_n5000_compare_s50_seed3/rs_cn_logistic_n5000_compare_s50_seed3.csv
+      - output/results/rs_cn_logistic_n5000_compare_s50_seed4/rs_cn_logistic_n5000_compare_s50_seed4.csv
+    label: "RS-CN s=50"
+    color: "#495057"
+    linestyle: dashdot
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  - paths:
+      - output/results/rs_cn_logistic_n5000_compare_s100_seed0/rs_cn_logistic_n5000_compare_s100_seed0.csv
+      - output/results/rs_cn_logistic_n5000_compare_s100_seed1/rs_cn_logistic_n5000_compare_s100_seed1.csv
+      - output/results/rs_cn_logistic_n5000_compare_s100_seed2/rs_cn_logistic_n5000_compare_s100_seed2.csv
+      - output/results/rs_cn_logistic_n5000_compare_s100_seed3/rs_cn_logistic_n5000_compare_s100_seed3.csv
+      - output/results/rs_cn_logistic_n5000_compare_s100_seed4/rs_cn_logistic_n5000_compare_s100_seed4.csv
+    label: "RS-CN s=100"
+    color: "#adb5bd"
+    linestyle: dotted
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  # - paths:
+  #     - output/results/ars_cn_logistic_n5000_compare_s10_tauto_seed0/ars_cn_logistic_n5000_compare_s10_tauto_seed0.csv
+  #     - output/results/ars_cn_logistic_n5000_compare_s10_tauto_seed1/ars_cn_logistic_n5000_compare_s10_tauto_seed1.csv
+  #     - output/results/ars_cn_logistic_n5000_compare_s10_tauto_seed2/ars_cn_logistic_n5000_compare_s10_tauto_seed2.csv
+  #     - output/results/ars_cn_logistic_n5000_compare_s10_tauto_seed3/ars_cn_logistic_n5000_compare_s10_tauto_seed3.csv
+  #     - output/results/ars_cn_logistic_n5000_compare_s10_tauto_seed4/ars_cn_logistic_n5000_compare_s10_tauto_seed4.csv
+  #   label: "ARS-CN s=r=10, T_auto (T<=100)"
+  #   color: "#d9480f"
+  #   linestyle: solid
+  #   aggregate:
+  #     center: mean
+  #     band: minmax
+  #     alpha: 0.16
+  - paths:
+      - output/results/ars_cn_logistic_n5000_compare_s50_tauto_seed0/ars_cn_logistic_n5000_compare_s50_tauto_seed0.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s50_tauto_seed1/ars_cn_logistic_n5000_compare_s50_tauto_seed1.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s50_tauto_seed2/ars_cn_logistic_n5000_compare_s50_tauto_seed2.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s50_tauto_seed3/ars_cn_logistic_n5000_compare_s50_tauto_seed3.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s50_tauto_seed4/ars_cn_logistic_n5000_compare_s50_tauto_seed4.csv
+    label: "ARS-CN s=r=50, T_auto (T<=200)"
+    color: "#1971c2"
+    linestyle: dashed
+    aggregate:
+      center: mean
+      band: minmax
+      alpha: 0.16
+  # - paths:
+      # - output/results/ars_cn_logistic_n5000_compare_s100_tauto_seed0/ars_cn_logistic_n5000_compare_s100_tauto_seed0.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s100_tauto_seed1/ars_cn_logistic_n5000_compare_s100_tauto_seed1.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s100_tauto_seed2/ars_cn_logistic_n5000_compare_s100_tauto_seed2.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s100_tauto_seed3/ars_cn_logistic_n5000_compare_s100_tauto_seed3.csv
+      # - output/results/ars_cn_logistic_n5000_compare_s100_tauto_seed4/ars_cn_logistic_n5000_compare_s100_tauto_seed4.csv
+    # label: "ARS-CN s=r=100, T_auto (T<=100)"
+    # color: "#c92a2a"
+    # linestyle: dashdot
+    # aggregate:
+    #   center: mean
+    #   band: minmax
+    #   alpha: 0.16
+
+plot:
+  x: iter
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "logistic n5000: CN comparison (T_auto)"
+  xlabel: iteration
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_n5000_compare_t_auto_cn.png
+  dpi: 180

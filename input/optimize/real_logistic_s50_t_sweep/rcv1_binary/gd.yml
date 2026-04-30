@@ -1,0 +1,33 @@
+task: optimize
+run_name: gd_rcv1_binary
+seed: 0
+
+problem:
+  type: logistic
+  source: data/generated/real_logistic/rcv1_binary.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: gd
+  max_iter: 100000
+  tol: 1.0e-8
+  verbose: true
+  print_every: 1000
+  line_search:
+    enabled: true
+    c1: 1.0e-4
+    beta: 0.5
+    alpha0: 1.0
+    max_iter: 25
+
+log:
+  enabled: true
+  csv_path: output/results/gd_rcv1_binary.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/gd_rcv1_binary.json
+  resolved_config_path: output/meta/gd_rcv1_binary.resolved.yml

@@ -1,0 +1,18 @@
+task: generate_data
+run_name: gisette_reg1e-3_mfull
+seed: 0
+
+problem:
+  type: logistic
+  source_format: libsvm
+  raw_source: data/raw/libsvm/gisette_scale.bz2
+  download_if_missing: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/gisette_scale.bz2
+  n_features: 5000
+  index_base: 1
+  reg_lambda: 1.0e-3
+  # sample_size:
+  # sample_seed:
+
+save:
+  path: data/generated/exp/gisette_reg1e-3_mfull.npz

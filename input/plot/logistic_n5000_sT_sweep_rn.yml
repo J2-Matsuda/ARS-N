@@ -1,0 +1,93 @@
+task: plot
+plot_name: logistic_n5000_sT_sweep_rn
+
+inputs:
+  - path: output/results/rn_logistic_n5000/rn_logistic_n5000.csv
+    label: RN
+    color: black
+    linestyle: dashdot
+  # - path: output/results/rs_rn_logistic_n5000_s10/rs_rn_logistic_n5000_s10.csv
+  #   label: "RS-RN s=10"
+  #   color: "#495057"
+  #   linestyle: dashdot
+  - path: output/results/rs_rn_logistic_n5000_s50/rs_rn_logistic_n5000_s50.csv
+    label: "RS-RN s=50"
+    color: "#868e96"
+    linestyle: dashdot
+  # - path: output/results/rs_rn_logistic_n5000_s100/rs_rn_logistic_n5000_s100.csv
+  #   label: "RS-RN s=100"
+  #   color: "#adb5bd"
+  #   linestyle: dashdot
+  - path: output/results/ars_rn_logistic_n5000_s10_t10/ars_rn_logistic_n5000_s10_t10.csv
+    label: "ARS-RN s=r=10, T=10"
+    color: "#d9480f"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_s10_t50/ars_rn_logistic_n5000_s10_t50.csv
+    label: "ARS-RN s=r=10, T=50"
+    color: "#e67700"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_s10_t100/ars_rn_logistic_n5000_s10_t100.csv
+    label: "ARS-RN s=r=10, T=100"
+    color: "#fab005"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_s10_t200/ars_rn_logistic_n5000_s10_t200.csv
+    label: "ARS-RN s=r=10, T=200"
+    color: "#1971c2"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_s10_t500/ars_rn_logistic_n5000_s10_t500.csv
+    label: "ARS-RN s=r=10, T=500"
+    color: "#5f3dc4"
+    linestyle: solid
+  - path: output/results/ars_rn_logistic_n5000_s50_t10/ars_rn_logistic_n5000_s50_t10.csv
+    label: "ARS-RN s=r=50, T=10"
+    color: "#d9480f"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_s50_t50/ars_rn_logistic_n5000_s50_t50.csv
+    label: "ARS-RN s=r=50, T=50"
+    color: "#e67700"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_s50_t100/ars_rn_logistic_n5000_s50_t100.csv
+    label: "ARS-RN s=r=50, T=100"
+    color: "#fab005"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_s50_t200/ars_rn_logistic_n5000_s50_t200.csv
+    label: "ARS-RN s=r=50, T=200"
+    color: "#1971c2"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_s50_t500/ars_rn_logistic_n5000_s50_t500.csv
+    label: "ARS-RN s=r=50, T=500"
+    color: "#5f3dc4"
+    linestyle: dashed
+  - path: output/results/ars_rn_logistic_n5000_s100_t10/ars_rn_logistic_n5000_s100_t10.csv
+    label: "ARS-RN s=r=100, T=10"
+    color: "#d9480f"
+    linestyle: dotted
+  - path: output/results/ars_rn_logistic_n5000_s100_t50/ars_rn_logistic_n5000_s100_t50.csv
+    label: "ARS-RN s=r=100, T=50"
+    color: "#e67700"
+    linestyle: dotted
+  - path: output/results/ars_rn_logistic_n5000_s100_t100/ars_rn_logistic_n5000_s100_t100.csv
+    label: "ARS-RN s=r=100, T=100"
+    color: "#fab005"
+    linestyle: dotted
+  - path: output/results/ars_rn_logistic_n5000_s100_t200/ars_rn_logistic_n5000_s100_t200.csv
+    label: "ARS-RN s=r=100, T=200"
+    color: "#1971c2"
+    linestyle: dotted
+  - path: output/results/ars_rn_logistic_n5000_s100_t500/ars_rn_logistic_n5000_s100_t500.csv
+    label: "ARS-RN s=r=100, T=500"
+    color: "#5f3dc4"
+    linestyle: dotted
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "logistic n5000: RN family s-T sweep"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_n5000_sT_sweep_rn.png

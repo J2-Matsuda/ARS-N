@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_03_interaction_misspecified
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/03_interaction_misspecified.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/03_interaction_misspecified/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/03_interaction_misspecified/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/03_interaction_misspecified/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/03_interaction_misspecified/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/03_interaction_misspecified/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/03_interaction_misspecified/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/03_interaction_misspecified.yml

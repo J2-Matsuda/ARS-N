@@ -1,15 +1,15 @@
 task: generate_data
-run_name: logistic_n2000
+run_name: logistic_n10000
 seed: 0
 
 problem:
   type: logistic
-  n: 10000
-  d: 2000
+  n: 50000
+  d: 10000
   reg_lambda: 1.0e-3
   feature_scale: 1.0
   intercept: 0
   sparse_beta: false
 
 save:
-  path: data/generated/logistic_n2000.npz
+  path: data/generated/logistic_n10000.npz

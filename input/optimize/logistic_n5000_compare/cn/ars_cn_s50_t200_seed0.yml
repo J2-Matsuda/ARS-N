@@ -1,0 +1,53 @@
+task: optimize
+run_name: ars_cn_logistic_n5000_compare_s50_t200_seed0
+seed: 0
+
+problem:
+  type: logistic
+  source: data/generated/logistic_n5000.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: ars_cn
+  max_iter: 10000
+  tol: 1.0e-5
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_patience: 50
+  grad_norm_stagnation_rtol: 1.0e-12
+  grad_norm_stagnation_atol: 1.0e-12
+  seed: 0
+  subspace_dim: 50
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+  sketch:
+    mode: operator
+    block_size: 256
+    dtype: float64
+  rk:
+    T: 200
+    r: 50
+    seed_offset: 0
+
+log:
+  enabled: true
+  csv_path: output/results/ars_cn_logistic_n5000_compare_s50_t200_seed0.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/ars_cn_logistic_n5000_compare_s50_t200_seed0.json
+  resolved_config_path: output/meta/ars_cn_logistic_n5000_compare_s50_t200_seed0.resolved.yml

@@ -1,0 +1,18 @@
+task: pipeline
+pipeline_name: real_logistic_s50_t_sweep_gisette
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/gisette.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/ars_cn_t50.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/ars_cn_t100.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/rs_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/rs_rn.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_s50_t_sweep/gisette/agd_unknown.yml

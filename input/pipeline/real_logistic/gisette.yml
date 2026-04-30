@@ -1,0 +1,10 @@
+task: pipeline
+pipeline_name: real_logistic_gisette
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/gisette.yml
+  - command: optimize
+    config: input/optimize/real_logistic/gisette/ars_cn.yml
+  - command: optimize
+    config: input/optimize/real_logistic/gisette/rs_cn.yml

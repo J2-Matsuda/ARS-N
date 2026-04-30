@@ -1,0 +1,21 @@
+task: pipeline
+pipeline_name: logistic_benchmarks_dim1000_by_method_all
+steps:
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/ars_cn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/ars_rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/rs_cn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/rs_rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/cn_arc.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/by_method/rn.yml

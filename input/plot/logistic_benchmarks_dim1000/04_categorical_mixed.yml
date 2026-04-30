@@ -1,0 +1,41 @@
+task: plot
+plot_name: 04_categorical_mixed
+
+inputs:
+  - path: output/results/ars_cn_logistic_categorical_mixed/ars_cn_logistic_categorical_mixed.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_categorical_mixed/rs_cn_logistic_categorical_mixed.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_categorical_mixed/cn_arc_logistic_categorical_mixed.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_categorical_mixed/ars_rn_logistic_categorical_mixed.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_categorical_mixed/rs_rn_logistic_categorical_mixed.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_categorical_mixed/rn_logistic_categorical_mixed.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "Categorical Mixed"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/04_categorical_mixed.png

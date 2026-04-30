@@ -1,0 +1,14 @@
+task: pipeline
+pipeline_name: real_logistic_epsilon_normalized
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/epsilon_normalized.yml
+  - command: optimize
+    config: input/optimize/real_logistic/epsilon_normalized/ars_cn.yml
+  - command: optimize
+  #   config: input/optimize/real_logistic/epsilon_normalized/ars_rn.yml
+  # - command: optimize
+    config: input/optimize/real_logistic/epsilon_normalized/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/epsilon_normalized/rs_rn.yml

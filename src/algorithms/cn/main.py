@@ -6,7 +6,12 @@ from typing import Any, Mapping
 
 import numpy as np
 
-from src.algorithms.base import OptimizeResult, evaluate_problem
+from src.algorithms.base import (
+    GradNormStagnationTracker,
+    OptimizeResult,
+    evaluate_problem,
+    resolve_grad_norm_stagnation_config,
+)
 from src.problems.base import Problem
 from src.utils.timer import Stopwatch
 
@@ -348,6 +353,7 @@ def _run_cnm(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logger
     solver = str(config.get("solver", "exact")).lower()
     exact_tol = float(config.get("exact_tol", 1.0e-10))
     sigma, sigma_min, sigma_max, eta1, eta2, gamma1, gamma2 = _resolve_arc_parameters(config, variant)
+    grad_norm_stagnation = GradNormStagnationTracker(resolve_grad_norm_stagnation_config(config))
 
     counted_problem = _CountingProblem(problem)
     stopwatch = Stopwatch()
@@ -357,6 +363,7 @@ def _run_cnm(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logger
     successful_flag = False
 
     fx, grad, grad_norm = evaluate_problem(counted_problem, x)
+    grad_norm_stagnation.update(grad_norm)
     _log_row(
         history=history,
         logger=logger,
@@ -510,6 +517,9 @@ def _run_cnm(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], logger
         grad_norm = float(grad_norm_next)
         if grad_norm <= tol:
             status = "converged"
+            break
+        if grad_norm_stagnation.update(grad_norm):
+            status = "grad_norm_stagnation"
             break
 
     return CNMResult(

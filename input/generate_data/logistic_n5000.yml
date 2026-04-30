@@ -1,0 +1,15 @@
+task: generate_data
+run_name: logistic_n5000
+seed: 0
+
+problem:
+  type: logistic
+  n: 25000
+  d: 5000
+  reg_lambda: 1.0e-3
+  feature_scale: 1.0
+  intercept: 0.0
+  sparse_beta: false
+
+save:
+  path: data/generated/logistic_n5000.npz

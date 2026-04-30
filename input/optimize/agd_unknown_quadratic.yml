@@ -1,0 +1,42 @@
+task: optimize
+run_name: agd_unknown_quadratic
+seed: 0
+
+problem:
+  type: quadratic
+  dim: 64
+  spectrum: exponential
+  lambda_max: 1.0
+  lambda_min: 1.0e-6
+  b_norm: 1.0
+  seed: 0
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: agd_unknown
+  max_iter: 100000
+  tol: 1.0e-8
+  verbose: true
+  print_every: 1000
+  backtracking:
+    enabled: true
+    L0: 1.0
+    eta: 2.0
+    max_iter: 50
+    reuse_previous_L: true
+  restart:
+    enabled: true
+    objective_increase: true
+    misaligned_momentum: true
+
+log:
+  enabled: true
+  csv_path: output/results/agd_unknown_quadratic.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/agd_unknown_quadratic.json
+  resolved_config_path: output/meta/agd_unknown_quadratic.resolved.yml

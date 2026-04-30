@@ -1,0 +1,54 @@
+task: optimize
+run_name: ars_rn_logistic_n5000_compare_s10_tauto_seed2
+seed: 2
+
+problem:
+  type: logistic
+  source: data/generated/logistic_n5000.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: ars_rn
+  max_iter: 10000
+  tol: 1.0e-5
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_patience: 50
+  grad_norm_stagnation_rtol: 1.0e-12
+  grad_norm_stagnation_atol: 1.0e-12
+  seed: 2
+  subspace_dim: 10
+  verbose: true
+  print_every: 10
+  diag_shift:
+    lambda_factor: 2.0
+    grad_factor: 1.0
+    grad_exponent: 0.5
+    min_eta: 1.0e-8
+  line_search:
+    enabled: true
+    alpha0: 1.0
+    c1: 1.0e-4
+    beta: 0.5
+    max_iter: 25
+  sketch:
+    mode: operator
+    block_size: 256
+    dtype: float64
+  rk:
+    mode: T_auto
+    T: 100
+    r: 10
+    rk_tol: 0.1
+    seed_offset: 2000006
+
+log:
+  enabled: true
+  csv_path: output/results/ars_rn_logistic_n5000_compare_s10_tauto_seed2.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/ars_rn_logistic_n5000_compare_s10_tauto_seed2.json
+  resolved_config_path: output/meta/ars_rn_logistic_n5000_compare_s10_tauto_seed2.resolved.yml

@@ -1,0 +1,61 @@
+task: plot
+plot_name: rs_rn_logistic_benchmarks_dim1000
+
+inputs:
+  - path: output/results/rs_rn_logistic_baseline_dense_reduced_from_original/rs_rn_logistic_baseline_dense_reduced_from_original.csv
+    label: "00 baseline-reduced"
+    color: "#1f77b4"
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_baseline_dense_quick/rs_rn_logistic_baseline_dense_quick.csv
+    label: "01 baseline-quick"
+    color: "#ff7f0e"
+    linestyle: dashed
+  - path: output/results/rs_rn_logistic_overlap_nonseparable/rs_rn_logistic_overlap_nonseparable.csv
+    label: "02 overlap"
+    color: "#2ca02c"
+    linestyle: dotted
+  - path: output/results/rs_rn_logistic_interaction_misspecified/rs_rn_logistic_interaction_misspecified.csv
+    label: "03 interaction"
+    color: "#d62728"
+    linestyle: dashdot
+  - path: output/results/rs_rn_logistic_categorical_mixed/rs_rn_logistic_categorical_mixed.csv
+    label: "04 categorical"
+    color: "#9467bd"
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_imbalanced_1pct/rs_rn_logistic_imbalanced_1pct.csv
+    label: "05 imbalanced"
+    color: "#8c564b"
+    linestyle: dashed
+  - path: output/results/rs_rn_logistic_p_gt_n_sparse_beta/rs_rn_logistic_p_gt_n_sparse_beta.csv
+    label: "06 p>n sparse"
+    color: "#e377c2"
+    linestyle: dotted
+  - path: output/results/rs_rn_logistic_correlated_ill_conditioned/rs_rn_logistic_correlated_ill_conditioned.csv
+    label: "07 correlated"
+    color: "#7f7f7f"
+    linestyle: dashdot
+  - path: output/results/rs_rn_logistic_heavy_tail_outlier/rs_rn_logistic_heavy_tail_outlier.csv
+    label: "08 heavy-tail"
+    color: "#bcbd22"
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_sparse_x/rs_rn_logistic_sparse_x.csv
+    label: "09 sparse-X"
+    color: "#17becf"
+    linestyle: dashed
+  - path: output/results/rs_rn_logistic_near_separable/rs_rn_logistic_near_separable.csv
+    label: "10 near-separable"
+    color: "#111111"
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "RS-RN: logistic benchmarks dim1000"
+  xlabel: cumulative_time [s]
+  ylabel: grad_norm
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/by_method/rs_rn.png

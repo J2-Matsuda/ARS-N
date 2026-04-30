@@ -2,22 +2,44 @@ task: plot
 plot_name: rs-cn-log-n1000
 
 inputs:
-  - path: output/results/ars_cn_logistic_n1000.csv
-    label: ARS-CN
-    color: "#0b7285"
+  - path: output/results/ars_cn_epsilon_normalized_s50_t50/ars_cn_epsilon_normalized_s50_t50.csv
+    label: ARS-CN(T=50)
+    # color: "#0b7285"
     linestyle: solid
-  - path: output/results/rs_cn_logistic_n1000.csv
-    label: RS-CN
-    color: "#d9480f"
-    linestyle: dashed
-  - path: output/results/ars_rn_logistic_n1000.csv
-    label: ARS-RN
-    color: "#2b8a3e"
+  # - path: output/results/rs_cn_logistic_n1000.csv
+  #   label: RS-CN
+  #   color: "#d9480f"
+  #   linestyle: dashed
+  - path: output/results/ars_cn_epsilon_normalized_s50_t100/ars_cn_epsilon_normalized_s50_t100.csv
+    label: ARS-CN(T=100)
+    # color: "#2b8a3e"
     linestyle: solid
-  - path: output/results/rs_rn_logistic_n1000.csv
-    label: RS-RN
-    color: "#5f3dc4"
-    linestyle: dashed
+  # - path: output/results/rs_cn_epsilon_normalized_s50/rs_cn_epsilon_normalized_s50.csv
+  #   label: RS-CN
+  #   # color: "#2b8a3e"
+  #   linestyle: solid
+  # - path: output/results/rs_rn_logistic_n1000.csv
+  #   label: RS-RN
+  #   color: "#5f3dc4"
+  #   linestyle: dashed
+
+  # - path: output/results/rs_cn_logistic_n1000.csv
+  #   label: RS-CN
+  #   color: "#d9480f"
+  #   linestyle: dashed
+  # - path: output/results/ars_cn_gisette/ars_cn_gisette.csv
+  #   label: ARS-CN
+  #   # color: "#2b8a3e"
+  #   linestyle: solid
+  # - path: output/results/rs_cn_gisette/rs_cn_gisette.csv
+  #   label: RS-CN
+  #   # color: "#2b8a3e"
+  #   linestyle: solid
+  # - path: output/results/rs_rn_logistic_n1000.csv
+  #   label: RS-RN
+  #   color: "#5f3dc4"
+  #   linestyle: dashed
+ 
 
 plot:
   x: cumulative_time
@@ -25,10 +47,10 @@ plot:
   y: grad_norm
   xscale: linear
   yscale: log
-  title: "Logistic: grad_norm vs cumulative_time"
+  title: "epsilon: ARS-CN vs RS-CN"
   xlabel: cumulative_time
   ylabel: grad_norm
   grid: true
 
 save:
-  path: output/plots/logistic_n1000.png
+  path: output/plots/epsilon_ars_cn_vs_rs_cn.png

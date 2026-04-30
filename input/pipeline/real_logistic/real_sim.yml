@@ -1,0 +1,14 @@
+task: pipeline
+pipeline_name: real_logistic_real_sim
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/real_sim.yml
+  - command: optimize
+    config: input/optimize/real_logistic/real_sim/ars_cn.yml
+  - command: optimize
+  #   config: input/optimize/real_logistic/real_sim/ars_rn.yml
+  # - command: optimize
+    config: input/optimize/real_logistic/real_sim/rs_cn.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic/real_sim/rs_rn.yml

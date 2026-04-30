@@ -1,0 +1,44 @@
+task: plot
+plot_name: 02_overlap_nonseparable
+
+inputs:
+  - path: output/results/ars_cn_logistic_overlap_nonseparable/ars_cn_logistic_overlap_nonseparable.csv
+    label: ARS-CN
+    color: red
+    linestyle: solid
+  - path: output/results/rs_cn_logistic_overlap_nonseparable/rs_cn_logistic_overlap_nonseparable.csv
+    label: RS-CN
+    color: red
+    linestyle: dashed
+  - path: output/results/cn_arc_logistic_overlap_nonseparable/cn_arc_logistic_overlap_nonseparable.csv
+    label: CN-ARC
+    color: red
+    linestyle: dashdot
+  - path: output/results/ars_rn_logistic_overlap_nonseparable/ars_rn_logistic_overlap_nonseparable.csv
+    label: ARS-RN
+    color: blue
+    linestyle: solid
+  - path: output/results/rs_rn_logistic_overlap_nonseparable/rs_rn_logistic_overlap_nonseparable.csv
+    label: RS-RN
+    color: blue
+    linestyle: dashed
+  - path: output/results/rn_logistic_overlap_nonseparable/rn_logistic_overlap_nonseparable.csv
+    label: RN
+    color: blue
+    linestyle: dashdot
+
+plot:
+  x: cumulative_time
+  # y: grad_norm
+  y: f
+  xscale: linear
+  yscale: log
+  x_limit: [0.0, 50]
+  # y_limit: [null, 500]
+  title: "Overlap Nonseparable"
+  xlabel: cumulative_time
+  ylabel: f
+  grid: true
+
+save:
+  path: output/plots/logistic_benchmarks_dim1000/02_overlap_nonseparable_.png

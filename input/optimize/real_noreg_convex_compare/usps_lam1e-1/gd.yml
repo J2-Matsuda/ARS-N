@@ -1,0 +1,32 @@
+task: optimize
+run_name: gd_usps_lam1e-1_noreg_convex
+seed: 0
+
+problem:
+  type: softmax
+  source: data/generated/real_noreg_convex/usps_lam1e-1_noreg.npz
+
+initialization:
+  type: zeros
+
+optimizer:
+  type: gd
+  max_iter: 100000
+  tol: 1.0e-5
+  verbose: true
+  print_every: 1000
+  line_search:
+    enabled: true
+    alpha0: 1.0
+    c1: 1.0e-4
+    beta: 0.5
+    max_iter: 25
+log:
+  enabled: true
+  csv_path: output/results/gd_usps_lam1e-1_noreg_convex.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/gd_usps_lam1e-1_noreg_convex.json
+  resolved_config_path: output/meta/gd_usps_lam1e-1_noreg_convex.resolved.yml

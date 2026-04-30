@@ -1,0 +1,32 @@
+task: generate_data
+run_name: unfair_tos_mlp_multilabel_h1
+seed: 0
+
+problem:
+  type: mlp_multilabel_logistic
+  dataset_name: UNFAIR-ToS
+  source_format: multilabel_libsvm
+  raw_source: data/raw/multilabel/UNFAIR-ToS.txt
+  download_if_missing: false
+  n_features: 6290
+  num_labels: 8
+  sample_size: 5532
+  sample_seed: 0
+  add_bias: true
+  hidden_width: 1
+  activation: tanh
+  reg_lambda: 1.0e-3
+  init_scale: 1.0e-2
+  regularize_bias: true
+  loss_average: sample_label
+
+save:
+  path: data/generated/real_nonconvex/unfair_tos_mlp_multilabel_h1_m5532.npz
+
+expected:
+  raw_feature_dim: 6290
+  augmented_feature_dim: 6291
+  num_labels: 8
+  hidden_width: 1
+  optimization_dim: 6307
+  sample_size: 5532

@@ -1,0 +1,18 @@
+task: generate_data
+run_name: logistic_categorical_mixed
+seed: 0
+
+problem:
+  type: logistic
+  n: 5000
+  d: 988
+  reg_lambda: 1.0e-3
+  feature_scale: 1.0
+  intercept: 0.0
+  sparse_beta: false
+  num_categorical: 3
+  categorical_cardinalities: [3, 4, 5]
+  categorical_effect_scale: 0.5
+
+save:
+  path: data/generated/logistic_benchmarks_dim1000/logistic_categorical_mixed.npz

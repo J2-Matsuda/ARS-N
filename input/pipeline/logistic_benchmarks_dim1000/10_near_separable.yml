@@ -1,0 +1,27 @@
+task: pipeline
+pipeline_name: logistic_benchmark_10_near_separable
+steps:
+  -
+    command: generate
+    config: input/generate_data/logistic_benchmarks_dim1000/10_near_separable.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/10_near_separable/ars_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/10_near_separable/ars_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/10_near_separable/rs_cn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/10_near_separable/rs_rn.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/10_near_separable/cn_arc.yml
+  -
+    command: optimize
+    config: input/optimize/logistic_benchmarks_dim1000/10_near_separable/rn.yml
+  -
+    command: plot
+    config: input/plot/logistic_benchmarks_dim1000/10_near_separable.yml

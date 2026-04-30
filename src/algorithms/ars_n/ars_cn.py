@@ -7,7 +7,12 @@ from typing import Any, Callable, Mapping
 import numpy as np
 
 from src.algorithms.ars_n.rk import rk_anchor
-from src.algorithms.base import OptimizeResult, evaluate_problem
+from src.algorithms.base import (
+    GradNormStagnationTracker,
+    OptimizeResult,
+    evaluate_problem,
+    resolve_grad_norm_stagnation_config,
+)
 from src.problems.base import Problem
 from src.utils.sketch import GaussianSketchOperator
 from src.utils.timer import Stopwatch
@@ -40,6 +45,10 @@ EXTRA_LOG_FIELDS = (
     "rk_inner_minres_total_iters",
     "rk_minres_fail",
     "alpha_ws",
+    "seed_sketch",
+    "rk_seed_base",
+    "rk_steps_taken",
+    "rk_stop_reason",
 )
 
 
@@ -612,6 +621,10 @@ def _run_ars_cn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
             "rk_inner_minres_total_iters": 0,
             "rk_minres_fail": 0,
             "alpha_ws": float("nan"),
+            "seed_sketch": "",
+            "rk_seed_base": "",
+            "rk_steps_taken": 0,
+            "rk_stop_reason": "",
         },
     )
 
@@ -628,6 +641,7 @@ def _run_ars_cn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
         _print_run_header(config, dim)
 
     sketch_seeds = np.random.SeedSequence(seed).spawn(max_iter)
+    grad_norm_stagnation = GradNormStagnationTracker(resolve_grad_norm_stagnation_config(config))
     hvp_calls_cum = 0
     rk_hvp_calls_cum = 0
     subprob_hvp_calls_cum = 0
@@ -638,6 +652,7 @@ def _run_ars_cn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
     y_prev: np.ndarray | None = None
 
     status = "max_iter"
+    grad_norm_stagnation.update(grad_norm)
     for iteration in range(1, max_iter + 1):
         if grad_norm <= tol:
             status = "converged"
@@ -801,6 +816,10 @@ def _run_ars_cn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
                 "rk_inner_minres_total_iters": int(rk_info.get("inner_minres_total_iters", 0)),
                 "rk_minres_fail": int(rk_info.get("minres_fail", 0)),
                 "alpha_ws": float(rk_info.get("alpha_ws", float("nan"))),
+                "seed_sketch": sketch_seed,
+                "rk_seed_base": int(rk_info.get("rk_seed_base", -1)),
+                "rk_steps_taken": int(rk_info.get("rk_steps_taken", 0)),
+                "rk_stop_reason": str(rk_info.get("rk_stop_reason", "")),
             },
         )
 
@@ -816,6 +835,9 @@ def _run_ars_cn(problem: Problem, x0: np.ndarray, config: Mapping[str, Any], log
         grad_norm = float(grad_norm_next)
         if grad_norm <= tol:
             status = "converged"
+            break
+        if grad_norm_stagnation.update(grad_norm):
+            status = "grad_norm_stagnation"
             break
 
     return ARSCNResult(

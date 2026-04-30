@@ -1,0 +1,46 @@
+task: optimize
+run_name: rs_rn_unfair_reg0_mfull_s200_seed0
+seed: 0
+
+problem:
+  type: mlp_multilabel_logistic
+  source: data/generated/real_nonconvex/unfair_tos_mlp_multilabel_h1_m5532.npz
+
+initialization:
+  type: random_normal
+  scale: 1.0e-2
+optimizer:
+  type: rs_rn
+  max_iter: 10000
+  tol: 1.0e-5
+  stop_on_grad_norm_stagnation: true
+  grad_norm_stagnation_patience: 50
+  grad_norm_stagnation_rtol: 1.0e-12
+  grad_norm_stagnation_atol: 1.0e-12
+  seed: 0
+  subspace_dim: 200
+  verbose: true
+  print_every: 20
+  sketch:
+    mode: operator
+    block_size: 512
+    dtype: float64
+  diag_shift:
+    c1: 2.0
+    c2: 1.0
+    gamma: 0.5
+  line_search:
+    enabled: true
+    alpha0: 1.0
+    c1: 1.0e-4
+    beta: 0.5
+    max_iter: 25
+log:
+  enabled: true
+  csv_path: output/results/rs_rn_unfair_reg0_mfull_s200_seed0/rs_rn_unfair_reg0_mfull_s200_seed0.csv
+  save_everytime: true
+
+save_meta:
+  enabled: true
+  meta_path: output/meta/rs_rn_unfair_reg0_mfull_s200_seed0.json
+  resolved_config_path: output/meta/rs_rn_unfair_reg0_mfull_s200_seed0.resolved.yml
