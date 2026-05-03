@@ -34,23 +34,33 @@ def _ensure_positive_int(value: Any, context: str) -> int:
 
 
 def _ensure_nonnegative_number(value: Any, context: str) -> float:
-    if not isinstance(value, (int, float)) or isinstance(value, bool) or float(value) < 0.0:
+    if (
+        not isinstance(value, (int, float))
+        or isinstance(value, bool)
+        or float(value) < 0.0
+    ):
         raise ValueError(f"{context} must be a non-negative number, got {value!r}")
     return float(value)
 
 
-def _load_and_check_task(config_path: str | Path, expected_tasks: set[str]) -> dict[str, Any]:
+def _load_and_check_task(
+    config_path: str | Path, expected_tasks: set[str]
+) -> dict[str, Any]:
     path = resolve_project_path(config_path)
     config = _ensure_mapping(load_yaml(path), f"Config {path}")
     task = config.get("task")
     if task not in expected_tasks:
         expected = ", ".join(sorted(expected_tasks))
-        raise ValueError(f"Config {path} has task={task!r}, expected one of: {expected}")
+        raise ValueError(
+            f"Config {path} has task={task!r}, expected one of: {expected}"
+        )
     return copy.deepcopy(config)
 
 
 def load_generate_config(config_path: str | Path) -> dict[str, Any]:
-    config = _load_and_check_task(config_path, {"generate_data", "clone_data_with_reg_lambda"})
+    config = _load_and_check_task(
+        config_path, {"generate_data", "clone_data_with_reg_lambda"}
+    )
     task = str(config["task"])
     if task == "generate_data":
         _ensure_keys(config, ("run_name", "problem", "save"), "generate_data config")
@@ -60,7 +70,11 @@ def load_generate_config(config_path: str | Path) -> dict[str, Any]:
         config.setdefault("seed", 0)
         return config
 
-    _ensure_keys(config, ("run_name", "source", "reg_lambda", "save"), "clone_data_with_reg_lambda config")
+    _ensure_keys(
+        config,
+        ("run_name", "source", "reg_lambda", "save"),
+        "clone_data_with_reg_lambda config",
+    )
     source = _ensure_mapping(config["source"], "source")
     save = _ensure_mapping(config["save"], "save")
     _ensure_keys(source, ("path",), "source")
@@ -83,7 +97,9 @@ def load_optimize_config(config_path: str | Path) -> dict[str, Any]:
     save_meta = _ensure_mapping(config["save_meta"], "save_meta")
     _ensure_keys(optimizer, ("type",), "optimizer")
     _ensure_keys(log, ("enabled", "csv_path"), "log")
-    _ensure_keys(save_meta, ("enabled", "meta_path", "resolved_config_path"), "save_meta")
+    _ensure_keys(
+        save_meta, ("enabled", "meta_path", "resolved_config_path"), "save_meta"
+    )
 
     _ensure_bool(log["enabled"], "log.enabled")
     _ensure_bool(save_meta["enabled"], "save_meta.enabled")
@@ -148,6 +164,31 @@ def load_plot_config(config_path: str | Path) -> dict[str, Any]:
     return config
 
 
+def _validate_pipeline_step(
+    step: Any, context: str, allowed_commands: set[str]
+) -> None:
+    step_mapping = _ensure_mapping(step, context)
+    if step_mapping.get("parallel") is True:
+        _ensure_keys(step_mapping, ("steps",), context)
+        parallel_steps = step_mapping["steps"]
+        if not isinstance(parallel_steps, list) or not parallel_steps:
+            raise ValueError(f"{context}.steps must be a non-empty list")
+        for nested_index, nested_step in enumerate(parallel_steps, start=1):
+            _validate_pipeline_step(
+                nested_step, f"{context}.steps[{nested_index}]", allowed_commands
+            )
+        return
+
+    if "parallel" in step_mapping:
+        raise ValueError(f"{context}.parallel must be true when present")
+
+    _ensure_keys(step_mapping, ("command", "config"), context)
+    command = step_mapping["command"]
+    if command not in allowed_commands:
+        allowed = ", ".join(sorted(allowed_commands))
+        raise ValueError(f"{context}.command must be one of: {allowed}")
+
+
 def load_pipeline_config(config_path: str | Path) -> dict[str, Any]:
     config = _load_and_check_task(config_path, {"pipeline"})
     _ensure_keys(config, ("pipeline_name", "steps"), "pipeline config")
@@ -157,13 +198,7 @@ def load_pipeline_config(config_path: str | Path) -> dict[str, Any]:
 
     allowed_commands = {"generate", "generate_data", "optimize", "plot"}
     for index, step in enumerate(steps, start=1):
-        step_context = f"pipeline step {index}"
-        step_mapping = _ensure_mapping(step, step_context)
-        _ensure_keys(step_mapping, ("command", "config"), step_context)
-        command = step_mapping["command"]
-        if command not in allowed_commands:
-            allowed = ", ".join(sorted(allowed_commands))
-            raise ValueError(f"{step_context}.command must be one of: {allowed}")
+        _validate_pipeline_step(step, f"pipeline step {index}", allowed_commands)
 
     return config
 

@@ -10,7 +10,7 @@ initialization:
   type: zeros
 optimizer:
   type: gd
-  max_iter: 100000
+  max_iter: 1000000
   tol: 1.0e-5
   verbose: true
   print_every: 1000

@@ -1,5 +1,5 @@
 task: pipeline
-pipeline_name: exp_1
+pipeline_name: exp_1_gisette_reg1e-3_mfull
 
 steps:
   # - command: generate_data

@@ -4,6 +4,8 @@ import argparse
 import json
 import shutil
 import subprocess
+import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -26,7 +28,9 @@ from src.utils.timer import utc_now_iso
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Numerical optimization experiment CLI")
+    parser = argparse.ArgumentParser(
+        description="Numerical optimization experiment CLI"
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     for command in ("generate", "generate_data", "optimize", "plot", "pipeline"):
@@ -36,7 +40,9 @@ def _build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _make_initial_point(initialization_config: dict[str, Any], dim: int, seed: int) -> np.ndarray:
+def _make_initial_point(
+    initialization_config: dict[str, Any], dim: int, seed: int
+) -> np.ndarray:
     init_type = initialization_config.get("type", "zeros")
     if init_type == "zeros":
         return np.zeros(dim, dtype=float)
@@ -141,7 +147,9 @@ def _prepare_optimize_output_paths(
 
     config["log"]["csv_path"] = _project_relative_path(csv_path)
     config["save_meta"]["meta_path"] = _project_relative_path(meta_path)
-    config["save_meta"]["resolved_config_path"] = _project_relative_path(resolved_config_path)
+    config["save_meta"]["resolved_config_path"] = _project_relative_path(
+        resolved_config_path
+    )
 
     return {
         "run_dir": run_dir,
@@ -157,19 +165,25 @@ def _run_optimize(config_path: str) -> dict[str, Any]:
     config = load_optimize_config(config_path)
     ensure_standard_directories()
     output_paths = _prepare_optimize_output_paths(config, config_path)
-    shutil.copy2(output_paths["source_config_path"], output_paths["input_config_copy_path"])
+    shutil.copy2(
+        output_paths["source_config_path"], output_paths["input_config_copy_path"]
+    )
     seed = int(config.get("seed", 0))
     set_global_seed(seed)
 
     built_problem = build_problem(config["problem"])
     x0 = _make_initial_point(config["initialization"], built_problem.dim, seed)
     effective_reg_lambda = float(getattr(built_problem.problem, "reg_lambda", 0.0))
-    effective_regularize_bias = bool(getattr(built_problem.problem, "regularize_bias", True))
+    effective_regularize_bias = bool(
+        getattr(built_problem.problem, "regularize_bias", True)
+    )
     source_reg_lambda: float | None = None
     reg_lambda_overridden = False
     if "source" in config["problem"]:
         source_arrays = load_npz(resolve_project_path(config["problem"]["source"]))
-        source_reg_lambda = float(np.asarray(source_arrays.get("reg_lambda", np.array(0.0))).item())
+        source_reg_lambda = float(
+            np.asarray(source_arrays.get("reg_lambda", np.array(0.0))).item()
+        )
         if "reg_lambda" in config["problem"]:
             reg_lambda_overridden = True
             print(
@@ -178,9 +192,13 @@ def _run_optimize(config_path: str) -> dict[str, Any]:
                 f"replaces source reg_lambda={source_reg_lambda}"
             )
         else:
-            print(f"[Optimize:{config['run_name']}] reg_lambda from source npz: {source_reg_lambda}")
+            print(
+                f"[Optimize:{config['run_name']}] reg_lambda from source npz: {source_reg_lambda}"
+            )
     else:
-        print(f"[Optimize:{config['run_name']}] reg_lambda from config.problem: {effective_reg_lambda}")
+        print(
+            f"[Optimize:{config['run_name']}] reg_lambda from config.problem: {effective_reg_lambda}"
+        )
     print(
         f"[Optimize:{config['run_name']}] effective_reg_lambda={effective_reg_lambda}, "
         f"regularize_bias={effective_regularize_bias}"
@@ -192,18 +210,28 @@ def _run_optimize(config_path: str) -> dict[str, Any]:
     if dataset_path is not None:
         print(f"[Optimize:{config['run_name']}] dataset path={dataset_path}")
     if hasattr(problem_obj, "A"):
-        print(f"[Optimize:{config['run_name']}] A shape={tuple(int(v) for v in problem_obj.A.shape)}")
+        print(
+            f"[Optimize:{config['run_name']}] A shape={tuple(int(v) for v in problem_obj.A.shape)}"
+        )
     if hasattr(problem_obj, "y"):
-        print(f"[Optimize:{config['run_name']}] y shape={tuple(int(v) for v in np.asarray(problem_obj.y).shape)}")
+        print(
+            f"[Optimize:{config['run_name']}] y shape={tuple(int(v) for v in np.asarray(problem_obj.y).shape)}"
+        )
     elif hasattr(problem_obj, "Y"):
-        print(f"[Optimize:{config['run_name']}] Y shape={tuple(int(v) for v in problem_obj.Y.shape)}")
+        print(
+            f"[Optimize:{config['run_name']}] Y shape={tuple(int(v) for v in problem_obj.Y.shape)}"
+        )
     print(f"[Optimize:{config['run_name']}] dim={built_problem.dim}")
     if hasattr(problem_obj, "m"):
         print(f"[Optimize:{config['run_name']}] sample size={int(problem_obj.m)}")
     if hasattr(problem_obj, "num_classes"):
-        print(f"[Optimize:{config['run_name']}] num_classes={int(problem_obj.num_classes)}")
+        print(
+            f"[Optimize:{config['run_name']}] num_classes={int(problem_obj.num_classes)}"
+        )
     if hasattr(problem_obj, "num_labels"):
-        print(f"[Optimize:{config['run_name']}] num_labels={int(problem_obj.num_labels)}")
+        print(
+            f"[Optimize:{config['run_name']}] num_labels={int(problem_obj.num_labels)}"
+        )
     optimizer_name = str(config["optimizer"]["type"])
     optimizer = get_optimizer(optimizer_name)
     optimizer_config = dict(config["optimizer"])
@@ -247,7 +275,9 @@ def _run_optimize(config_path: str) -> dict[str, Any]:
                 "reg_lambda_overridden": reg_lambda_overridden,
                 "git_commit_hash": _maybe_git_commit_hash(),
                 "run_dir": _project_relative_path(output_paths["run_dir"]),
-                "input_config_path": _project_relative_path(output_paths["input_config_copy_path"]),
+                "input_config_path": _project_relative_path(
+                    output_paths["input_config_copy_path"]
+                ),
                 "history_path": result.history_path,
                 "resolved_config_path": str(resolved_config_path),
                 "result": {
@@ -284,33 +314,103 @@ def _run_plot(config_path: str) -> Path:
     return output_path
 
 
+def _pipeline_step_timeout_seconds(step: dict[str, Any], default_timeout: int) -> int:
+    if "timeout_seconds" in step:
+        return int(step["timeout_seconds"])
+    if "step_timeout_seconds" in step:
+        return int(step["step_timeout_seconds"])
+    return default_timeout
+
+
+def _run_pipeline_step(
+    step: dict[str, Any], *, pipeline_name: str, label: str, default_timeout: int
+) -> dict[str, Any]:
+    command = str(step["command"])
+    step_config_path = str(step["config"])
+    step_timeout = _pipeline_step_timeout_seconds(step, default_timeout)
+
+    print(
+        f"[Pipeline:{pipeline_name}] {label} command={command} config={step_config_path} timeout={step_timeout}s"
+    )
+
+    cmd = [sys.executable, "-m", "src.cli", command, "--config", step_config_path]
+
+    try:
+        subprocess.run(cmd, check=True, timeout=step_timeout)
+        result_str = "completed"
+    except subprocess.TimeoutExpired:
+        print(
+            f"[Pipeline:{pipeline_name}] {label} timed out after {step_timeout} seconds; moving on."
+        )
+        result_str = f"timeout after {step_timeout}s"
+    except subprocess.CalledProcessError as exc:
+        print(f"[Pipeline:{pipeline_name}] {label} failed: {exc}")
+        result_str = f"failed: exit {exc.returncode}"
+
+    return {
+        "step": label,
+        "command": command,
+        "config": step_config_path,
+        "result": result_str,
+    }
+
+
+def _run_pipeline_group(
+    group: dict[str, Any],
+    *,
+    pipeline_name: str,
+    label: str,
+    default_timeout: int,
+) -> list[dict[str, Any]]:
+    parallel_steps = group["steps"]
+    n = len(parallel_steps)
+    # Scale the default timeout so that wall-clock time for the group
+    # is approximately default_timeout (each task gets default_timeout / n).
+    scaled_timeout = max(1, int(default_timeout) // n)
+    print(
+        f"[Pipeline:{pipeline_name}] {label} parallel={n} scaled_timeout={scaled_timeout}s (per task)"
+    )
+    with ThreadPoolExecutor(max_workers=n) as executor:
+        futures = [
+            executor.submit(
+                _run_pipeline_step,
+                step,
+                pipeline_name=pipeline_name,
+                label=f"{label}.{index}",
+                default_timeout=scaled_timeout,
+            )
+            for index, step in enumerate(parallel_steps, start=1)
+        ]
+        return [future.result() for future in futures]
+
+
 def _run_pipeline(config_path: str) -> list[dict[str, Any]]:
     config = load_pipeline_config(config_path)
     ensure_standard_directories()
+    default_timeout = int(config.get("step_timeout_seconds", 10000))
 
-    step_runners = {
-        "generate": _run_generate,
-        "generate_data": _run_generate,
-        "optimize": _run_optimize,
-        "plot": _run_plot,
-    }
     results: list[dict[str, Any]] = []
 
     for index, step in enumerate(config["steps"], start=1):
-        command = str(step["command"])
-        step_config_path = str(step["config"])
-        print(
-            f"[Pipeline:{config['pipeline_name']}] step={index}/{len(config['steps'])} "
-            f"command={command} config={step_config_path}"
-        )
-        result = step_runners[command](step_config_path)
+        label = f"step={index}/{len(config['steps'])}"
+        if isinstance(step, dict) and step.get("parallel") is True:
+            results.extend(
+                _run_pipeline_group(
+                    step,
+                    pipeline_name=config["pipeline_name"],
+                    label=label,
+                    default_timeout=default_timeout,
+                )
+            )
+            continue
+
         results.append(
-            {
-                "step": index,
-                "command": command,
-                "config": step_config_path,
-                "result": str(result),
-            }
+            _run_pipeline_step(
+                step,
+                pipeline_name=config["pipeline_name"],
+                label=label,
+                default_timeout=default_timeout,
+            )
         )
 
     return results
