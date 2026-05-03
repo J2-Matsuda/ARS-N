@@ -11,7 +11,7 @@ steps:
   # - command: optimize
   #   config: input/optimize/exp/exp_1_gisette_reg1e-3_mfull/rs_cn_s100_seed1.yml
   # - command: optimize
-  #   config: input/optimize/exp/exp_1_gisette_reg1e-3_mfull/rs_cn_s100_seed2.yml
+  #   config: input/optimize/exp/exp_1_gisette_reg1e-3_mfull/rs_ßcn_s100_seed2.yml
   # - command: optimize
   #   config: input/optimize/exp/exp_1_gisette_reg1e-3_mfull/rs_cn_s100_seed3.yml
   # - command: optimize
@@ -86,7 +86,7 @@ steps:
   #   config: input/optimize/exp/exp_1_gisette_reg1e-3_mfull/rs_rn_s200_seed3.yml
   # - command: optimize
   #   config: input/optimize/exp/exp_1_gisette_reg1e-3_mfull/rs_rn_s200_seed4.yml
-  - command: plot
-    config: input/plot/exp/exp_1_gisette_reg1e-3_mfull_grad_norm.yml
-  - command: plot
-    config: input/plot/exp/exp_1_gisette_reg1e-3_mfull_function_value.yml
+  # - command: plot
+  #   config: input/plot/exp/exp_1_gisette_reg1e-3_mfull_grad_norm.yml
+  # - command: plot
+  #   config: input/plot/exp/exp_1_gisette_reg1e-3_mfull_function_value.yml

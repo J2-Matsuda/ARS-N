@@ -4,6 +4,8 @@ import argparse
 import json
 import shutil
 import subprocess
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
@@ -284,6 +286,59 @@ def _run_plot(config_path: str) -> Path:
     return output_path
 
 
+def _run_cli_subprocess(
+    command_name: str,
+    config_path: str,
+    *,
+    timeout_seconds: float | None = None,
+) -> dict[str, Any]:
+    command = [sys.executable, "-m", "src.cli", command_name, "--config", config_path]
+    try:
+        completed = subprocess.run(command, check=True, timeout=timeout_seconds)
+    except subprocess.TimeoutExpired:
+        print(
+            f"[pipeline] timeout: command={command_name} config={config_path} "
+            f"exceeded max_time={timeout_seconds}s; continuing to next step"
+        )
+        return {
+            "status": "timed_out",
+            "config": config_path,
+            "timeout_seconds": None if timeout_seconds is None else float(timeout_seconds),
+        }
+    return {
+        "status": "completed",
+        "config": config_path,
+        "returncode": int(completed.returncode),
+    }
+
+
+def _run_optimize_parallel(
+    config_paths: list[str],
+    max_parallel: int,
+    *,
+    timeout_seconds: float | None = None,
+) -> list[dict[str, Any]]:
+    if max_parallel <= 0:
+        raise ValueError("max_parallel must be positive")
+
+    def _run_subprocess(optimize_config_path: str) -> dict[str, Any]:
+        return _run_cli_subprocess(
+            "optimize",
+            optimize_config_path,
+            timeout_seconds=timeout_seconds,
+        )
+
+    results: list[dict[str, Any]] = []
+    with ThreadPoolExecutor(max_workers=max_parallel) as executor:
+        future_to_config = {
+            executor.submit(_run_subprocess, optimize_config_path): optimize_config_path
+            for optimize_config_path in config_paths
+        }
+        for future in as_completed(future_to_config):
+            results.append(future.result())
+    return results
+
+
 def _run_pipeline(config_path: str) -> list[dict[str, Any]]:
     config = load_pipeline_config(config_path)
     ensure_standard_directories()
@@ -298,17 +353,45 @@ def _run_pipeline(config_path: str) -> list[dict[str, Any]]:
 
     for index, step in enumerate(config["steps"], start=1):
         command = str(step["command"])
-        step_config_path = str(step["config"])
-        print(
-            f"[Pipeline:{config['pipeline_name']}] step={index}/{len(config['steps'])} "
-            f"command={command} config={step_config_path}"
-        )
-        result = step_runners[command](step_config_path)
+        if command == "optimize_parallel":
+            step_config_paths = [str(item) for item in step["configs"]]
+            max_parallel = int(step.get("max_parallel", len(step_config_paths)))
+            max_time = step.get("max_time")
+            timeout_seconds = None if max_time is None else float(max_time)
+            print(
+                f"[Pipeline:{config['pipeline_name']}] step={index}/{len(config['steps'])} "
+                f"command={command} n_configs={len(step_config_paths)} max_parallel={max_parallel}"
+                f"{'' if timeout_seconds is None else f' max_time={timeout_seconds}s'}"
+            )
+            result = _run_optimize_parallel(
+                step_config_paths,
+                max_parallel=max_parallel,
+                timeout_seconds=timeout_seconds,
+            )
+            step_config_repr = json.dumps(step_config_paths)
+        else:
+            step_config_path = str(step["config"])
+            max_time = step.get("max_time")
+            timeout_seconds = None if max_time is None else float(max_time)
+            print(
+                f"[Pipeline:{config['pipeline_name']}] step={index}/{len(config['steps'])} "
+                f"command={command} config={step_config_path}"
+                f"{'' if timeout_seconds is None else f' max_time={timeout_seconds}s'}"
+            )
+            if command == "optimize" and timeout_seconds is not None:
+                result = _run_cli_subprocess(
+                    "optimize",
+                    step_config_path,
+                    timeout_seconds=timeout_seconds,
+                )
+            else:
+                result = step_runners[command](step_config_path)
+            step_config_repr = step_config_path
         results.append(
             {
                 "step": index,
                 "command": command,
-                "config": step_config_path,
+                "config": step_config_repr,
                 "result": str(result),
             }
         )

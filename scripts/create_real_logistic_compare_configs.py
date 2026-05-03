@@ -15,6 +15,8 @@ DATASETS = (
 )
 SEEDS = (0, 1, 2, 3, 4)
 STOCHASTIC_SUBSPACE_DIM = 100
+LARGE_SUBSPACE_DIM = 500
+LARGE_ARS_R_DIM = 100
 
 GD_MAX_ITER = 100000
 AGD_MAX_ITER = 100000
@@ -194,6 +196,38 @@ optimizer:
     return run_name, content
 
 
+def _rs_cn_large_config(dataset_slug: str, source: str, seed: int) -> tuple[str, str]:
+    run_name = f"rs_cn_real_logistic_{dataset_slug}_s500_seed{seed}"
+    content = f"""task: optimize
+run_name: {run_name}
+seed: {seed}
+
+{_problem_block(source)}
+optimizer:
+  type: rs_cn
+  max_iter: {RS_MAX_ITER}
+  tol: {TOL}
+{_stagnation_block()}  seed: {seed}
+  subspace_dim: {LARGE_SUBSPACE_DIM}
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-12
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+{_sketch_block()}
+{_optimize_paths(run_name)}"""
+    return run_name, content
+
+
 def _ars_cn_fixed_config(dataset_slug: str, source: str, seed: int) -> tuple[str, str]:
     run_name = f"ars_cn_real_logistic_{dataset_slug}_s100_t100_seed{seed}"
     content = f"""task: optimize
@@ -268,6 +302,94 @@ optimizer:
     mode: T_auto
     T: {ARS_CN_T_AUTO_MAX}
     r: {STOCHASTIC_SUBSPACE_DIM}
+    rk_tol: {rk_tol_value}
+    seed_offset: {_seed_offset(seed)}
+
+{_optimize_paths(run_name)}"""
+    return run_name, content
+
+
+def _ars_cn_small_tauto_config(
+    dataset_slug: str,
+    source: str,
+    seed: int,
+    tol_slug: str,
+    rk_tol_value: str,
+) -> tuple[str, str]:
+    run_name = f"ars_cn_real_logistic_{dataset_slug}_s50_r50_tauto_{tol_slug}_seed{seed}"
+    content = f"""task: optimize
+run_name: {run_name}
+seed: {seed}
+
+{_problem_block(source)}
+optimizer:
+  type: ars_cn
+  max_iter: {ARS_CN_MAX_ITER}
+  tol: {TOL}
+{_stagnation_block()}  seed: {seed}
+  subspace_dim: 50
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+{_sketch_block()}  rk:
+    mode: T_auto
+    T: {ARS_CN_T_AUTO_MAX}
+    r: 50
+    rk_tol: {rk_tol_value}
+    seed_offset: {_seed_offset(seed)}
+
+{_optimize_paths(run_name)}"""
+    return run_name, content
+
+
+def _ars_cn_large_tauto_config(
+    dataset_slug: str,
+    source: str,
+    seed: int,
+    tol_slug: str,
+    rk_tol_value: str,
+) -> tuple[str, str]:
+    run_name = f"ars_cn_real_logistic_{dataset_slug}_s500_r100_tauto_{tol_slug}_seed{seed}"
+    content = f"""task: optimize
+run_name: {run_name}
+seed: {seed}
+
+{_problem_block(source)}
+optimizer:
+  type: ars_cn
+  max_iter: {ARS_CN_MAX_ITER}
+  tol: {TOL}
+{_stagnation_block()}  seed: {seed}
+  subspace_dim: {LARGE_SUBSPACE_DIM}
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+{_sketch_block()}  rk:
+    mode: T_auto
+    T: {ARS_CN_T_AUTO_MAX}
+    r: {LARGE_ARS_R_DIM}
     rk_tol: {rk_tol_value}
     seed_offset: {_seed_offset(seed)}
 
@@ -390,6 +512,15 @@ def _cn_plot_config() -> str:
         )
         body += _aggregate_block(
             [
+                _result_csv(f"rs_cn_real_logistic_{dataset_slug}_s500_seed{seed}")
+                for seed in SEEDS
+            ],
+            "RS-CN s=500",
+            "#212529",
+            "solid",
+        )
+        body += _aggregate_block(
+            [
                 _result_csv(f"ars_cn_real_logistic_{dataset_slug}_s100_t100_seed{seed}")
                 for seed in SEEDS
             ],
@@ -409,6 +540,28 @@ def _cn_plot_config() -> str:
                 "#2b8a3e" if tol_slug == "0p1" else "#9c36b5",
                 "dashed" if tol_slug == "0p1" else "dotted",
             )
+        body += _aggregate_block(
+            [
+                _result_csv(
+                    f"ars_cn_real_logistic_{dataset_slug}_s50_r50_tauto_10m0p5_seed{seed}"
+                )
+                for seed in SEEDS
+            ],
+            "ARS-CN s=50, r=50, T_auto (T<=500, rk_tol=10^-0.5)",
+            "#15aabf",
+            "solid",
+        )
+        body += _aggregate_block(
+            [
+                _result_csv(
+                    f"ars_cn_real_logistic_{dataset_slug}_s500_r100_tauto_10m0p5_seed{seed}"
+                )
+                for seed in SEEDS
+            ],
+            "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)",
+            "#5c7cfa",
+            "dashdot",
+        )
         panel_blocks.append(_panel_block(dataset_label, body))
 
     joined_panels = "\n".join(panel_blocks)
@@ -498,6 +651,11 @@ def _cn_pipeline_config() -> str:
         for seed in SEEDS:
             steps.append(
                 f"""  - command: optimize
+    config: input/optimize/real_logistic_compare/{dataset_slug}/rs_cn_s500_seed{seed}.yml"""
+            )
+        for seed in SEEDS:
+            steps.append(
+                f"""  - command: optimize
     config: input/optimize/real_logistic_compare/{dataset_slug}/ars_cn_s100_t100_seed{seed}.yml"""
             )
         for tol_slug, _rk_tol_value, _rk_tol_label in ARS_CN_T_AUTO_TOLS:
@@ -506,6 +664,16 @@ def _cn_pipeline_config() -> str:
                     f"""  - command: optimize
     config: input/optimize/real_logistic_compare/{dataset_slug}/ars_cn_s100_tauto_{tol_slug}_seed{seed}.yml"""
                 )
+        for seed in SEEDS:
+            steps.append(
+                f"""  - command: optimize
+    config: input/optimize/real_logistic_compare/{dataset_slug}/ars_cn_s50_r50_tauto_10m0p5_seed{seed}.yml"""
+            )
+        for seed in SEEDS:
+            steps.append(
+                f"""  - command: optimize
+    config: input/optimize/real_logistic_compare/{dataset_slug}/ars_cn_s500_r100_tauto_10m0p5_seed{seed}.yml"""
+            )
     steps.append(
         """  - command: plot
     config: input/plot/real_logistic_compare_cn.yml"""
@@ -546,6 +714,11 @@ def main() -> None:
             _write(path, content)
             optimize_paths.append(str(path))
 
+            run_name, content = _rs_cn_large_config(dataset_slug, source, seed)
+            path = dataset_dir / f"rs_cn_s500_seed{seed}.yml"
+            _write(path, content)
+            optimize_paths.append(str(path))
+
             run_name, content = _ars_cn_fixed_config(dataset_slug, source, seed)
             path = dataset_dir / f"ars_cn_s100_t100_seed{seed}.yml"
             _write(path, content)
@@ -562,6 +735,28 @@ def main() -> None:
                 path = dataset_dir / f"ars_cn_s100_tauto_{tol_slug}_seed{seed}.yml"
                 _write(path, content)
                 optimize_paths.append(str(path))
+
+            run_name, content = _ars_cn_small_tauto_config(
+                dataset_slug,
+                source,
+                seed,
+                "10m0p5",
+                "0.31622776601683794",
+            )
+            path = dataset_dir / f"ars_cn_s50_r50_tauto_10m0p5_seed{seed}.yml"
+            _write(path, content)
+            optimize_paths.append(str(path))
+
+            run_name, content = _ars_cn_large_tauto_config(
+                dataset_slug,
+                source,
+                seed,
+                "10m0p5",
+                "0.31622776601683794",
+            )
+            path = dataset_dir / f"ars_cn_s500_r100_tauto_10m0p5_seed{seed}.yml"
+            _write(path, content)
+            optimize_paths.append(str(path))
 
     _write(PIPELINE_ROOT / "real_logistic_compare_rn.yml", _rn_pipeline_config(optimize_paths))
     _write(PIPELINE_ROOT / "real_logistic_compare_cn.yml", _cn_pipeline_config())

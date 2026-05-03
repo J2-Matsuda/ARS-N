@@ -1,0 +1,14 @@
+task: generate_data
+run_name: madelon_reg1e-3_mfull
+seed: 0
+problem:
+  type: logistic
+  source_format: libsvm
+  raw_source: data/raw/libsvm/madelon
+  download_if_missing: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/madelon
+  n_features: 500
+  index_base: 1
+  reg_lambda: 0.001
+save:
+  path: data/generated/exp/madelon_reg1e-3_mfull.npz

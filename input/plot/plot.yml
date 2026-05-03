@@ -47,6 +47,10 @@ plot:
   y: grad_norm
   xscale: linear
   yscale: log
+  # xlim: [0, 1000]
+  # ylim: [1.0e-8, 1.0e0]
+  # null can be used for one-sided limits:
+  # xlim: [null, 1000]
   title: "epsilon: ARS-CN vs RS-CN"
   xlabel: cumulative_time
   ylabel: grad_norm

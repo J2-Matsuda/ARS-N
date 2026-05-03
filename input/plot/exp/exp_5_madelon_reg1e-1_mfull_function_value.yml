@@ -1,0 +1,192 @@
+task: plot
+plot_name: exp_5_madelon_reg1e-1_mfull_function_value
+inputs:
+- paths:
+  - output/results/rs_cn_madelon_reg1e-1_mfull_s100_seed0/rs_cn_madelon_reg1e-1_mfull_s100_seed0.csv
+  - output/results/rs_cn_madelon_reg1e-1_mfull_s100_seed1/rs_cn_madelon_reg1e-1_mfull_s100_seed1.csv
+  - output/results/rs_cn_madelon_reg1e-1_mfull_s100_seed2/rs_cn_madelon_reg1e-1_mfull_s100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-CN s=100
+  color: '#495057'
+  linestyle: dashdot
+- paths:
+  - output/results/rs_cn_madelon_reg1e-1_mfull_s200_seed0/rs_cn_madelon_reg1e-1_mfull_s200_seed0.csv
+  - output/results/rs_cn_madelon_reg1e-1_mfull_s200_seed1/rs_cn_madelon_reg1e-1_mfull_s200_seed1.csv
+  - output/results/rs_cn_madelon_reg1e-1_mfull_s200_seed2/rs_cn_madelon_reg1e-1_mfull_s200_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-CN s=200
+  color: '#212529'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r50_t50_seed0/ars_cn_madelon_reg1e-1_mfull_s100_r50_t50_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r50_t50_seed1/ars_cn_madelon_reg1e-1_mfull_s100_r50_t50_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r50_t50_seed2/ars_cn_madelon_reg1e-1_mfull_s100_r50_t50_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=100, r=50, T=50
+  color: '#d9480f'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r50_t100_seed0/ars_cn_madelon_reg1e-1_mfull_s100_r50_t100_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r50_t100_seed1/ars_cn_madelon_reg1e-1_mfull_s100_r50_t100_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r50_t100_seed2/ars_cn_madelon_reg1e-1_mfull_s100_r50_t100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=100, r=50, T=100
+  color: '#f08c00'
+  linestyle: dashed
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r100_t50_seed0/ars_cn_madelon_reg1e-1_mfull_s100_r100_t50_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r100_t50_seed1/ars_cn_madelon_reg1e-1_mfull_s100_r100_t50_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r100_t50_seed2/ars_cn_madelon_reg1e-1_mfull_s100_r100_t50_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=100, r=100, T=50
+  color: '#1971c2'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r100_t100_seed0/ars_cn_madelon_reg1e-1_mfull_s100_r100_t100_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r100_t100_seed1/ars_cn_madelon_reg1e-1_mfull_s100_r100_t100_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r100_t100_seed2/ars_cn_madelon_reg1e-1_mfull_s100_r100_t100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=100, r=100, T=100
+  color: '#1c7ed6'
+  linestyle: dashed
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r200_t50_seed0/ars_cn_madelon_reg1e-1_mfull_s100_r200_t50_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r200_t50_seed1/ars_cn_madelon_reg1e-1_mfull_s100_r200_t50_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r200_t50_seed2/ars_cn_madelon_reg1e-1_mfull_s100_r200_t50_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=100, r=200, T=50
+  color: '#0b7285'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r200_t100_seed0/ars_cn_madelon_reg1e-1_mfull_s100_r200_t100_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r200_t100_seed1/ars_cn_madelon_reg1e-1_mfull_s100_r200_t100_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s100_r200_t100_seed2/ars_cn_madelon_reg1e-1_mfull_s100_r200_t100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=100, r=200, T=100
+  color: '#1098ad'
+  linestyle: dashed
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r50_t50_seed0/ars_cn_madelon_reg1e-1_mfull_s200_r50_t50_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r50_t50_seed1/ars_cn_madelon_reg1e-1_mfull_s200_r50_t50_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r50_t50_seed2/ars_cn_madelon_reg1e-1_mfull_s200_r50_t50_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=200, r=50, T=50
+  color: '#5f3dc4'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r50_t100_seed0/ars_cn_madelon_reg1e-1_mfull_s200_r50_t100_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r50_t100_seed1/ars_cn_madelon_reg1e-1_mfull_s200_r50_t100_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r50_t100_seed2/ars_cn_madelon_reg1e-1_mfull_s200_r50_t100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=200, r=50, T=100
+  color: '#7950f2'
+  linestyle: dashed
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r100_t50_seed0/ars_cn_madelon_reg1e-1_mfull_s200_r100_t50_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r100_t50_seed1/ars_cn_madelon_reg1e-1_mfull_s200_r100_t50_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r100_t50_seed2/ars_cn_madelon_reg1e-1_mfull_s200_r100_t50_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=200, r=100, T=50
+  color: '#2b8a3e'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r100_t100_seed0/ars_cn_madelon_reg1e-1_mfull_s200_r100_t100_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r100_t100_seed1/ars_cn_madelon_reg1e-1_mfull_s200_r100_t100_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r100_t100_seed2/ars_cn_madelon_reg1e-1_mfull_s200_r100_t100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=200, r=100, T=100
+  color: '#37b24d'
+  linestyle: dashed
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r200_t50_seed0/ars_cn_madelon_reg1e-1_mfull_s200_r200_t50_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r200_t50_seed1/ars_cn_madelon_reg1e-1_mfull_s200_r200_t50_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r200_t50_seed2/ars_cn_madelon_reg1e-1_mfull_s200_r200_t50_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=200, r=200, T=50
+  color: '#c92a2a'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r200_t100_seed0/ars_cn_madelon_reg1e-1_mfull_s200_r200_t100_seed0.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r200_t100_seed1/ars_cn_madelon_reg1e-1_mfull_s200_r200_t100_seed1.csv
+  - output/results/ars_cn_madelon_reg1e-1_mfull_s200_r200_t100_seed2/ars_cn_madelon_reg1e-1_mfull_s200_r200_t100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=200, r=200, T=100
+  color: '#f03e3e'
+  linestyle: dashed
+- paths:
+  - output/results/rs_rn_madelon_reg1e-1_mfull_s100_seed0/rs_rn_madelon_reg1e-1_mfull_s100_seed0.csv
+  - output/results/rs_rn_madelon_reg1e-1_mfull_s100_seed1/rs_rn_madelon_reg1e-1_mfull_s100_seed1.csv
+  - output/results/rs_rn_madelon_reg1e-1_mfull_s100_seed2/rs_rn_madelon_reg1e-1_mfull_s100_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-RN s=100
+  color: '#fd7e14'
+  linestyle: dotted
+- paths:
+  - output/results/rs_rn_madelon_reg1e-1_mfull_s200_seed0/rs_rn_madelon_reg1e-1_mfull_s200_seed0.csv
+  - output/results/rs_rn_madelon_reg1e-1_mfull_s200_seed1/rs_rn_madelon_reg1e-1_mfull_s200_seed1.csv
+  - output/results/rs_rn_madelon_reg1e-1_mfull_s200_seed2/rs_rn_madelon_reg1e-1_mfull_s200_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-RN s=200
+  color: '#e8590c'
+  linestyle: dotted
+plot:
+  x: cumulative_time
+  y: f
+  xscale: linear
+  yscale: linear
+  title: 'exp_5: madelon reg=1e-1 m=full'
+  xlabel: cumulative_time
+  ylabel: function_value
+  grid: true
+  skip_missing: true
+save:
+  path: output/plots/exp/exp_5_madelon_reg1e-1_mfull_function_value.png
+  dpi: 180

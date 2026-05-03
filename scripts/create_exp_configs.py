@@ -126,9 +126,9 @@ seed: 0
 problem:
   type: mlp_multilabel_logistic
   dataset_name: UNFAIR-ToS
-  source_format: multilabel_libsvm
-  raw_source: data/raw/multilabel/UNFAIR-ToS.txt
-  download_if_missing: false
+  source_format: lexglue_unfair_tos_tfidf
+  raw_source: data/raw/lexglue/unfair_tos
+  download_if_missing: true
   n_features: 6290
   num_labels: 8
   sample_size: 5532

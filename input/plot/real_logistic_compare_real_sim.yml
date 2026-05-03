@@ -34,6 +34,10 @@ inputs:
     label: "RS-CN s=100"
     color: "#212529"
     linestyle: dashdot
+  - path: output/results/rs_cn_real_logistic_real_sim_s500_seed0/rs_cn_real_logistic_real_sim_s500_seed0.csv
+    label: "RS-CN s=500"
+    color: "#343a40"
+    linestyle: solid
   - path: output/results/ars_cn_real_logistic_real_sim_s10_t50_seed0/ars_cn_real_logistic_real_sim_s10_t50_seed0.csv
     label: "ARS-CN s=r=10, T=50"
     color: "#74b816"
@@ -50,6 +54,10 @@ inputs:
     label: "ARS-CN s=r=50, T=100"
     color: "#1971c2"
     linestyle: solid
+  - path: output/results/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed0/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed0.csv
+    label: "ARS-CN s=50, r=50, T_auto (T<=500, rk_tol=10^-0.5)"
+    color: "#15aabf"
+    linestyle: dashdot
   - path: output/results/ars_cn_real_logistic_real_sim_s100_t50_seed0/ars_cn_real_logistic_real_sim_s100_t50_seed0.csv
     label: "ARS-CN s=r=100, T=50"
     color: "#9c36b5"
@@ -66,6 +74,10 @@ inputs:
     label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=10^-0.5)"
     color: "#862e9c"
     linestyle: dashdot
+  - path: output/results/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed0/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed0.csv
+    label: "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+    color: "#5c7cfa"
+    linestyle: dashed
 
 plot:
   x: cumulative_time

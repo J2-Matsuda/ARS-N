@@ -1,0 +1,54 @@
+task: pipeline
+pipeline_name: real_logistic_compare_rn
+
+steps:
+  - command: generate
+    config: input/generate_data/real_logistic/gisette.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/agd_unknown.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/rs_rn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/rs_rn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/rs_rn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/rs_rn_s100_seed3.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/rs_rn_s100_seed4.yml
+  - command: generate
+    config: input/generate_data/real_logistic/epsilon_normalized.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/agd_unknown.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s100_seed3.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s100_seed4.yml
+  - command: generate
+    config: input/generate_data/real_logistic/real_sim.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/gd.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/agd_unknown.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed3.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed4.yml
+  - command: plot
+    config: input/plot/real_logistic_compare_rn.yml

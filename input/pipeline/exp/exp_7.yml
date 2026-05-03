@@ -1,0 +1,98 @@
+task: pipeline
+pipeline_name: exp_7
+steps:
+# - command: generate_data
+#   config: input/generate_data/exp/flickr_deepwalk_m20000_lam1e-3.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s100_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s100_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s100_seed2.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s200_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s200_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s200_seed2.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s500_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s500_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_cn_s500_seed2.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s100_r100_t100_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s100_r100_t100_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s100_r100_t100_seed2.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s200_r200_t100_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s200_r200_t100_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s200_r200_t100_seed2.yml
+
+# - command: plot
+#   config: input/plot/exp/exp_7_flickr_deepwalk_m20000_lam1e-3_grad_norm.yml
+# - command: plot
+#   config: input/plot/exp/exp_7_flickr_deepwalk_m20000_lam1e-3_function_value.yml
+
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s500_r500_t100_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s500_r500_t100_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s500_r500_t100_seed2.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s500_r50_t50_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s500_r50_t50_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/ars_cn_s500_r50_t50_seed2.yml
+
+- command: plot
+  config: input/plot/exp/exp_7_flickr_deepwalk_m20000_lam1e-3_grad_norm.yml
+- command: plot
+  config: input/plot/exp/exp_7_flickr_deepwalk_m20000_lam1e-3_function_value.yml
+
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 10000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/gd_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/gd_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/gd_seed2.yml
+- command: optimize_parallel
+  max_parallel: 3
+  max_time: 6000
+  configs:
+  - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s100_seed0.yml
+  - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s100_seed1.yml
+  - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s100_seed2.yml
+- command: optimize_parallel
+  max_parallel: 3
+  max_time: 6000
+  configs:
+  - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s200_seed0.yml
+  - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s200_seed1.yml
+  - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s200_seed2.yml
+# - command: optimize_parallel
+#   max_parallel: 3
+#   max_time: 6000
+#   configs:
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s500_seed0.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s500_seed1.yml
+#   - input/optimize/exp/exp_7_flickr_deepwalk_m20000_lam1e-3/rs_rn_s500_seed2.yml
+- command: plot
+  config: input/plot/exp/exp_7_flickr_deepwalk_m20000_lam1e-3_grad_norm.yml
+- command: plot
+  config: input/plot/exp/exp_7_flickr_deepwalk_m20000_lam1e-3_function_value.yml

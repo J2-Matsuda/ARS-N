@@ -1,0 +1,1936 @@
+task: pipeline
+pipeline_name: candidate_multilabel_screen
+
+steps:
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_line_m20000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_line_m20000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_line_m20000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_line_m20000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_line_m20000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m20000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_line_m20000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_line_m50000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_line_m50000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_line_m50000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_line_m50000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_line_m50000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_line_m50000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_line_m50000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_node2vec_m20000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_node2vec_m20000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_node2vec_m20000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_node2vec_m50000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/ppi_node2vec_m50000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_deepwalk_m20000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_deepwalk_m50000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_line_m20000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_line_m20000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_line_m20000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_line_m20000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_line_m20000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m20000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_line_m20000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_line_m50000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_line_m50000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_line_m50000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_line_m50000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_line_m50000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_line_m50000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_line_m50000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_node2vec_m20000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_node2vec_m20000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_node2vec_m20000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_node2vec_m50000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_node2vec_m50000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/flickr_node2vec_m50000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/delicious_m8000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/delicious_m8000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/delicious_m8000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/delicious_m8000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/delicious_m8000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m8000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/delicious_m8000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/delicious_m16000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/delicious_m16000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/delicious_m16000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/delicious_m16000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/delicious_m16000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/delicious_m16000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/delicious_m16000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/bibtex_m4000_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/bibtex_m4000_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/bibtex_m4000_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/bibtex_m4000_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/bibtex_m4000_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m4000_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/bibtex_m4000_lam1p0em4_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/bibtex_m7395_lam1p0em2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em2/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/bibtex_m7395_lam1p0em2_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/bibtex_m7395_lam1p0em3.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em3/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/bibtex_m7395_lam1p0em3_grad_norm.yml
+  - command: generate_data
+    config: input/generate_data/candidate_multilabel/bibtex_m7395_lam1p0em4.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s50_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s50_r50_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s100_r100_t50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s100_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s200_r100_t100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s50_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s100_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s200_seed1.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s50_r50_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s100_r100_t50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s100_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/ars_cn_s200_r100_t100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s50_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s100_seed2.yml
+  - command: optimize
+    config: input/optimize/candidate_multilabel/bibtex_m7395_lam1p0em4/rs_cn_s200_seed2.yml
+  - command: plot
+    config: input/plot/candidate_multilabel/bibtex_m7395_lam1p0em4_grad_norm.yml

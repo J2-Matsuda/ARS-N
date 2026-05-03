@@ -74,23 +74,19 @@ def _common_grid(
     if all(x.shape == first_x.shape and np.allclose(x, first_x) for x, _ in series):
         return first_x, np.vstack([y for _, y in series])
 
-    lower = max(float(x[0]) for x, _ in series)
-    upper = min(float(x[-1]) for x, _ in series)
-    if lower > upper:
-        raise ValueError("Input series do not have an overlapping x range")
+    full_lower = min(float(x[0]) for x, _ in series)
+    full_upper = max(float(x[-1]) for x, _ in series)
+    overlap_lower = max(float(x[0]) for x, _ in series)
+    overlap_upper = min(float(x[-1]) for x, _ in series)
+    grid_mode = str(aggregate_config.get("grid", "union")).lower()
 
-    if lower == upper:
-        x_grid = np.asarray([lower], dtype=float)
-    else:
-        grid_mode = str(aggregate_config.get("grid", "first")).lower()
-        if grid_mode == "linspace":
-            default_points = min(x.size for x, _ in series)
-            n_points = max(2, int(aggregate_config.get("num_points", default_points)))
-            x_grid = np.linspace(lower, upper, n_points)
-        elif grid_mode == "union":
-            x_grid = np.unique(
-                np.concatenate([x[(x >= lower) & (x <= upper)] for x, _ in series])
-            )
+    if grid_mode == "overlap":
+        lower = overlap_lower
+        upper = overlap_upper
+        if lower > upper:
+            raise ValueError("Input series do not have an overlapping x range")
+        if lower == upper:
+            x_grid = np.asarray([lower], dtype=float)
         else:
             candidate = first_x[(first_x >= lower) & (first_x <= upper)]
             if candidate.size >= 2:
@@ -98,9 +94,116 @@ def _common_grid(
             else:
                 n_points = max(2, min(x.size for x, _ in series))
                 x_grid = np.linspace(lower, upper, n_points)
+    elif grid_mode == "linspace":
+        if full_lower == full_upper:
+            x_grid = np.asarray([full_lower], dtype=float)
+        else:
+            default_points = max(x.size for x, _ in series)
+            n_points = max(2, int(aggregate_config.get("num_points", default_points)))
+            x_grid = np.linspace(full_lower, full_upper, n_points)
+    elif grid_mode in {"first", "union"}:
+        if grid_mode == "first":
+            x_grid = first_x
+        else:
+            x_grid = np.unique(np.concatenate([x for x, _ in series]))
+    else:
+        raise ValueError(
+            f"Unsupported aggregate.grid {grid_mode!r}. Available: union, first, linspace, overlap"
+        )
 
-    y_stack = np.vstack([np.interp(x_grid, x, y) for x, y in series])
+    y_stack_rows: list[np.ndarray] = []
+    for x, y in series:
+        y_interp = np.full(x_grid.shape, np.nan, dtype=float)
+        valid = (x_grid >= float(x[0])) & (x_grid <= float(x[-1]))
+        if np.any(valid):
+            y_interp[valid] = np.interp(x_grid[valid], x, y)
+        y_stack_rows.append(y_interp)
+    y_stack = np.vstack(y_stack_rows)
     return x_grid, y_stack
+
+
+def _monotone_decreasing_xy(
+    x_values: np.ndarray,
+    y_values: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    if x_values.size != y_values.size:
+        raise ValueError("x and y series must have the same length")
+    if x_values.size == 0:
+        raise ValueError("series must contain at least one point")
+
+    order = np.argsort(x_values)
+    x_sorted = x_values[order]
+    y_sorted = y_values[order]
+    y_monotone = np.minimum.accumulate(y_sorted)
+
+    x_rev = x_sorted[::-1]
+    y_rev = y_monotone[::-1]
+    unique_y, unique_indices = np.unique(y_rev, return_index=True)
+    return x_rev[unique_indices], unique_y
+
+
+def _common_y_grid(
+    series: list[tuple[np.ndarray, np.ndarray]],
+    aggregate_config: Mapping[str, Any],
+    y_scale: str,
+) -> tuple[np.ndarray, np.ndarray]:
+    monotone_series = [_monotone_decreasing_xy(x, y) for x, y in series]
+    first_x, first_y = monotone_series[0]
+    if all(y.shape == first_y.shape and np.allclose(y, first_y) for _, y in monotone_series):
+        return first_y, np.vstack([x for x, _ in monotone_series])
+
+    full_lower = min(float(y[0]) for _, y in monotone_series)
+    full_upper = max(float(y[-1]) for _, y in monotone_series)
+    overlap_lower = max(float(y[0]) for _, y in monotone_series)
+    overlap_upper = min(float(y[-1]) for _, y in monotone_series)
+    grid_mode = str(aggregate_config.get("grid", "union")).lower()
+
+    if grid_mode == "overlap":
+        lower = overlap_lower
+        upper = overlap_upper
+        if lower > upper:
+            raise ValueError("Input series do not have an overlapping y range")
+        if lower == upper:
+            y_grid = np.asarray([lower], dtype=float)
+        else:
+            candidate = first_y[(first_y >= lower) & (first_y <= upper)]
+            if candidate.size >= 2:
+                y_grid = candidate
+            else:
+                n_points = max(2, min(y.size for _, y in monotone_series))
+                if y_scale == "log" and lower > 0.0 and upper > 0.0:
+                    y_grid = np.geomspace(lower, upper, n_points)
+                else:
+                    y_grid = np.linspace(lower, upper, n_points)
+    elif grid_mode == "linspace":
+        if full_lower == full_upper:
+            y_grid = np.asarray([full_lower], dtype=float)
+        else:
+            default_points = max(y.size for _, y in monotone_series)
+            n_points = max(2, int(aggregate_config.get("num_points", default_points)))
+            if y_scale == "log" and full_lower > 0.0 and full_upper > 0.0:
+                y_grid = np.geomspace(full_lower, full_upper, n_points)
+            else:
+                y_grid = np.linspace(full_lower, full_upper, n_points)
+    elif grid_mode in {"first", "union"}:
+        if grid_mode == "first":
+            y_grid = first_y
+        else:
+            y_grid = np.unique(np.concatenate([y for _, y in monotone_series]))
+    else:
+        raise ValueError(
+            f"Unsupported aggregate.grid {grid_mode!r}. Available: union, first, linspace, overlap"
+        )
+
+    x_stack_rows: list[np.ndarray] = []
+    for x, y in monotone_series:
+        x_interp = np.full(y_grid.shape, np.nan, dtype=float)
+        valid = (y_grid >= float(y[0])) & (y_grid <= float(y[-1]))
+        if np.any(valid):
+            x_interp[valid] = np.interp(y_grid[valid], y, x)
+        x_stack_rows.append(x_interp)
+    x_stack = np.vstack(x_stack_rows)
+    return y_grid, x_stack
 
 
 def _aggregate_xy_series(
@@ -108,7 +211,8 @@ def _aggregate_xy_series(
     x_key: str,
     y_key: str,
     aggregate_config: Mapping[str, Any],
-) -> tuple[np.ndarray, np.ndarray, np.ndarray | None, np.ndarray | None]:
+    y_scale: str,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray | None, np.ndarray | None, str]:
     series: list[tuple[np.ndarray, np.ndarray]] = []
     for path in paths:
         x_values, y_values = _load_xy_series(path, x_key=x_key, y_key=y_key)
@@ -117,12 +221,56 @@ def _aggregate_xy_series(
     if not series:
         raise ValueError("Grouped plot input must contain at least one path")
 
+    aggregate_direction = str(aggregate_config.get("direction", "x")).lower()
+    if aggregate_direction == "x":
+        y_grid, x_stack = _common_y_grid(series, aggregate_config, y_scale=y_scale)
+        center = str(aggregate_config.get("center", "mean")).lower()
+        if center == "median":
+            x_center = np.nanmedian(x_stack, axis=0)
+        elif center == "mean":
+            x_center = np.nanmean(x_stack, axis=0)
+        else:
+            raise ValueError(
+                f"Unsupported aggregate.center {center!r}. Available: mean, median"
+            )
+
+        band = str(aggregate_config.get("band", "minmax")).lower()
+        if band in {"none", "false", "off"} or len(series) == 1:
+            return x_center, y_grid, None, None, "x"
+        if band in {"minmax", "range"}:
+            x_lower = np.nanmin(x_stack, axis=0)
+            x_upper = np.nanmax(x_stack, axis=0)
+        elif band == "std":
+            x_std = np.nanstd(x_stack, axis=0, ddof=1 if len(series) > 1 else 0)
+            x_lower = x_center - x_std
+            x_upper = x_center + x_std
+        elif band == "sem":
+            counts = np.sum(~np.isnan(x_stack), axis=0).astype(float)
+            x_std = np.nanstd(x_stack, axis=0, ddof=1 if len(series) > 1 else 0)
+            x_sem = x_std / np.sqrt(counts)
+            x_lower = x_center - x_sem
+            x_upper = x_center + x_sem
+        else:
+            raise ValueError(
+                f"Unsupported aggregate.band {band!r}. Available: minmax, std, sem, none"
+            )
+
+        counts = np.sum(~np.isnan(x_stack), axis=0)
+        insufficient = counts == 0
+        x_center[insufficient] = np.nan
+        x_lower[insufficient] = np.nan
+        x_upper[insufficient] = np.nan
+        return x_center, y_grid, x_lower, x_upper, "x"
+
+    if aggregate_direction != "y":
+        raise ValueError("aggregate.direction must be either 'x' or 'y'")
+
     x_grid, y_stack = _common_grid(series, aggregate_config)
     center = str(aggregate_config.get("center", "mean")).lower()
     if center == "median":
-        y_center = np.median(y_stack, axis=0)
+        y_center = np.nanmedian(y_stack, axis=0)
     elif center == "mean":
-        y_center = np.mean(y_stack, axis=0)
+        y_center = np.nanmean(y_stack, axis=0)
     else:
         raise ValueError(f"Unsupported aggregate.center {center!r}. Available: mean, median")
 
@@ -130,15 +278,16 @@ def _aggregate_xy_series(
     if band in {"none", "false", "off"} or len(series) == 1:
         return x_grid, y_center, None, None
     if band in {"minmax", "range"}:
-        y_lower = np.min(y_stack, axis=0)
-        y_upper = np.max(y_stack, axis=0)
+        y_lower = np.nanmin(y_stack, axis=0)
+        y_upper = np.nanmax(y_stack, axis=0)
     elif band == "std":
-        y_std = np.std(y_stack, axis=0, ddof=1 if len(series) > 1 else 0)
+        y_std = np.nanstd(y_stack, axis=0, ddof=1 if len(series) > 1 else 0)
         y_lower = y_center - y_std
         y_upper = y_center + y_std
     elif band == "sem":
-        y_std = np.std(y_stack, axis=0, ddof=1 if len(series) > 1 else 0)
-        y_sem = y_std / np.sqrt(float(len(series)))
+        counts = np.sum(~np.isnan(y_stack), axis=0).astype(float)
+        y_std = np.nanstd(y_stack, axis=0, ddof=1 if len(series) > 1 else 0)
+        y_sem = y_std / np.sqrt(counts)
         y_lower = y_center - y_sem
         y_upper = y_center + y_sem
     else:
@@ -146,7 +295,14 @@ def _aggregate_xy_series(
             f"Unsupported aggregate.band {band!r}. Available: minmax, std, sem, none"
         )
 
-    return x_grid, y_center, y_lower, y_upper
+    counts = np.sum(~np.isnan(y_stack), axis=0)
+    insufficient = counts == 0
+    y_center[insufficient] = np.nan
+    if y_lower is not None and y_upper is not None:
+        y_lower[insufficient] = np.nan
+        y_upper[insufficient] = np.nan
+
+    return x_grid, y_center, y_lower, y_upper, "y"
 
 
 def _coerce_path_list(value: Any, context: str) -> list[str | Path]:
@@ -225,11 +381,12 @@ def _plot_inputs_on_axis(
                 )
             label = str(item.get("label", Path(str(csv_paths[0])).stem))
             aggregate_config = dict(item.get("aggregate", {}))
-            x_values, y_values, y_lower, y_upper = _aggregate_xy_series(
+            x_values, y_values, y_lower, y_upper, band_direction = _aggregate_xy_series(
                 paths=csv_paths,
                 x_key=x_key,
                 y_key=y_key,
                 aggregate_config=aggregate_config,
+                y_scale=str(plot_config.get("yscale", "linear")).lower(),
             )
         elif "path" in item:
             csv_path = resolve_project_path(item["path"])
@@ -243,6 +400,7 @@ def _plot_inputs_on_axis(
             y_lower = None
             y_upper = None
             aggregate_config = {}
+            band_direction = "y"
         else:
             raise ValueError("Each plot input must contain either 'path' or 'paths'")
 
@@ -255,25 +413,38 @@ def _plot_inputs_on_axis(
         plotted_count += 1
         if y_lower is not None and y_upper is not None:
             band_alpha = float(aggregate_config.get("alpha", item.get("band_alpha", 0.18)))
-            ax.fill_between(
-                x_values,
-                y_lower,
-                y_upper,
-                color=line.get_color(),
-                alpha=band_alpha,
-                linewidth=0.0,
-                label="_nolegend_",
-            )
+            if band_direction == "x":
+                ax.fill_betweenx(
+                    y_values,
+                    y_lower,
+                    y_upper,
+                    color=line.get_color(),
+                    alpha=band_alpha,
+                    linewidth=0.0,
+                    label="_nolegend_",
+                )
+            else:
+                ax.fill_between(
+                    x_values,
+                    y_lower,
+                    y_upper,
+                    color=line.get_color(),
+                    alpha=band_alpha,
+                    linewidth=0.0,
+                    label="_nolegend_",
+                )
 
     ax.set_xscale(str(plot_config.get("xscale", "linear")))
     ax.set_yscale(str(plot_config.get("yscale", "linear")))
     ax.set_title(str(plot_config.get("title", "")))
     ax.set_xlabel(str(plot_config.get("xlabel", x_key)))
     ax.set_ylabel(str(plot_config.get("ylabel", y_key)))
-    if "x_limit" in plot_config:
-        ax.set_xlim(*_resolve_axis_limits(plot_config["x_limit"], "plot.x_limit"))
-    if "y_limit" in plot_config:
-        ax.set_ylim(*_resolve_axis_limits(plot_config["y_limit"], "plot.y_limit"))
+    x_limit_key = "x_limit" if "x_limit" in plot_config else "xlim" if "xlim" in plot_config else None
+    y_limit_key = "y_limit" if "y_limit" in plot_config else "ylim" if "ylim" in plot_config else None
+    if x_limit_key is not None:
+        ax.set_xlim(*_resolve_axis_limits(plot_config[x_limit_key], f"plot.{x_limit_key}"))
+    if y_limit_key is not None:
+        ax.set_ylim(*_resolve_axis_limits(plot_config[y_limit_key], f"plot.{y_limit_key}"))
     if bool(plot_config.get("grid", False)):
         ax.grid(True, alpha=0.3)
     return plotted_count

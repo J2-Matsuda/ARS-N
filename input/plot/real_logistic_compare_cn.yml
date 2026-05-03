@@ -1,0 +1,332 @@
+task: plot
+plot_name: real_logistic_compare_cn
+
+panels:
+  - title: "gisette"
+    inputs:
+      - path: output/results/gd_real_logistic_gisette/gd_real_logistic_gisette.csv
+        label: "GD"
+        color: "#111111"
+        linestyle: solid
+      - path: output/results/agd_unknown_real_logistic_gisette/agd_unknown_real_logistic_gisette.csv
+        label: "AGD-Unknown"
+        color: "#1c7ed6"
+        linestyle: dashdot
+      - paths:
+          - output/results/rs_cn_real_logistic_gisette_s100_seed0/rs_cn_real_logistic_gisette_s100_seed0.csv
+          - output/results/rs_cn_real_logistic_gisette_s100_seed1/rs_cn_real_logistic_gisette_s100_seed1.csv
+          - output/results/rs_cn_real_logistic_gisette_s100_seed2/rs_cn_real_logistic_gisette_s100_seed2.csv
+          - output/results/rs_cn_real_logistic_gisette_s100_seed3/rs_cn_real_logistic_gisette_s100_seed3.csv
+          - output/results/rs_cn_real_logistic_gisette_s100_seed4/rs_cn_real_logistic_gisette_s100_seed4.csv
+        label: "RS-CN s=100"
+        color: "#495057"
+        linestyle: dashdot
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/rs_cn_real_logistic_gisette_s500_seed0/rs_cn_real_logistic_gisette_s500_seed0.csv
+          - output/results/rs_cn_real_logistic_gisette_s500_seed1/rs_cn_real_logistic_gisette_s500_seed1.csv
+          - output/results/rs_cn_real_logistic_gisette_s500_seed2/rs_cn_real_logistic_gisette_s500_seed2.csv
+          - output/results/rs_cn_real_logistic_gisette_s500_seed3/rs_cn_real_logistic_gisette_s500_seed3.csv
+          - output/results/rs_cn_real_logistic_gisette_s500_seed4/rs_cn_real_logistic_gisette_s500_seed4.csv
+        label: "RS-CN s=500"
+        color: "#212529"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_gisette_s100_t100_seed0/ars_cn_real_logistic_gisette_s100_t100_seed0.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_t100_seed1/ars_cn_real_logistic_gisette_s100_t100_seed1.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_t100_seed2/ars_cn_real_logistic_gisette_s100_t100_seed2.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_t100_seed3/ars_cn_real_logistic_gisette_s100_t100_seed3.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_t100_seed4/ars_cn_real_logistic_gisette_s100_t100_seed4.csv
+        label: "ARS-CN s=r=100, T=100"
+        color: "#d9480f"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed0/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed0.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed1/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed1.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed2/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed2.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed3/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed3.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed4/ars_cn_real_logistic_gisette_s100_tauto_0p1_seed4.csv
+        label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=0.1)"
+        color: "#2b8a3e"
+        linestyle: dashed
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed0/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed1/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed2/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed3/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed4/ars_cn_real_logistic_gisette_s100_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#9c36b5"
+        linestyle: dotted
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed0/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed1/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed2/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed3/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed4/ars_cn_real_logistic_gisette_s50_r50_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=50, r=50, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#15aabf"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed0/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed1/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed2/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed3/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed4/ars_cn_real_logistic_gisette_s500_r100_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#5c7cfa"
+        linestyle: dashdot
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+
+  - title: "epsilon"
+    inputs:
+      - path: output/results/gd_real_logistic_epsilon_normalized/gd_real_logistic_epsilon_normalized.csv
+        label: "GD"
+        color: "#111111"
+        linestyle: solid
+      - path: output/results/agd_unknown_real_logistic_epsilon_normalized/agd_unknown_real_logistic_epsilon_normalized.csv
+        label: "AGD-Unknown"
+        color: "#1c7ed6"
+        linestyle: dashdot
+      - paths:
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s100_seed0/rs_cn_real_logistic_epsilon_normalized_s100_seed0.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s100_seed1/rs_cn_real_logistic_epsilon_normalized_s100_seed1.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s100_seed2/rs_cn_real_logistic_epsilon_normalized_s100_seed2.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s100_seed3/rs_cn_real_logistic_epsilon_normalized_s100_seed3.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s100_seed4/rs_cn_real_logistic_epsilon_normalized_s100_seed4.csv
+        label: "RS-CN s=100"
+        color: "#495057"
+        linestyle: dashdot
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s500_seed0/rs_cn_real_logistic_epsilon_normalized_s500_seed0.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s500_seed1/rs_cn_real_logistic_epsilon_normalized_s500_seed1.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s500_seed2/rs_cn_real_logistic_epsilon_normalized_s500_seed2.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s500_seed3/rs_cn_real_logistic_epsilon_normalized_s500_seed3.csv
+          - output/results/rs_cn_real_logistic_epsilon_normalized_s500_seed4/rs_cn_real_logistic_epsilon_normalized_s500_seed4.csv
+        label: "RS-CN s=500"
+        color: "#212529"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed0/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed0.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed1/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed1.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed2/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed2.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed3/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed3.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed4/ars_cn_real_logistic_epsilon_normalized_s100_t100_seed4.csv
+        label: "ARS-CN s=r=100, T=100"
+        color: "#d9480f"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed0/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed0.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed1/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed1.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed2/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed2.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed3/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed3.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed4/ars_cn_real_logistic_epsilon_normalized_s100_tauto_0p1_seed4.csv
+        label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=0.1)"
+        color: "#2b8a3e"
+        linestyle: dashed
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed0/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed1/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed2/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed3/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed4/ars_cn_real_logistic_epsilon_normalized_s100_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#9c36b5"
+        linestyle: dotted
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed0/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed1/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed2/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed3/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed4/ars_cn_real_logistic_epsilon_normalized_s50_r50_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=50, r=50, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#15aabf"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed0/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed1/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed2/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed3/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed4/ars_cn_real_logistic_epsilon_normalized_s500_r100_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#5c7cfa"
+        linestyle: dashdot
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+
+  - title: "real_sim"
+    inputs:
+      - path: output/results/gd_real_logistic_real_sim/gd_real_logistic_real_sim.csv
+        label: "GD"
+        color: "#111111"
+        linestyle: solid
+      - path: output/results/agd_unknown_real_logistic_real_sim/agd_unknown_real_logistic_real_sim.csv
+        label: "AGD-Unknown"
+        color: "#1c7ed6"
+        linestyle: dashdot
+      - paths:
+          - output/results/rs_cn_real_logistic_real_sim_s100_seed0/rs_cn_real_logistic_real_sim_s100_seed0.csv
+          - output/results/rs_cn_real_logistic_real_sim_s100_seed1/rs_cn_real_logistic_real_sim_s100_seed1.csv
+          - output/results/rs_cn_real_logistic_real_sim_s100_seed2/rs_cn_real_logistic_real_sim_s100_seed2.csv
+          - output/results/rs_cn_real_logistic_real_sim_s100_seed3/rs_cn_real_logistic_real_sim_s100_seed3.csv
+          - output/results/rs_cn_real_logistic_real_sim_s100_seed4/rs_cn_real_logistic_real_sim_s100_seed4.csv
+        label: "RS-CN s=100"
+        color: "#495057"
+        linestyle: dashdot
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/rs_cn_real_logistic_real_sim_s500_seed0/rs_cn_real_logistic_real_sim_s500_seed0.csv
+          - output/results/rs_cn_real_logistic_real_sim_s500_seed1/rs_cn_real_logistic_real_sim_s500_seed1.csv
+          - output/results/rs_cn_real_logistic_real_sim_s500_seed2/rs_cn_real_logistic_real_sim_s500_seed2.csv
+          - output/results/rs_cn_real_logistic_real_sim_s500_seed3/rs_cn_real_logistic_real_sim_s500_seed3.csv
+          - output/results/rs_cn_real_logistic_real_sim_s500_seed4/rs_cn_real_logistic_real_sim_s500_seed4.csv
+        label: "RS-CN s=500"
+        color: "#212529"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_real_sim_s100_t100_seed0/ars_cn_real_logistic_real_sim_s100_t100_seed0.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_t100_seed1/ars_cn_real_logistic_real_sim_s100_t100_seed1.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_t100_seed2/ars_cn_real_logistic_real_sim_s100_t100_seed2.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_t100_seed3/ars_cn_real_logistic_real_sim_s100_t100_seed3.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_t100_seed4/ars_cn_real_logistic_real_sim_s100_t100_seed4.csv
+        label: "ARS-CN s=r=100, T=100"
+        color: "#d9480f"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed0/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed0.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed1/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed1.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed2/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed2.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed3/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed3.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed4/ars_cn_real_logistic_real_sim_s100_tauto_0p1_seed4.csv
+        label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=0.1)"
+        color: "#2b8a3e"
+        linestyle: dashed
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed0/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed1/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed2/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed3/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed4/ars_cn_real_logistic_real_sim_s100_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#9c36b5"
+        linestyle: dotted
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed0/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed1/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed2/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed3/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed4/ars_cn_real_logistic_real_sim_s50_r50_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=50, r=50, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#15aabf"
+        linestyle: solid
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+      - paths:
+          - output/results/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed0/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed0.csv
+          - output/results/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed1/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed1.csv
+          - output/results/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed2/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed2.csv
+          - output/results/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed3/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed3.csv
+          - output/results/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed4/ars_cn_real_logistic_real_sim_s500_r100_tauto_10m0p5_seed4.csv
+        label: "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+        color: "#5c7cfa"
+        linestyle: dashdot
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+  figure_title: "real logistic: CN comparison"
+  shared_legend: true
+  shared_legend_location: lower center
+  shared_legend_ncol: 3
+  layout:
+    ncols: 3
+    sharey: true
+    width: 18.0
+    height: 4.8
+
+save:
+  path: output/plots/real_logistic_compare_cn.png
+  dpi: 180

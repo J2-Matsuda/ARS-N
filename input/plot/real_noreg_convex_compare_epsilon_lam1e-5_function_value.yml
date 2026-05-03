@@ -38,6 +38,14 @@ inputs:
     label: "ARS-CN s=r=200, T=200"
     color: "#9c36b5"
     linestyle: dashed
+  - path: output/results/ars_cn_epsilon_lam1e-5_noreg_convex_s200_r100_tauto_10m0p5_seed0/ars_cn_epsilon_lam1e-5_noreg_convex_s200_r100_tauto_10m0p5_seed0.csv
+    label: "ARS-CN s=200, r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+    color: "#7048e8"
+    linestyle: dashdot
+  - path: output/results/ars_cn_epsilon_lam1e-5_noreg_convex_s500_r100_tauto_10m0p5_seed0/ars_cn_epsilon_lam1e-5_noreg_convex_s500_r100_tauto_10m0p5_seed0.csv
+    label: "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)"
+    color: "#5c7cfa"
+    linestyle: solid
   - path: output/results/rs_cn_epsilon_lam1e-5_noreg_convex_s50_seed0/rs_cn_epsilon_lam1e-5_noreg_convex_s50_seed0.csv
     label: "RS-CN s=50"
     color: "#adb5bd"
@@ -50,6 +58,10 @@ inputs:
     label: "RS-CN s=200"
     color: "#212529"
     linestyle: dashdot
+  - path: output/results/rs_cn_epsilon_lam1e-5_noreg_convex_s500_seed0/rs_cn_epsilon_lam1e-5_noreg_convex_s500_seed0.csv
+    label: "RS-CN s=500"
+    color: "#343a40"
+    linestyle: solid
   - path: output/results/gd_epsilon_lam1e-5_noreg_convex/gd_epsilon_lam1e-5_noreg_convex.csv
     label: "GD"
     color: "#111111"

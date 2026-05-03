@@ -1,0 +1,42 @@
+task: pipeline
+pipeline_name: pre_exp_5
+
+steps:
+  - command: generate_data
+    config: input/generate_data/exp/madelon_reg1e-1_mfull.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/rs_cn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/rs_cn_s200_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s100_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s100_r50_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s100_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s100_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s100_r200_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s100_r200_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s200_r50_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s200_r50_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s200_r100_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s200_r100_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s200_r200_t50_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/ars_cn_s200_r200_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/rs_rn_s100_seed0.yml
+  - command: optimize
+    config: input/optimize/exp/exp_5_madelon_reg1e-1_mfull/rs_rn_s200_seed0.yml
+  - command: plot
+    config: input/plot/exp/pre_exp_5_madelon_reg1e-1_mfull_grad_norm.yml
+  - command: plot
+    config: input/plot/exp/pre_exp_5_madelon_reg1e-1_mfull_function_value.yml

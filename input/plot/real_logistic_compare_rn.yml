@@ -1,0 +1,98 @@
+task: plot
+plot_name: real_logistic_compare_rn
+
+panels:
+  - title: "gisette"
+    inputs:
+      - path: output/results/gd_real_logistic_gisette/gd_real_logistic_gisette.csv
+        label: "GD"
+        color: "#111111"
+        linestyle: solid
+      - path: output/results/agd_unknown_real_logistic_gisette/agd_unknown_real_logistic_gisette.csv
+        label: "AGD-Unknown"
+        color: "#1c7ed6"
+        linestyle: dashdot
+      - paths:
+          - output/results/rs_rn_real_logistic_gisette_s100_seed0/rs_rn_real_logistic_gisette_s100_seed0.csv
+          - output/results/rs_rn_real_logistic_gisette_s100_seed1/rs_rn_real_logistic_gisette_s100_seed1.csv
+          - output/results/rs_rn_real_logistic_gisette_s100_seed2/rs_rn_real_logistic_gisette_s100_seed2.csv
+          - output/results/rs_rn_real_logistic_gisette_s100_seed3/rs_rn_real_logistic_gisette_s100_seed3.csv
+          - output/results/rs_rn_real_logistic_gisette_s100_seed4/rs_rn_real_logistic_gisette_s100_seed4.csv
+        label: "RS-RN s=100"
+        color: "#e8590c"
+        linestyle: dashed
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+
+  - title: "epsilon"
+    inputs:
+      - path: output/results/gd_real_logistic_epsilon_normalized/gd_real_logistic_epsilon_normalized.csv
+        label: "GD"
+        color: "#111111"
+        linestyle: solid
+      - path: output/results/agd_unknown_real_logistic_epsilon_normalized/agd_unknown_real_logistic_epsilon_normalized.csv
+        label: "AGD-Unknown"
+        color: "#1c7ed6"
+        linestyle: dashdot
+      - paths:
+          - output/results/rs_rn_real_logistic_epsilon_normalized_s100_seed0/rs_rn_real_logistic_epsilon_normalized_s100_seed0.csv
+          - output/results/rs_rn_real_logistic_epsilon_normalized_s100_seed1/rs_rn_real_logistic_epsilon_normalized_s100_seed1.csv
+          - output/results/rs_rn_real_logistic_epsilon_normalized_s100_seed2/rs_rn_real_logistic_epsilon_normalized_s100_seed2.csv
+          - output/results/rs_rn_real_logistic_epsilon_normalized_s100_seed3/rs_rn_real_logistic_epsilon_normalized_s100_seed3.csv
+          - output/results/rs_rn_real_logistic_epsilon_normalized_s100_seed4/rs_rn_real_logistic_epsilon_normalized_s100_seed4.csv
+        label: "RS-RN s=100"
+        color: "#e8590c"
+        linestyle: dashed
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+
+  - title: "real_sim"
+    inputs:
+      - path: output/results/gd_real_logistic_real_sim/gd_real_logistic_real_sim.csv
+        label: "GD"
+        color: "#111111"
+        linestyle: solid
+      - path: output/results/agd_unknown_real_logistic_real_sim/agd_unknown_real_logistic_real_sim.csv
+        label: "AGD-Unknown"
+        color: "#1c7ed6"
+        linestyle: dashdot
+      - paths:
+          - output/results/rs_rn_real_logistic_real_sim_s100_seed0/rs_rn_real_logistic_real_sim_s100_seed0.csv
+          - output/results/rs_rn_real_logistic_real_sim_s100_seed1/rs_rn_real_logistic_real_sim_s100_seed1.csv
+          - output/results/rs_rn_real_logistic_real_sim_s100_seed2/rs_rn_real_logistic_real_sim_s100_seed2.csv
+          - output/results/rs_rn_real_logistic_real_sim_s100_seed3/rs_rn_real_logistic_real_sim_s100_seed3.csv
+          - output/results/rs_rn_real_logistic_real_sim_s100_seed4/rs_rn_real_logistic_real_sim_s100_seed4.csv
+        label: "RS-RN s=100"
+        color: "#e8590c"
+        linestyle: dashed
+        aggregate:
+          center: mean
+          band: minmax
+          alpha: 0.22
+
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+  figure_title: "real logistic: RN comparison"
+  shared_legend: true
+  shared_legend_location: lower center
+  shared_legend_ncol: 3
+  layout:
+    ncols: 3
+    sharey: true
+    width: 18.0
+    height: 4.6
+
+save:
+  path: output/plots/real_logistic_compare_rn.png
+  dpi: 180

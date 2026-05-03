@@ -1,0 +1,137 @@
+task: plot
+plot_name: exp_8_flickr_deepwalk_m20000_lam1e-10_grad_norm
+inputs:
+- paths:
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed0/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed1/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed2/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-CN s=100
+  color: '#495057'
+  linestyle: dashdot
+- paths:
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed0/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed1/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed2/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-CN s=200
+  color: '#343a40'
+  linestyle: dashdot
+- paths:
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed0/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed1/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed2/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-CN s=500
+  color: '#212529'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_flickr_deepwalk_m20000_lam1e-10_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_flickr_deepwalk_m20000_lam1e-10_seed1/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_flickr_deepwalk_m20000_lam1e-10_seed2/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=r=100, T=100
+  color: '#1971c2'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_flickr_deepwalk_m20000_lam1e-10_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_flickr_deepwalk_m20000_lam1e-10_seed1/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_flickr_deepwalk_m20000_lam1e-10_seed2/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=r=200, T=100
+  color: '#1864ab'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_flickr_deepwalk_m20000_lam1e-10_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_flickr_deepwalk_m20000_lam1e-10_seed1/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_flickr_deepwalk_m20000_lam1e-10_seed2/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=r=500, T=100
+  color: '#d9480f'
+  linestyle: solid
+- paths:
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_flickr_deepwalk_m20000_lam1e-10_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_flickr_deepwalk_m20000_lam1e-10_seed1/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_flickr_deepwalk_m20000_lam1e-10_seed2/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: ARS-CN s=500, r=50, T=50
+  color: '#f76707'
+  linestyle: dashed
+- paths:
+  - output/results/gd_flickr_deepwalk_m20000_lam1e-10_flickr_deepwalk_m20000_lam1e-10_seed0/gd_flickr_deepwalk_m20000_lam1e-10_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/gd_flickr_deepwalk_m20000_lam1e-10_flickr_deepwalk_m20000_lam1e-10_seed1/gd_flickr_deepwalk_m20000_lam1e-10_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/gd_flickr_deepwalk_m20000_lam1e-10_flickr_deepwalk_m20000_lam1e-10_seed2/gd_flickr_deepwalk_m20000_lam1e-10_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: GD
+  color: '#111111'
+  linestyle: dotted
+- paths:
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed0/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed1/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed2/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-RN s=100
+  color: '#2b8a3e'
+  linestyle: dashdot
+- paths:
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed0/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed1/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed2/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-RN s=200
+  color: '#2f9e44'
+  linestyle: dashdot
+- paths:
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed0/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed1/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed1.csv
+  - output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed2/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_flickr_deepwalk_m20000_lam1e-10_seed2.csv
+  aggregate:
+    center: mean
+    band: minmax
+    alpha: 0.16
+  label: RS-RN s=500
+  color: '#37b24d'
+  linestyle: solid
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: 'exp_8: flickr-deepwalk multilabel logistic m=20000 lambda=1e-10'
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+  skip_missing: true
+save:
+  path: output/plots/exp/exp_8_flickr_deepwalk_m20000_lam1e-10_grad_norm.png
+  dpi: 180

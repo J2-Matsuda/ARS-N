@@ -95,6 +95,11 @@ PROBLEMS = (
 SEED = 0
 SUBSPACE_DIMS = (50, 100, 200)
 ARS_T_VALUES = (50, 100, 200)
+RS_CN_EXTRA_SUBSPACE_DIMS = (500,)
+ARS_CN_AUTO_EXTRA = (
+    {"s": 200, "r": 100, "tol_slug": "10m0p5", "rk_tol": "0.31622776601683794"},
+    {"s": 500, "r": 100, "tol_slug": "10m0p5", "rk_tol": "0.31622776601683794"},
+)
 ARS_MAX_ITER = 1000
 RS_MAX_ITER = 10000
 FIRST_ORDER_MAX_ITER = 100000
@@ -330,6 +335,43 @@ optimizer:
 {_optimize_footer(run_name)}"""
 
 
+def _ars_cn_auto_config(problem: dict[str, str], s: int, r: int, tol_slug: str, rk_tol: str) -> str:
+    run_name = f"ars_cn_{problem['name']}_noreg_convex_s{s}_r{r}_tauto_{tol_slug}_seed{SEED}"
+    return f"""task: optimize
+run_name: {run_name}
+seed: {SEED}
+
+{_problem_block(problem['type'], _noreg_source(problem))}
+optimizer:
+  type: ars_cn
+  max_iter: {ARS_MAX_ITER}
+  tol: {TOL}
+{_stagnation_block()}  seed: {SEED}
+  subspace_dim: {s}
+  sigma0: 1.0
+  sigma_min: 1.0e-8
+  sigma_max: 1.0e8
+  eta1: 0.05
+  eta2: 0.9
+  gamma1: 1.5
+  gamma2: 2.0
+  solver: lanczos
+  exact_tol: 1.0e-10
+  krylov_tol: 1.0e-8
+  solve_each_i_th_krylov_space: 1
+  keep_Q_matrix_in_memory: false
+  verbose: true
+  print_every: 10
+{_sketch_block()}  rk:
+    mode: T_auto
+    T: 500
+    r: {r}
+    rk_tol: {rk_tol}
+    seed_offset: {_seed_offset(SEED)}
+
+{_optimize_footer(run_name)}"""
+
+
 def _plot_item(path: str, label: str, color: str, linestyle: str) -> str:
     return f"""  - path: {path}
     label: "{label}"
@@ -360,7 +402,24 @@ def _plot_config(
                 )
             )
 
-    rs_cn_colors = {50: "#adb5bd", 100: "#6c757d", 200: "#212529"}
+    items.append(
+        _plot_item(
+            _result_path(f"ars_cn_{problem['name']}_noreg_convex_s200_r100_tauto_10m0p5_seed0"),
+            "ARS-CN s=200, r=100, T_auto (T<=500, rk_tol=10^-0.5)",
+            "#7048e8",
+            "dashdot",
+        )
+    )
+    items.append(
+        _plot_item(
+            _result_path(f"ars_cn_{problem['name']}_noreg_convex_s500_r100_tauto_10m0p5_seed0"),
+            "ARS-CN s=500, r=100, T_auto (T<=500, rk_tol=10^-0.5)",
+            "#5c7cfa",
+            "solid",
+        )
+    )
+
+    rs_cn_colors = {50: "#adb5bd", 100: "#6c757d", 200: "#212529", 500: "#343a40"}
     for s in SUBSPACE_DIMS:
         items.append(
             _plot_item(
@@ -368,6 +427,15 @@ def _plot_config(
                 f"RS-CN s={s}",
                 rs_cn_colors[s],
                 "dashdot",
+            )
+        )
+    for s in RS_CN_EXTRA_SUBSPACE_DIMS:
+        items.append(
+            _plot_item(
+                _result_path(f"rs_cn_{problem['name']}_noreg_convex_s{s}_seed0"),
+                f"RS-CN s={s}",
+                rs_cn_colors[s],
+                "solid",
             )
         )
 
@@ -429,7 +497,17 @@ def _pipeline_config() -> str:
                     f"""  - command: optimize
     config: input/optimize/real_noreg_convex_compare/{problem['name']}/ars_cn_s{s}_t{T}_seed0.yml"""
                 )
+        for spec in ARS_CN_AUTO_EXTRA:
+            steps.append(
+                f"""  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/{problem['name']}/ars_cn_s{spec['s']}_r{spec['r']}_tauto_{spec['tol_slug']}_seed0.yml"""
+            )
         for s in SUBSPACE_DIMS:
+            steps.append(
+                f"""  - command: optimize
+    config: input/optimize/real_noreg_convex_compare/{problem['name']}/rs_cn_s{s}_seed0.yml"""
+            )
+        for s in RS_CN_EXTRA_SUBSPACE_DIMS:
             steps.append(
                 f"""  - command: optimize
     config: input/optimize/real_noreg_convex_compare/{problem['name']}/rs_cn_s{s}_seed0.yml"""
@@ -478,6 +556,13 @@ def main() -> None:
                 _write(problem_dir / f"ars_cn_s{s}_t{T}_seed0.yml", _ars_cn_config(problem, s, T))
             _write(problem_dir / f"rs_cn_s{s}_seed0.yml", _rs_cn_config(problem, s))
             _write(problem_dir / f"rs_rn_s{s}_seed0.yml", _rs_rn_config(problem, s))
+        for s in RS_CN_EXTRA_SUBSPACE_DIMS:
+            _write(problem_dir / f"rs_cn_s{s}_seed0.yml", _rs_cn_config(problem, s))
+        for spec in ARS_CN_AUTO_EXTRA:
+            _write(
+                problem_dir / f"ars_cn_s{spec['s']}_r{spec['r']}_tauto_{spec['tol_slug']}_seed0.yml",
+                _ars_cn_auto_config(problem, spec["s"], spec["r"], spec["tol_slug"], spec["rk_tol"]),
+            )
 
         _write(
             PLOT_ROOT / f"real_noreg_convex_compare_{problem['name']}_grad_norm.yml",

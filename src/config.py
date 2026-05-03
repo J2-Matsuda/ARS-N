@@ -155,15 +155,23 @@ def load_pipeline_config(config_path: str | Path) -> dict[str, Any]:
     if not isinstance(steps, list) or not steps:
         raise ValueError("pipeline.steps must be a non-empty list")
 
-    allowed_commands = {"generate", "generate_data", "optimize", "plot"}
+    allowed_commands = {"generate", "generate_data", "optimize", "optimize_parallel", "plot"}
     for index, step in enumerate(steps, start=1):
         step_context = f"pipeline step {index}"
         step_mapping = _ensure_mapping(step, step_context)
-        _ensure_keys(step_mapping, ("command", "config"), step_context)
         command = step_mapping["command"]
         if command not in allowed_commands:
             allowed = ", ".join(sorted(allowed_commands))
             raise ValueError(f"{step_context}.command must be one of: {allowed}")
+        if command == "optimize_parallel":
+            _ensure_keys(step_mapping, ("command", "configs"), step_context)
+            configs = step_mapping["configs"]
+            if not isinstance(configs, list) or not configs:
+                raise ValueError(f"{step_context}.configs must be a non-empty list")
+            if "max_parallel" in step_mapping:
+                _ensure_positive_int(step_mapping["max_parallel"], f"{step_context}.max_parallel")
+            continue
+        _ensure_keys(step_mapping, ("command", "config"), step_context)
 
     return config
 

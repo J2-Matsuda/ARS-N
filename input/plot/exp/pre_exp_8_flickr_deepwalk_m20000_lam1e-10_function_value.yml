@@ -1,0 +1,60 @@
+task: plot
+plot_name: pre_exp_8_flickr_deepwalk_m20000_lam1e-10_function_value
+inputs:
+- path: output/results/gd_flickr_deepwalk_m20000_lam1e-10_seed0/gd_flickr_deepwalk_m20000_lam1e-10_seed0.csv
+  label: GD
+  color: '#111111'
+  linestyle: solid
+- path: output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_seed0/rs_cn_flickr_deepwalk_m20000_lam1e-10_s100_seed0.csv
+  label: RS-CN s=100
+  color: '#495057'
+  linestyle: dashdot
+- path: output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_seed0/rs_cn_flickr_deepwalk_m20000_lam1e-10_s200_seed0.csv
+  label: RS-CN s=200
+  color: '#343a40'
+  linestyle: dashdot
+- path: output/results/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_seed0/rs_cn_flickr_deepwalk_m20000_lam1e-10_s500_seed0.csv
+  label: RS-CN s=500
+  color: '#212529'
+  linestyle: solid
+- path: output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s100_r100_t100_seed0.csv
+  label: ARS-CN s=100, r=100, T=100
+  color: '#1971c2'
+  linestyle: solid
+- path: output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s200_r200_t100_seed0.csv
+  label: ARS-CN s=200, r=200, T=100
+  color: '#1864ab'
+  linestyle: solid
+- path: output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r500_t100_seed0.csv
+  label: ARS-CN s=500, r=500, T=100
+  color: '#d9480f'
+  linestyle: solid
+- path: output/results/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_seed0/ars_cn_flickr_deepwalk_m20000_lam1e-10_s500_r50_t50_seed0.csv
+  label: ARS-CN s=500, r=50, T=50
+  color: '#f76707'
+  linestyle: dashed
+- path: output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_seed0/rs_rn_flickr_deepwalk_m20000_lam1e-10_s100_seed0.csv
+  label: RS-RN s=100
+  color: '#2b8a3e'
+  linestyle: dotted
+- path: output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_seed0/rs_rn_flickr_deepwalk_m20000_lam1e-10_s200_seed0.csv
+  label: RS-RN s=200
+  color: '#2f9e44'
+  linestyle: dotted
+- path: output/results/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_seed0/rs_rn_flickr_deepwalk_m20000_lam1e-10_s500_seed0.csv
+  label: RS-RN s=500
+  color: '#37b24d'
+  linestyle: dotted
+plot:
+  x: cumulative_time
+  y: f
+  xscale: linear
+  yscale: linear
+  title: 'pre_exp_8: flickr deepwalk m=20000 lambda=1e-10'
+  xlabel: cumulative_time
+  ylabel: function_value
+  grid: true
+  skip_missing: true
+save:
+  path: output/plots/exp/pre_exp_8_flickr_deepwalk_m20000_lam1e-10_function_value.png
+  dpi: 180

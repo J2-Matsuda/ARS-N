@@ -508,8 +508,14 @@ def load_multilabel_dataset(
             texts = [texts[int(index)] for index in row_indices]
             label_rows = [label_rows[int(index)] for index in row_indices]
 
-        vectorizer = TfidfVectorizer(dtype=np.float64)
+        max_features = None if n_features is None else int(n_features)
+        vectorizer = TfidfVectorizer(dtype=np.float64, max_features=max_features)
         A = vectorizer.fit_transform(texts).tocsr()
+        if n_features is not None and int(A.shape[1]) != int(n_features):
+            raise AssertionError(
+                f"LexGLUE UNFAIR-ToS TF-IDF feature dimension mismatch: "
+                f"got {int(A.shape[1])}, expected {int(n_features)}"
+            )
         Y = _multilabel_csr_from_rows(label_rows, num_labels=num_labels)
         generation_config = {
             "source_format": source_format_normalized,
@@ -1634,7 +1640,10 @@ def generate_mlp_multilabel_logistic_from_config(
     raw_source_path = resolve_project_path(problem_config["raw_source"])
     download_url = problem_config.get("download_url")
     download_if_missing = bool(problem_config.get("download_if_missing", bool(download_url)))
-    if not raw_source_path.exists() and download_if_missing:
+    is_lexglue_source = source_format == "lexglue_unfair_tos_tfidf"
+    if is_lexglue_source:
+        raw_source_path.mkdir(parents=True, exist_ok=True)
+    elif not raw_source_path.exists() and download_if_missing:
         if not download_url:
             raise ValueError("problem.download_url is required when download_if_missing is true")
         _redownload_raw_dataset(str(download_url), raw_source_path)

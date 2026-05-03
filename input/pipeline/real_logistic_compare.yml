@@ -16,11 +16,11 @@ steps:
   #   config: input/optimize/real_logistic_compare/gisette/rs_rn_s100_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/gisette/rs_cn_s10_seed0.yml
-  # - command: optimize
-  #   config: input/optimize/real_logistic_compare/gisette/rs_cn_s50_seed0.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/rs_cn_s50_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/gisette/rs_cn_s100_seed0.yml
-  # - command: optimize
+  # - command: optimize`
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s10_t50_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s10_t100_seed0.yml
@@ -28,6 +28,8 @@ steps:
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s50_t50_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s50_t100_seed0.yml
+  - command: optimize
+    config: input/optimize/real_logistic_compare/gisette/ars_cn_s50_r50_tauto_10m0p5_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s100_t50_seed0.yml
   # - command: optimize
@@ -36,44 +38,52 @@ steps:
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s100_tauto_0p1_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/gisette/ars_cn_s100_tauto_10m0p5_seed0.yml
-  # - command: plot
-  #   config: input/plot/real_logistic_compare_gisette.yml
+  # - command: optimize
+    # config: input/optimize/real_logistic_compare/gisette/ars_cn_s500_r100_tauto_10m0p5_seed0.yml
+  - command: plot
+    config: input/plot/real_logistic_compare_gisette.yml
   # - command: generate
   #   config: input/generate_data/real_logistic/epsilon_normalized.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/epsilon_normalized/gd.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/epsilon_normalized/agd_unknown.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s10_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s10_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s50_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_rn_s100_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s10_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s50_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s100_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s10_t50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s10_t100_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s50_t50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s50_t100_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_t50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_t100_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_tauto_0p1_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_tauto_10m0p5_seed0.yml
-  - command: plot
-    config: input/plot/real_logistic_compare_epsilon_normalized.yml
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s10_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s50_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/rs_cn_s500_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s10_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s10_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s50_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s50_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s50_r50_tauto_10m0p5_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_t50_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_tauto_0p1_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s100_tauto_10m0p5_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/epsilon_normalized/ars_cn_s500_r100_tauto_10m0p5_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_logistic_compare_epsilon_normalized.yml
   # - command: generate
   #   config: input/generate_data/real_logistic/real_sim.yml
   # - command: optimize
@@ -84,29 +94,35 @@ steps:
   #   config: input/optimize/real_logistic_compare/real_sim/rs_rn_s10_seed0.yml
   # - command: optimize
   #   config: input/optimize/real_logistic_compare/real_sim/rs_rn_s50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/real_sim/rs_cn_s10_seed0.yml
+  #   config: input/optimize/real_logistic_compare/real_sim/rs_rn_s100_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/real_sim/rs_cn_s10_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/real_sim/rs_cn_s50_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/real_sim/rs_cn_s50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/real_sim/rs_cn_s100_seed0.yml
+  #   config: input/optimize/real_logistic_compare/real_sim/rs_cn_s100_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s10_t50_seed0.yml
+  #   config: input/optimize/real_logistic_compare/real_sim/rs_cn_s500_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s10_t50_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s10_t100_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s50_t50_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s10_t100_seed0.yml
+  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s50_t100_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s50_t50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/real_sim/ars_cn_s50_t100_seed0.yml
+  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s50_r50_tauto_10m0p5_seed0.yml
+  # # - command: optimize
+  # #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_t50_seed0.yml
   # - command: optimize
-  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_t50_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_t100_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_tauto_0p1_seed0.yml
-  - command: optimize
-    config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_tauto_10m0p5_seed0.yml
-  - command: plot
-    config: input/plot/real_logistic_compare_real_sim.yml
+  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_t100_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_tauto_0p1_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s100_tauto_10m0p5_seed0.yml
+  # - command: optimize
+  #   config: input/optimize/real_logistic_compare/real_sim/ars_cn_s500_r100_tauto_10m0p5_seed0.yml
+  # - command: plot
+  #   config: input/plot/real_logistic_compare_real_sim.yml

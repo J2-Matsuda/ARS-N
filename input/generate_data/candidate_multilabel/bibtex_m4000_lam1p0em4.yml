@@ -1,0 +1,24 @@
+task: generate_data
+run_name: bibtex_m4000_lam1p0em4
+seed: 0
+
+problem:
+  type: multilabel_logistic
+  source_format: multilabel_libsvm
+  raw_source: data/raw/multilabel/candidates/bibtex.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multilabel/bibtex.bz2
+  dataset_name: bibtex
+  n_features: 1836
+  num_labels: 159
+  index_base: 1
+  label_index_base: 1
+  add_bias: true
+  reg_lambda: 1.0e-4
+  regularize_bias: true
+  sample_size: 4000
+  sample_seed: 0
+
+save:
+  path: data/generated/candidate_multilabel/bibtex_m4000_lam1p0em4.npz

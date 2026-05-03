@@ -1,0 +1,24 @@
+task: generate_data
+run_name: ppi_node2vec_m50000_lam1p0em2
+seed: 0
+
+problem:
+  type: multilabel_logistic
+  source_format: multilabel_libsvm
+  raw_source: data/raw/multilabel/candidates/ppi_node2vec.svm.bz2
+  download_if_missing: true
+  download_if_corrupt: true
+  download_url: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multilabel/ppi_node2vec.svm.bz2
+  dataset_name: ppi-node2vec
+  n_features: 128
+  num_labels: 121
+  index_base: 1
+  label_index_base: 1
+  add_bias: true
+  reg_lambda: 1.0e-2
+  regularize_bias: true
+  sample_size: 50000
+  sample_seed: 0
+
+save:
+  path: data/generated/candidate_multilabel/ppi_node2vec_m50000_lam1p0em2.npz

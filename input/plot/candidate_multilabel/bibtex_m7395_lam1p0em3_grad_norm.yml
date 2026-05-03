@@ -1,0 +1,83 @@
+task: plot
+plot_name: candidate_multilabel_bibtex_m7395_lam1p0em3_grad_norm
+
+inputs:
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s50_r50_t50_seed0/ars_cn_bibtex_m7395_lam1p0em3_s50_r50_t50_seed0.csv
+    label: "ARS-CN s=50, r=50, T=50, seed=0"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t50_seed0/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t50_seed0.csv
+    label: "ARS-CN s=100, r=100, T=50, seed=0"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t100_seed0/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t100_seed0.csv
+    label: "ARS-CN s=100, r=100, T=100, seed=0"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s200_r100_t100_seed0/ars_cn_bibtex_m7395_lam1p0em3_s200_r100_t100_seed0.csv
+    label: "ARS-CN s=200, r=100, T=100, seed=0"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s50_seed0/rs_cn_bibtex_m7395_lam1p0em3_s50_seed0.csv
+    label: "RS-CN s=50, seed=0"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s100_seed0/rs_cn_bibtex_m7395_lam1p0em3_s100_seed0.csv
+    label: "RS-CN s=100, seed=0"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s200_seed0/rs_cn_bibtex_m7395_lam1p0em3_s200_seed0.csv
+    label: "RS-CN s=200, seed=0"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s50_r50_t50_seed1/ars_cn_bibtex_m7395_lam1p0em3_s50_r50_t50_seed1.csv
+    label: "ARS-CN s=50, r=50, T=50, seed=1"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t50_seed1/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t50_seed1.csv
+    label: "ARS-CN s=100, r=100, T=50, seed=1"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t100_seed1/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t100_seed1.csv
+    label: "ARS-CN s=100, r=100, T=100, seed=1"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s200_r100_t100_seed1/ars_cn_bibtex_m7395_lam1p0em3_s200_r100_t100_seed1.csv
+    label: "ARS-CN s=200, r=100, T=100, seed=1"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s50_seed1/rs_cn_bibtex_m7395_lam1p0em3_s50_seed1.csv
+    label: "RS-CN s=50, seed=1"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s100_seed1/rs_cn_bibtex_m7395_lam1p0em3_s100_seed1.csv
+    label: "RS-CN s=100, seed=1"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s200_seed1/rs_cn_bibtex_m7395_lam1p0em3_s200_seed1.csv
+    label: "RS-CN s=200, seed=1"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s50_r50_t50_seed2/ars_cn_bibtex_m7395_lam1p0em3_s50_r50_t50_seed2.csv
+    label: "ARS-CN s=50, r=50, T=50, seed=2"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t50_seed2/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t50_seed2.csv
+    label: "ARS-CN s=100, r=100, T=50, seed=2"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t100_seed2/ars_cn_bibtex_m7395_lam1p0em3_s100_r100_t100_seed2.csv
+    label: "ARS-CN s=100, r=100, T=100, seed=2"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/ars_cn_bibtex_m7395_lam1p0em3_s200_r100_t100_seed2/ars_cn_bibtex_m7395_lam1p0em3_s200_r100_t100_seed2.csv
+    label: "ARS-CN s=200, r=100, T=100, seed=2"
+    linestyle: solid
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s50_seed2/rs_cn_bibtex_m7395_lam1p0em3_s50_seed2.csv
+    label: "RS-CN s=50, seed=2"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s100_seed2/rs_cn_bibtex_m7395_lam1p0em3_s100_seed2.csv
+    label: "RS-CN s=100, seed=2"
+    linestyle: dashed
+  - path: output/results/candidate_multilabel/rs_cn_bibtex_m7395_lam1p0em3_s200_seed2/rs_cn_bibtex_m7395_lam1p0em3_s200_seed2.csv
+    label: "RS-CN s=200, seed=2"
+    linestyle: dashed
+
+
+plot:
+  x: cumulative_time
+  y: grad_norm
+  xscale: linear
+  yscale: log
+  title: "candidate multilabel: bibtex_m7395_lam1p0em3"
+  xlabel: cumulative_time
+  ylabel: grad_norm
+  grid: true
+  skip_missing: true
+
+save:
+  path: output/plots/candidate_multilabel/bibtex_m7395_lam1p0em3_grad_norm.png
+  dpi: 180
