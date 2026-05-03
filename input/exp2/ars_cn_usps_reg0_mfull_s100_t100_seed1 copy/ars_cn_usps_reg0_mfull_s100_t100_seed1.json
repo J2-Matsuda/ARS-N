@@ -1,0 +1,86 @@
+{
+  "executed_at_utc": "2026-05-01T16:04:33.654392+00:00",
+  "run_name": "ars_cn_usps_reg0_mfull_s100_t100_seed1",
+  "seed": 1,
+  "algorithm": "ars_cn",
+  "problem": "softmax",
+  "effective_reg_lambda": 0.0,
+  "effective_regularize_bias": true,
+  "source_reg_lambda": 0.0,
+  "reg_lambda_overridden": false,
+  "git_commit_hash": "6b10c8b51af90aa233462747412f544074d1e688",
+  "run_dir": "output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1",
+  "input_config_path": "output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1/ars_cn_s100_t100_seed1.yml",
+  "history_path": "/home/hiroki/yamakawa/ARS-N/output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1/ars_cn_usps_reg0_mfull_s100_t100_seed1.csv",
+  "resolved_config_path": "/home/hiroki/yamakawa/ARS-N/output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1/ars_cn_usps_reg0_mfull_s100_t100_seed1.resolved.yml",
+  "result": {
+    "f_final": 0.0002594559404637873,
+    "grad_norm_final": 9.82244740760878e-06,
+    "n_iter": 37,
+    "status": "converged"
+  },
+  "resolved_config": {
+    "task": "optimize",
+    "run_name": "ars_cn_usps_reg0_mfull_s100_t100_seed1",
+    "seed": 1,
+    "problem": {
+      "type": "softmax",
+      "source": "data/generated/real_noreg_convex/usps_noreg.npz"
+    },
+    "initialization": {
+      "type": "zeros"
+    },
+    "optimizer": {
+      "type": "ars_cn",
+      "max_iter": 1000,
+      "tol": 1e-05,
+      "stop_on_grad_norm_stagnation": true,
+      "grad_norm_stagnation_patience": 50,
+      "grad_norm_stagnation_rtol": 1e-12,
+      "grad_norm_stagnation_atol": 1e-12,
+      "seed": 1,
+      "subspace_dim": 100,
+      "sigma0": 1.0,
+      "sigma_min": 1e-08,
+      "sigma_max": "1.0e8",
+      "eta1": 0.05,
+      "eta2": 0.9,
+      "gamma1": 1.5,
+      "gamma2": 2.0,
+      "solver": "lanczos",
+      "exact_tol": 1e-10,
+      "krylov_tol": 1e-08,
+      "solve_each_i_th_krylov_space": 1,
+      "keep_Q_matrix_in_memory": false,
+      "verbose": true,
+      "print_every": 10,
+      "sketch": {
+        "mode": "operator",
+        "block_size": 512,
+        "dtype": "float64"
+      },
+      "rk": {
+        "mode": "default",
+        "T": 100,
+        "r": 100,
+        "seed_offset": 1000003
+      },
+      "line_search": {
+        "enabled": false,
+        "c1": 0.0001,
+        "beta": 0.5,
+        "max_iter": 25
+      }
+    },
+    "log": {
+      "enabled": true,
+      "csv_path": "output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1/ars_cn_usps_reg0_mfull_s100_t100_seed1.csv",
+      "save_everytime": true
+    },
+    "save_meta": {
+      "enabled": true,
+      "meta_path": "output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1/ars_cn_usps_reg0_mfull_s100_t100_seed1.json",
+      "resolved_config_path": "output/results/ars_cn_usps_reg0_mfull_s100_t100_seed1/ars_cn_usps_reg0_mfull_s100_t100_seed1.resolved.yml"
+    }
+  }
+}

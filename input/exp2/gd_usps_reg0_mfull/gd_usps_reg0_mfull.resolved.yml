@@ -1,0 +1,32 @@
+task: optimize
+run_name: gd_usps_reg0_mfull
+seed: 0
+problem:
+  type: softmax
+  source: data/generated/real_noreg_convex/usps_noreg.npz
+initialization:
+  type: zeros
+optimizer:
+  type: gd
+  max_iter: 100000
+  tol: 1.0e-05
+  verbose: true
+  print_every: 1000
+  line_search:
+    enabled: true
+    alpha0: 1.0
+    c1: 0.0001
+    beta: 0.5
+    max_iter: 25
+  stop_on_grad_norm_stagnation: false
+  grad_norm_stagnation_patience: 10
+  grad_norm_stagnation_rtol: 1.0e-12
+  grad_norm_stagnation_atol: 1.0e-12
+log:
+  enabled: true
+  csv_path: output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.csv
+  save_everytime: true
+save_meta:
+  enabled: true
+  meta_path: output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.json
+  resolved_config_path: output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.resolved.yml

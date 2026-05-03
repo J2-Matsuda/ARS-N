@@ -1,0 +1,62 @@
+{
+  "executed_at_utc": "2026-05-01T22:36:45.426195+00:00",
+  "run_name": "gd_usps_reg0_mfull",
+  "seed": 0,
+  "algorithm": "gd",
+  "problem": "softmax",
+  "effective_reg_lambda": 0.0,
+  "effective_regularize_bias": true,
+  "source_reg_lambda": 0.0,
+  "reg_lambda_overridden": false,
+  "git_commit_hash": "6b10c8b51af90aa233462747412f544074d1e688",
+  "run_dir": "output/results/gd_usps_reg0_mfull",
+  "input_config_path": "output/results/gd_usps_reg0_mfull/gd.yml",
+  "history_path": "/home/hiroki/yamakawa/ARS-N/output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.csv",
+  "resolved_config_path": "/home/hiroki/yamakawa/ARS-N/output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.resolved.yml",
+  "result": {
+    "f_final": 0.028724198370901805,
+    "grad_norm_final": 0.0003846918336828954,
+    "n_iter": 100000,
+    "status": "max_iter"
+  },
+  "resolved_config": {
+    "task": "optimize",
+    "run_name": "gd_usps_reg0_mfull",
+    "seed": 0,
+    "problem": {
+      "type": "softmax",
+      "source": "data/generated/real_noreg_convex/usps_noreg.npz"
+    },
+    "initialization": {
+      "type": "zeros"
+    },
+    "optimizer": {
+      "type": "gd",
+      "max_iter": 100000,
+      "tol": 1e-05,
+      "verbose": true,
+      "print_every": 1000,
+      "line_search": {
+        "enabled": true,
+        "alpha0": 1.0,
+        "c1": 0.0001,
+        "beta": 0.5,
+        "max_iter": 25
+      },
+      "stop_on_grad_norm_stagnation": false,
+      "grad_norm_stagnation_patience": 10,
+      "grad_norm_stagnation_rtol": 1e-12,
+      "grad_norm_stagnation_atol": 1e-12
+    },
+    "log": {
+      "enabled": true,
+      "csv_path": "output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.csv",
+      "save_everytime": true
+    },
+    "save_meta": {
+      "enabled": true,
+      "meta_path": "output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.json",
+      "resolved_config_path": "output/results/gd_usps_reg0_mfull/gd_usps_reg0_mfull.resolved.yml"
+    }
+  }
+}
